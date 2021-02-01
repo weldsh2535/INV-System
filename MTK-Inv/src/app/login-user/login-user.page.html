@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Login User</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="regform">
+    <ion-list>
+    <ion-item>
+      <ion-label>User Name  </ion-label>
+      <ion-input   formControlName="username"></ion-input>
+      <span *ngIf="!regform.get('username').valid && regform.get('username').touched" > Enter User Name </span> 
+    </ion-item>
+  <ion-item>
+      <ion-label>Password </ion-label>
+      <ion-input   formControlName="password"></ion-input>
+      <span *ngIf="!regform.get('password').valid && regform.get('password').touched" > Enter Password </span> 
+    </ion-item>
+    <ion-button class="btn btn-secondary" expand="block" (click)="Login()"> Save </ion-button>
+   
+  </ion-list>
+  </form>
+</ion-content>

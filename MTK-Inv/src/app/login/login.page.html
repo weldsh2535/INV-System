@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary" > 
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Login </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+  <ion-content padding>
+	  <div>
+		<ion-item>
+			<ion-label stacked>Phone Number</ion-label>
+			<ion-input type="number" [(ngModel)]="phoneNumber" [required]></ion-input>
+		  </ion-item>
+		  <div style="text-align: center; margin: auto;">
+		    <ion-button id="sign-in-button" (click)="signIn(phoneNumber)">Sign In</ion-button>
+		  </div>
+	  </div>
+	
+	<ion-content padding>
+		<div id="recaptcha-container"></div>
+	  </ion-content>
+   
+  </ion-content>
+<!-- <ion-content padding>
+	<form #form="ngForm"(ngSubmit)="loginUser(form)">
+	  <div>
+		  <ion-item>
+			<ion-input name="email" type="email" placeholder="your@email.com" ngModel required>Email:</ion-input>
+		  </ion-item>
+		  <ion-item>
+			<ion-input name="password" type="password" placeholder="password" ngModel required>Password:</ion-input>
+		  </ion-item>
+	 </div>
+	 <div style="text-align: center; margin: auto;">
+        <ion-button type="submit" [disabled]="form.invalid">Sign In</ion-button>
+	 </div>
+	</form>
+	<div style="text-align: center;margin: auto;">
+	<h6 (click)="goToRest()">Forget Password</h6>
+	<h6 (click)="goTosignUp()">Sign Up</h6>
+	</div>
+</ion-content>  -->

@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-item>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Orders View </ion-title>
+  </ion-item>
+</ion-header>
+
+<ion-content>
+  <table class="table table-hover">
+    <thead class="thead-light">
+      <th>#Purchase No.</th>
+      <th>Vendor Name</th>
+      <th>P. Method</th>
+      <th>G. Total</th>
+      <th>
+        <a class="btn btn-outline-success" routerLink="/purchase"><i class="fa fa-plus-square"></i> Create New</a>
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of orderList">
+        <th (click)="openForEdit(item.OrderID)">{{item.purchaseNumber}}</th>
+        <td (click)="openForEdit(item.OrderID)">{{item.venderName}}</td>
+        <td (click)="openForEdit(item.OrderID)">{{item.type}}</td>
+        <td (click)="openForEdit(item.OrderID)">{{item.totalAmount}}</td>
+        <td>
+            <a class="btn text-danger" (click)="onOrderDelete(item.OrderID)"><i class="fa fa-trash fa-lg"></i></a>
+        </td>
+      </tr>
+    </tbody>
+  </table> 
+</ion-content>

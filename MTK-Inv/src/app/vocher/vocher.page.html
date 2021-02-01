@@ -1,0 +1,237 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{VoucherName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="regform">
+    <ion-item>
+      <ion-label>Date:</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" formControlName="date" [min]="minDate" [max]="maxDate"
+        [(ngModel)]="currentDate" ></ion-datetime>
+        <small class="form-text text-muted" *ngIf="!regform.get('date').valid && 
+        (regform.get('date').dirty ||regform.get('date').touched) "> This field is required!</small>
+      <label style="margin-left: 20px">Voucher No:{{VocherNo}}</label>
+    </ion-item>
+    <ion-item>
+      <ion-label *ngIf="FromStore">From Store </ion-label>
+      <div class="dx-field">
+        <dx-lookup style="border: none;font: 400 16px Arial;" [items]="listofStore" *ngIf="FromStore" [(ngModel)]="defaultSelectedFromStored"
+           valueExpr="id"
+          [displayExpr]="getDisplayStore" placeholder="Select Store" formControlName="fromStore"
+           itemTemplate="listofStore" >
+          <dxo-drop-down-options title="Select Store"></dxo-drop-down-options>
+          <div *dxTemplate="let item of 'listofStore'">
+            <div class="custom-item">
+              <div>{{item.name }} </div>
+            </div>
+          </div>
+        </dx-lookup>
+       </div>
+      <ion-label *ngIf="ToStore">To Store </ion-label>
+      <div class="dx-field">
+        <dx-lookup style="border: none;font: 400 16px Arial;" [items]="listofStore" *ngIf="ToStore" [(ngModel)]="defaultSelectedToStored"
+           valueExpr="id"
+          [displayExpr]="getDisplayStore" placeholder="Select Store" formControlName="toStore"
+           itemTemplate="listofStore" >
+          <dxo-drop-down-options title="Select Store"></dxo-drop-down-options>
+          <div *dxTemplate="let item of 'listofStore'">
+            <div class="custom-item">
+              <div>{{item.name }} </div>
+            </div>
+          </div>
+        </dx-lookup>
+      </div>
+    </ion-item>
+    <ion-item *ngIf="vendors">
+      <ion-label>Vendor</ion-label>
+      <div class="dx-field">
+        <dx-lookup style="border: none;font: 400 16px Arial;" [items]="listOfVendor"
+          [searchExpr]="['id','vendorName','contact', 'phonenumber','address']" valueExpr="id"
+          [displayExpr]="getDisplayVendor" placeholder="Select Vendor" formControlName="vendor"
+          (onValueChanged)="SelectedVendorValue($event)" itemTemplate="listOfVendor" >
+          <dxo-drop-down-options title="Select vendors"></dxo-drop-down-options>
+          <div *dxTemplate="let item of 'listOfVendor'">
+            <div class="custom-item">
+              <div>{{item.vendorName }} {{item.phonenumber }} </div>
+            </div>
+          </div>
+        </dx-lookup>
+         </div>
+    </ion-item>
+    <div class="form-group">
+    <div id="SelectedBalance"class="input-group mb-6" *ngIf="vendorsBalance">
+       <span class="input-group-text1">Balance </span>
+        <ion-input [(ngModel)]="vendorBalance" formControlName="vendorBalance" value="{{vendorBalance}}"required readonly>
+        </ion-input>
+        <!-- <ion-label *ngIf="grandTotalVendorLabel">Grand Total : {{grandTotalVendor}}</ion-label> -->
+      </div>
+  </div>
+    <ion-item *ngIf="customers">
+      <ion-label>Customer</ion-label>
+      <div class="dx-field">
+        <dx-lookup style="border: none;" [items]="listOfCustomer"
+          [searchExpr]="['id','fullname','contact', 'phonenumber','address']" valueExpr="id"
+          [displayExpr]="getDisplayCustomer" placeholder="Select customer" formControlName="customer"
+          (onValueChanged)="SelectedCustomerValue($event)" itemTemplate="listOfCustomer">
+          <dxo-drop-down-options title="Select Customers"></dxo-drop-down-options>
+          <div *dxTemplate="let item of 'listOfCustomer'">
+            <div class="custom-item">
+              <div>{{item.fullname }} {{item.phonenumber }} </div>
+            </div>
+          </div>
+        </dx-lookup>
+      </div>
+    </ion-item>
+    <div class="form-group">
+    <div id="SelectedBalance" class="input-group mb-6" *ngIf="customerBalance">
+      <span class="input-group-text1">Balance </span>
+        <ion-input [(ngModel)]="updateBalance" formControlName="updateBalance" value="{{selectedCustomerBalance}}" readonly>
+        </ion-input>
+    </div>
+    </div>
+    <ion-card-content class="item-seleted">
+      <div class="form-group">
+        <div class="dx-fieldset">
+          <div class="dx-fieldset-header">Items Select</div>
+          <div class="dx-field">
+            <dx-lookup [items]="listofItems" [searchExpr]="['id','name','discrption', 'picture']" valueExpr="id"
+              [displayExpr]="getDisplayExpr" placeholder="Select Items" formControlName="item"
+              (onValueChanged)="valueChanged($event)" itemTemplate="listofItems">
+              <dxo-drop-down-options title="Select Items"></dxo-drop-down-options>
+              <div *dxTemplate="let item of 'listofItems'">
+                <div class="custom-item">
+                  <img src="{{item.picture}}" />
+                  <div style=" white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;">{{item.discrption }} {{item.name }} </div>
+                </div>
+              </div>
+            </dx-lookup>
+            <small class="form-text text-muted" *ngIf="!regform.get('item').valid && 
+                  (regform.get('item').dirty ||regform.get('item').touched) "> This field is required!</small>
+          </div>
+          <div *ngIf="SelectedDiv">
+            <div class="selected" *ngFor="let code of linename">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <ion-label>
+                      <img class="imageItems" [src]="code?.picture" />
+                    </ion-label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <ion-label>
+                      <h1>Description</h1>
+                      <div>{{code?.discrption}}</div>
+                    </ion-label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <ion-label>
+                      <h1>Item Name:</h1>
+                      <div>{{code?.name}}</div>
+                    </ion-label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Quantity</span>
+          <ion-input class="input-field" type="number" [(ngModel)]="Quantity"value="{{Quantity}}" formControlName="Quantity"
+            placeholder="Quantity" [class.is-invalid]="!isValid && Quantity==0"></ion-input>
+          <span class="input-group-text">Price</span>
+          <ion-input class="input-field" type="number" value="{{Price}}" formControlName="Price" [class.is-invalid]="!isValid && Price==0"readonly
+            placeholder="Price"></ion-input>
+          <ion-fab-button id="add items" (click)="Save()">
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+        </div>
+      </div>
+    </ion-card-content>
+  </form>
+  <ion-list>
+    <table class="table table-hover">
+      <colgroup>
+        <col width="5%">
+        <col width="*">
+        <col width="10%">
+        <col width="15%">
+      </colgroup>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Item Name</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Price</th>
+          <th scope="col">Total</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of ListOfItems|filter:searchText  | paginate : {
+                                              itemsPerPage: tableSize,
+                                              currentPage: page,
+                                              totalItems: count
+                                            };
+                                      let i = index" [class.active]="i == currentIndex">
+          <th scope="row">{{i + 1}}</th>
+          <td>{{item.ItemName}}</td>
+          <td>{{item.Quantity}}</td>
+          <td>{{item.Price}}</td>
+          <td>{{item.Total}}</td>
+          <td (click)="UpdateRow(item)">
+            <ion-icon color="primary" name="create" slot="icon-only"></ion-icon>
+          </td>
+          <td (click)="removeRow(i)">
+            <ion-icon color="primary" name="trash" slot="icon-only"></ion-icon>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+      <pagination-controls responsive="true" previousLabel="Prev" nextLabel="Next"
+        (pageChange)="onTableDataChange($event)">
+      </pagination-controls>
+    </div>
+    <form [formGroup]="paidForm">
+      <div class="row1">
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="input-group mb-6">
+              <span class="input-group-text">Grand Total</span>
+              <ion-input class="input-field" type="number" formControlName="totalAmount"
+                value="{{grandTotalCustomer|| this.grandTotalVendor}}" readonly>
+              </ion-input>
+            </div>
+            <div class="input-group mb-6">
+              <ion-button id="add items" (click)="payment()"> Paid </ion-button>
+              <input class="input-field" formControlName="paid" [(ngModel)]="paid" (keyup)="onKey()" type="number"
+                class="form-control" placeholder="Br 0" />
+            </div>
+          </div>
+          <hr>
+          <div class="form-group">
+            <label>Balance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Br {{values}}</label>
+            <ion-input type="hidden" formControlName="values" [(ngModel)]="values" value="{{values}}"></ion-input>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <ion-button id="add items" (click)="Send()">
+              <ion-icon name="save-outline"></ion-icon>&nbsp;Save
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </ion-list>
+</ion-content>

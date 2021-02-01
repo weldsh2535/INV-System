@@ -1,0 +1,121 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Filter Example</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<dx-data-grid
+    id="gridContainer"
+    [dataSource]="listOfvendors"
+    keyExpr="id"
+    [showBorders]="true"
+    [focusedRowEnabled]="true"
+    [columnHidingEnabled]="true">
+
+    <dxo-editing
+        [allowUpdating]="true"
+        [allowDeleting]="true"
+        [selectTextOnEditStart]="true"
+        [useIcons]="true">
+    </dxo-editing>
+    <dxo-editing [allowAdding]="true" [allowUpdating]="true" mode="batch"></dxo-editing>
+    <dxo-grouping [contextMenuEnabled]="true" expandMode="rowClick"></dxo-grouping>
+    <dxo-group-panel [visible]="true" emptyPanelText="Use the context menu of header columns to group data"></dxo-group-panel>
+    <dxo-pager
+        [allowedPageSizes]="[5, 8, 15, 30]"
+        [showInfo]="true"
+        [showNavigationButtons]="true"
+        [showPageSizeSelector]="true"
+        [visible]="true">
+    </dxo-pager>
+    <dxo-paging [pageSize]="8"></dxo-paging>
+    <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+    <dxo-header-filter [visible]="true">
+    </dxo-header-filter>
+
+    <dxo-filter-panel [visible]="true">
+    </dxo-filter-panel>
+
+    <dxo-filter-row [visible]="true">
+    </dxo-filter-row>
+
+    <dxo-paging [pageSize]="10">
+    </dxo-paging>
+
+    <dxo-pager
+        [allowedPageSizes]="[5, 10]"
+        [showPageSizeSelector]="true"
+        [showNavigationButtons]="true">
+    </dxo-pager>
+    <dxi-column [allowGrouping]="false" dataField="vendorName" [width]="130" caption="Vendor Name"></dxi-column>
+    <dxi-column dataField="address" caption="Address"></dxi-column>
+    <dxi-column dataField="contact" caption="Contact"></dxi-column>
+    <dxi-column dataField="phonenumber" caption="Phone Number"></dxi-column>
+    <dxi-column dataField="email" caption="Email"></dxi-column>
+    <dxi-column dataField="website" caption="Web site"></dxi-column>>
+
+    <!-- <dxi-column dataField="StateID"
+        caption="State">
+        <dxo-lookup
+            [dataSource]="states"
+            valueExpr="ID"
+            displayExpr="Name">
+        </dxo-lookup>
+    </dxi-column> -->
+
+</dx-data-grid>
+<!-- 
+  <dx-data-grid 
+  id="gridContainer" 
+  [dataSource]="listOfvendors"
+  [showBorders]="true">
+  <dxo-filter-row 
+      [visible]="showFilterRow" 
+      [applyFilter]="currentFilter"></dxo-filter-row>
+  <dxo-header-filter 
+      [visible]="showHeaderFilter"></dxo-header-filter>
+  <dxo-search-panel 
+      [visible]="true" 
+      [width]="240" 
+      placeholder="Search..."></dxo-search-panel>
+  <dxi-column 
+      dataField="vendorName" 
+      [width]="140" 
+      caption="Vendor Name">
+      <dxo-header-filter 
+          [groupInterval]="10000"></dxo-header-filter>
+  </dxi-column>
+  <dxi-column 
+      dataField="contact" 
+      alignment="right" 
+      [width]="120"
+      [calculateFilterExpression]="calculateFilterExpression">
+      <dxo-header-filter 
+          [dataSource]="orderHeaderFilter"></dxo-header-filter>
+  </dxi-column>
+  <dxi-column 
+      dataField="address" 
+      alignment="right" 
+      dataType="datetime"
+      format="M/d/yyyy, HH:mm"
+      [width]="180"></dxi-column>
+  <dxi-column 
+      dataField="phonenumber" 
+      alignment="right" 
+      format="number"
+      [editorOptions]="{ format: 'currency', showClearButton: true }">
+      <dxo-header-filter 
+          [dataSource]="saleAmountHeaderFilter"></dxo-header-filter>
+  </dxi-column>
+  <dxi-column dataField="email"></dxi-column>
+  <!-- <dxi-column 
+      dataField="CustomerStoreCity" 
+      caption="City">
+      <dxo-header-filter [allowSearch]="true"></dxo-header-filter>
+  </dxi-column> 
+</dx-data-grid> -->
+
+</ion-content>

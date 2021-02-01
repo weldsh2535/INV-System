@@ -1,0 +1,64 @@
+<h4 class="dispaly-4">Payment Details</h4>
+<hr>
+<ion-content>
+<form [formGroup]="regform">
+  <div class="mat-elevation-z8">
+  <table mat-table style=" background-color: darkgray;
+                           border-radius: 3px;">
+    <colgroup>
+      <col width="5%">
+      <col width="*">
+      <col width="10%">
+      <col width="15%">
+    </colgroup>
+    <thead style="background-color: #fbfcfd;">
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Type</th>
+      </tr>
+    </thead>
+    <tbody style="background-color: #ddd;">
+      <tr style="width: 12px;" *ngFor="let item of listOfVoucher;let i of index">
+        <td>
+          <div style="width: 140px;">
+            <ion-label>{{item.date}}</ion-label>
+           <!-- <ion-datetime displayFormat="MM/DD/YYYY" formControlName="date" [(ngModel)]="item.date" value="{{item.date}}"></ion-datetime> -->
+          </div>
+        <td>
+          <div style="width: 100px;">
+            <ion-label >payment</ion-label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th colspan="1">Amount applied</th>
+        <td>
+          <div style="width: 100px;">
+          <input class="input-filed" formControlName="payment" placeholder="Br 0" [(ngModel)]="payment" (keyup)="updatePayment()"
+          type="number" class="form-control" />
+         </div>
+      </td>
+       </tr>
+    
+    </tbody>
+  </table>
+  <div class="col-md-6" style="margin-left: 200px; background-color: #ddd; border-radius: 4px;">
+    <div class="form-group">
+      <div class="input-group md-6">
+        <ion-label> Total Paid &nbsp;&nbsp; {{this.payment}}</ion-label>
+        <ion-label class="input-filed"></ion-label>
+       </div>
+    </div>
+    <hr>
+    <div class="form-group">
+        <label>Balance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Br {{updateBalancePayment}}</label>
+    </div>
+  </div>
+  <div class="form-group" style="padding-left: 202px;padding-bottom: 24px;">
+  <button type="button" class="btn btn-outline-dark ml-1" (click)="close()"><i class="fa fa-close"></i>Close</button>&nbsp;&nbsp;
+  <button type="submit" class="btn btn-dark" (click)="submitPayment()"><i class="fa fa-database"></i> Submit</button>
+</div>
+</div>
+</form>
+
+</ion-content>

@@ -1,0 +1,48 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+
+      <ion-content>
+        <ion-card style="background-color: rgb(0, 255, 76);">
+          <ion-item>
+            <ion-avatar slot="start" style="width: 100px; height: 120px; ">
+              <img
+                src="https://us.123rf.com/450wm/lumut/lumut1505/lumut150500012/39994162-stock-vector-s-lame-logo.jpg?ver=6">
+            </ion-avatar>
+            <ion-label>
+              <ion-card-subtitle style="text-align: center;color: darkcyan;font-size: 15px;font-style: italic;">
+                MTK Technologies</ion-card-subtitle>
+            </ion-label>
+          </ion-item>
+          <ion-card-header>
+          </ion-card-header>
+        </ion-card>
+        
+        <ion-list id="inbox-list">
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none"
+              detail="false" [class.selected]="selectedIndex == i">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-item id="sidenav" (click)="show()">
+            <ion-icon name="list-outline"></ion-icon>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transation </ion-item>
+          <ion-list *ngIf="selectedList" (click)="show()" style="margin-left: 11px;
+          text-align: center;
+          background-color: #e8ebef;" >
+          <ion-menu-toggle  *ngFor="let p of vouchertype; let i = index; ">
+            <ion-item (click)="selectedIndex1 = i" [class.selected]="selectedIndex1==i" [routerLink]="['/p.name']" (click)="readPath(p)" routerDirection="root" lines="none">
+              <ion-icon name="add-circle-outline"></ion-icon>
+              <ion-label>{{ p.name }}</ion-label>
+              <ion-label hidden>{{ p.id }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

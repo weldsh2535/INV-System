@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary" >
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Recieve payment</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="regform">
+  <ion-item>
+       <ion-label> Select Customer</ion-label>
+        <div class="dx-field">
+          <dx-lookup [items]="listOfCustomer" [searchExpr]="['id','fullname','contact', 'phonenumber','address']" valueExpr="id"
+            [displayExpr]="getDisplayExpr" placeholder="Select Items" formControlName="customer"
+            (onValueChanged)="SelectedValue($event)" itemTemplate="listOfCustomer"
+            [(ngModel)]="defaultSelectedCurrency">
+            <dxo-drop-down-options title="Select Customers"></dxo-drop-down-options>
+            <div *dxTemplate="let item of 'listOfCustomer'">
+              <div class="custom-item">
+               <div>{{item.fullname }} {{item.phonenumber }} </div>
+              </div>
+            </div>
+          </dx-lookup>
+        </div>   
+  </ion-item>
+  <ion-item >
+     <ion-label>Balance </ion-label>
+      <ion-input [(ngModel)]="this.updateBalance" formControlName="updateBalance" value="{{updateBalance}}" readonly></ion-input>
+   </ion-item>
+  <ion-item>
+    <ion-label  position="floating" >Enter Payment </ion-label>
+      <ion-input type="number" formControlName="payment" aria-placeholder="Enter payment"></ion-input>
+      <small class="form-text text-muted" *ngIf="!regform.get('payment').valid && regform.get('payment').touched" > This field is required! </small> 
+  </ion-item>
+  <div style="text-align: center; margin: auto;">
+    <ion-button id="add items" (click)="reCalculateBalance()"> 
+      <ion-icon slot="start" name="add-circle-outline"></ion-icon>Calculate Balance
+     </ion-button>
+  </div>
+</form>
+</ion-content>

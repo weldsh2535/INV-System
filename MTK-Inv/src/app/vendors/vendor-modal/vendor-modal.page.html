@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary" >
+  <ion-buttons slot="start">
+      <ion-icon style="width: 77px; height: 39px;" name="close-outline" (click)="closeModal()"></ion-icon>
+    </ion-buttons> 
+    <div>
+      <ion-item color="primary" lines="none">
+      <ion-label>New Vendor</ion-label>
+      <div style="text-align: center; margin: auto;">
+        <ion-button id="add items" (click)="SaveVender()"> 
+          <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+          {{editMode?'Update ':'Add'}}</ion-button>
+      </div>
+      </ion-item>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="regform">
+    <ion-item>
+      <ion-label position="floating">Vendor Name</ion-label>
+      <ion-input formControlName="vendorName" type="text"></ion-input>
+      <small class="form-text text-muted" *ngIf="!regform.get('vendorName').valid && regform.get('vendorName').touched" > This field is required! </small> 
+      </ion-item>
+    <ion-item>
+      <ion-label position="floating">Contact Name</ion-label>
+      <ion-input formControlName="contact" type="text"></ion-input>
+      <small class="form-text text-muted" *ngIf="!regform.get('contact').valid && regform.get('contact').touched" > This field is required! </small> 
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Address</ion-label>
+      <ion-input formControlName="address" type="text"></ion-input>
+      <small class="form-text text-muted" *ngIf="!regform.get('address').valid && regform.get('address').touched" > This field is required! </small> 
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Balance</ion-label>
+      <ion-input type="number" formControlName="balance" ></ion-input>
+      <small class="form-text text-muted" *ngIf="!regform.get('balance').valid && regform.get('balance').touched" > This field is required! </small> 
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Phone Number</ion-label>
+      <ion-input formControlName="phonenumber" type = "tel"></ion-input>
+      <small class="form-text text-muted" *ngIf="!regform.get('phonenumber').valid && regform.get('phonenumber').touched" > This field is required! </small> 
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" ngModel [email]="true" formControlName="email" ></ion-input>
+      <small class="form-text text-muted" *ngIf="!regform.get('email').valid && regform.get('email').touched" > This field is required! </small> 
+    </ion-item> 
+    <ion-item>
+      <ion-label position="floating">Website</ion-label>
+      <ion-input formControlName="website"></ion-input>
+    </ion-item>
+   </form>
+</ion-content>

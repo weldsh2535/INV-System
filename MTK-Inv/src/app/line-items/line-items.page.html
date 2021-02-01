@@ -1,0 +1,46 @@
+<h4 class="dispaly-4">Order Item</h4>
+<hr>
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <input type="hidden"  name="LineItemID" #LineItemID="ngModel" [(ngModel)]="formData.LineItemID">
+    <input type="hidden"  name="OrderID" #OrderID="ngModel" [(ngModel)]="formData.OrderID">
+  <input type="hidden"  name="ItemName" #ItemName="ngModel" [(ngModel)]="formData.ItemName">
+  <div class="form-group">
+    <label>Item</label>
+    <select name="ItemID" #ItemID="ngModel" [(ngModel)]="formData.ItemID" class="form-control" (change)="updatePrice($event.target)"
+    [class.is-invalid]="!isValid && formData.ItemID==0">
+      <option value="0">-Select-</option>
+      <option *ngFor="let item of itemList" value="{{item.id}}">{{item.name}}</option>
+    </select>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Price</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">$</div>
+        </div>
+        <input name="Price" #Price="ngModel" [(ngModel)]="formData.Price" class="form-control" readonly>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Quantity</label>
+      <input name="Quantity" #Quantity="ngModel" [(ngModel)]="formData.Quantity" class="form-control"
+      (keyup)="updateTotal()" [class.is-invalid]="!isValid && formData.Quantity==0">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Total</label>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text">$</div>
+      </div>
+      <input name="subTotal" #subTotal="ngModel" [(ngModel)]="formData.subTotal" class="form-control" readonly>
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Submit</button>
+    <button type="button" class="btn btn-outline-dark ml-1" (click)="close()"><i class="fa fa-close"></i>Close</button>
+  </div>
+</form> 
+
+

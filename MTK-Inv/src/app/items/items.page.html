@@ -1,0 +1,203 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary" >
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Items</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form #form="ngForm" autocomplete="off" (ngSubmit)="Save(regform)" [formGroup]="regform">
+    <ion-list> 
+    <ion-item>
+      <ion-label>Name </ion-label>
+      <!-- pattern="[a-zA-Z ]*" -->
+      <ion-input   formControlName="name"  required ></ion-input>
+      <!-- <span *ngIf="!regform.get('name').valid && regform.get('name').touched" > Enter  Name </span> -->
+      <!-- <div *ngIf="regform.get('name').invalid && (regform.get('name').dirty ||regform.get('name').touched)"
+        class="alert alert-danger"> 
+        <div *ngIf="regform.get('name').errors.required">
+          Name is required.
+        </div>
+      </div> -->
+      <small class="form-text text-muted" *ngIf="regform.get('name').touched && 
+      regform.get('name').hasError('required')">This field is required!</small>
+      <!-- <small class="form-text text-muted" *ngIf="regform.get('name').touched 
+      && regform.get('name').hasError('invalidNumber')">Numbers accepted only!</small> -->
+    </ion-item>
+    <ion-item>
+      <ion-label>Amharic Name </ion-label>
+      <ion-input   formControlName="AmaricName"></ion-input>
+      <small class="form-text text-muted" *ngIf="!regform.get('AmaricName').valid && regform.get('AmaricName').touched" > This field is required!</small> 
+    </ion-item>
+    <ion-item>
+      <ion-label>Item Category</ion-label>
+    <ion-select interface="popover" formControlName="CatagoryId" [(ngModel)]="SelectedCatagory">
+          <ion-select-option *ngFor="let code of ListOfItemCategory" value="{{code?.id}}">
+               {{code?.categoryName}}
+         </ion-select-option>
+      </ion-select>
+      <small class="form-text text-muted" *ngIf="!regform.get('CatagoryId').valid && 
+      regform.get('CatagoryId').touched "> This field is required!</small>
+    </ion-item>
+    <ion-item>
+      <ion-label>Lookup</ion-label>
+      <ion-select interface="popover" formControlName="type" (ionChange)="SelectedValue($event)"[(ngModel)]="SelectedLookup" >
+          <ion-select-option *ngFor="let code of listOfLookUpCatagory" value="{{code?.id}}">
+               {{code?.name}}
+         </ion-select-option>
+      </ion-select>
+      <small class="form-text text-muted" *ngIf="!regform.get('type').valid && 
+      regform.get('type').touched "> This field is required!</small>
+    </ion-item>
+    <div class="dx-fieldset">
+      <div class="dx-fieldset-header">Store</div>
+      <div class="dx-field">
+          <dx-lookup
+              [items]="filteredLookUp"
+              [searchExpr]="['name']"
+              valueExpr="id"
+              [displayExpr]="getDisplayExpr"
+              placeholder="Select Stores"
+              formControlName="storeid"
+              [(ngModel)]="itemLookupList"
+              itemTemplate="filteredLookUp">
+              <dxo-drop-down-options title="Select Stores"></dxo-drop-down-options>
+              <div *dxTemplate="let item of 'filteredLookUp'">
+                  <div class="custom-item">
+                      <div>{{item.name}} </div>
+                  </div>
+              </div>
+          </dx-lookup>
+          </div>
+          <small class="form-text text-muted" *ngIf="!regform.get('storeid').valid && 
+          regform.get('storeid').touched "> This field is required!</small>
+      </div>
+    <ion-item>
+      <ion-label>Description </ion-label>
+      <ion-input   formControlName="discrption"></ion-input>
+      <small *ngIf="!regform.get('discrption').valid && regform.get('discrption').touched" >This field is required! </small> 
+    </ion-item>
+    <ion-item>
+      <ion-label>price </ion-label>
+      <ion-input   formControlName="price" type="number"></ion-input>
+      <small *ngIf="!regform.get('price').valid && regform.get('price').touched" > This field is required! </small> 
+    </ion-item>
+    <ion-item>
+      <ion-label>Quantity </ion-label>
+      <ion-input   formControlName="Quantity" type="number"></ion-input>
+      <small *ngIf="!regform.get('Quantity').valid && regform.get('Quantity').touched" > This field is required! </small> 
+    </ion-item>
+   <ion-item>
+      <ion-label>Brand </ion-label>
+      <ion-input formControlName="brand"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Remark </ion-label>
+      <ion-textarea formControlName="remark" placeholder="Enter more information here..."></ion-textarea>
+    </ion-item>
+    <div class="picker">
+      <ion-img
+        role="button"
+        class="image"
+        (click)="onPickImage()"
+        [src]="base64textString"
+        *ngIf="base64textString"
+      ></ion-img>
+      <ion-button color="primary" (click)="onPickImage()" *ngIf="!base64textString" >
+        <ion-icon name="camera" slot="start"></ion-icon>
+        <ion-label>Take Picture</ion-label>
+      </ion-button>
+    </div>
+    <input  hidden
+      type="file"
+      accept="image/jpeg"
+      *ngIf="usePicker"
+      #filePicker
+      (change)="onFileChosen($event)"
+    />
+    <div style="text-align: center; margin: auto;">
+   <!-- [disabled]="regform.invalid" -->
+      <ion-button type="submit" id="add items" > 
+        <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+        {{editMode?'Update Items':'Add Items'}} </ion-button>
+   </div>
+  </ion-list>
+  </form>
+  <ion-searchbar
+  (keyup)="filter($event)" [(ngModel)]="searchText" showCancelButton="never"></ion-searchbar>
+<!-- 
+   <ion-item-sliding  *ngFor="let item of filteredItemsByLookup |filter:searchText | paginate : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+              let i = index" [class.active]="i == currentIndex " #slidingItem >
+    <ion-item class="slide" >
+      <ion-thumbnail slot="start">
+        <img [src]="item.picture">
+      </ion-thumbnail>
+      <ion-label>
+      <h2> {{item.name}}</h2>
+      <h3>Quantity  {{item.Quantity}}
+      <p style="margin-left: 200px;"> {{item.price}} Birr</p></h3>
+      </ion-label>
+    </ion-item>
+    <ion-item-options side="start">
+      <ion-item-option color="danger" (click)="Edit(item,slidingItem)">
+     <ion-icon  name="create" slot="icon-only"></ion-icon></ion-item-option>
+     <ion-item-option color="danger" (click)="delete(item,slidingItem)">
+      <ion-icon  name="trash" slot="icon-only"></ion-icon></ion-item-option>
+    </ion-item-options>
+    
+  </ion-item-sliding> -->
+  <table class="table" >
+    <colgroup>
+      <col width="15%">
+      <col width="15%">
+      <col width="15%">
+      <col width="15%">
+    </colgroup>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="filteredItemsByLookup?.length==0" >
+        <td class="font-italic text-center" colspan="5">
+          No  item selected for this order.
+        </td>
+      </tr>
+      <tr *ngFor="let item of filteredItemsByLookup|filter:searchText  | paginate : {
+                                              itemsPerPage: tableSize,
+                                              currentPage: page,
+                                              totalItems: count
+                                            };
+                                      let i = index" [class.active]="i == currentIndex">
+        <th scope="row">{{i + 1}}</th>
+        <td> <ion-thumbnail slot="start">
+          <img [src]="item.picture">
+        </ion-thumbnail></td>
+        <td>{{item.name}}</td>
+        <td>{{item.Quantity}}</td>
+        <td (click)="Edit(item)"><ion-icon  name="create" slot="icon-only"></ion-icon></td>
+        <td (click)="delete(item)"><ion-icon  name="trash" slot="icon-only"></ion-icon></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <pagination-controls 
+      responsive="true" 
+      previousLabel="Prev" 
+      nextLabel="Next" 
+      (pageChange)="onTableDataChange($event)">
+    </pagination-controls>
+  </div>
+</ion-content>

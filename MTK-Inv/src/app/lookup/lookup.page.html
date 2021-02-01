@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary" > 
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Lookup</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-list>
+    <form [formGroup]="regform">
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input formControlName="name" type="text"></ion-input>
+      <div *ngIf="regform.get('name').invalid && (regform.get('name').dirty ||regform.get('name').touched)"
+        class="alert alert-danger"> 
+        <div *ngIf="regform.get('name').errors.required">This field is required!</div>
+      </div>
+        </ion-item>
+    <ion-item>
+      <ion-label position="floating">Value</ion-label>
+      <ion-input formControlName="value" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Lookup Category</ion-label>
+      <ion-select  name="type" interface="popover" formControlName="type"[(ngModel)]="SelectedLookup" (ionChange)="SelectedValue($event)">
+          <ion-select-option *ngFor="let code of listOfLookupCatagory" value="{{code?.id}}">
+               {{code?.name}}
+         </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Remark</ion-label>
+      <ion-textarea type="text" formControlName="remark" placeholder="Enter more information here..."></ion-textarea>
+     </ion-item>
+    <div style="text-align: center; margin: auto;">
+      <ion-button id="add items" (click)="Save()"> 
+        <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+        {{editMode?'Update Lookup':'Add Lookup'}}</ion-button>
+    </div>
+  </form>
+  </ion-list>
+ <ion-searchbar
+  (keyup)="filter($event)"  showCancelButton="never"></ion-searchbar> 
+   <ion-item-sliding  *ngFor="let item of filteredLookUp " #slidingItem >
+    <ion-item detail>
+      <ion-label> {{item.name}}</ion-label>
+      <ion-label  style="text-align: end;"> {{item.value}}</ion-label>
+    </ion-item>
+    <ion-item-options side="start">
+      <ion-item-option color="danger" (click)="Edit(item,slidingItem)">
+     <ion-icon  name="create" slot="icon-only"></ion-icon></ion-item-option>
+     <ion-item-option color="danger" (click)="delete(item,slidingItem)">
+      <ion-icon  name="trash" slot="icon-only"></ion-icon></ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding> 
+</ion-content>

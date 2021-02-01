@@ -1,0 +1,98 @@
+<ion-header [translucent]="true">
+  <ion-toolbar  color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div>
+      <ion-item color="primary" lines="none">
+        <ion-label>Vendors</ion-label>
+        <!-- <ion-badge color="success" slot="end">{{lengthOfVendor}}</ion-badge> -->
+        <ion-icon name="add-outline" (click)="openModal()"></ion-icon>
+      </ion-item>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-segment (ionChange)="segmentChanged($event)" value="list">
+    <ion-segment-button value="list">
+      <ion-label>
+        List
+      </ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="details">
+      <ion-label>
+        details
+      </ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-list class="animate__animated animate__slideInUp animate__fast" *ngIf="segment === 'list'">
+    <ion-list>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="form-group">
+            <ion-searchbar showCancelButton="never" [(ngModel)]="searchText" placeholder="Search"></ion-searchbar>
+          </div>
+        </div>
+      </div>
+      <!-- <ng-container *ngIf="listOfvendors | async; else loading; let listOfvendors"> -->
+      <table class="table table-hover">
+        <colgroup>
+          <col width="5%">
+          <col width="*">
+          <col width="5%">
+          <col width="15%">
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Vendor Name</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Phone number</th>
+            <th scope="col">Balance</th>
+            <th scope="col">Address</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listOfvendors|filter:searchText  | paginate : {
+                                              itemsPerPage: tableSize,
+                                              currentPage: page,
+                                              totalItems: this.lengthOfVendor
+                                            };
+                                      let i = index" [class.active]="i == currentIndex">
+            <th scope="row">{{i + 1}}</th>
+            <td (click)="viewVendors(item)">{{item.vendorName}}</td>
+            <td  (click)="viewVendors(item)">{{item.contact}}</td>
+            <td  (click)="viewVendors(item)">{{item.phonenumber}}</td>
+            <td  (click)="viewVendors(item)">{{item.balance}}</td>
+            <td  (click)="viewVendors(item)">{{item.address}}</td>
+            <td (click)="update(item)">
+              <ion-icon name="create" slot="icon-only"></ion-icon>
+            </td>
+            <td (click)="delete(item)">
+              <ion-icon name="trash" slot="icon-only"></ion-icon>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-center">
+        <pagination-controls responsive="true" previousLabel="Prev" nextLabel="Next"
+          (pageChange)="onTableDataChange($event)">
+        </pagination-controls>
+      </div>
+      <!-- </ng-container> -->
+      <ng-template #loading>
+        <p>No results .....</p>
+      </ng-template>
+    </ion-list>
+  </ion-list>
+
+  <div class="animate__animated animate__slideInUp animate__fast" *ngIf="segment === 'details'">
+    <ion-card>
+      <ion-card-content>
+     
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

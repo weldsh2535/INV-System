@@ -1,0 +1,90 @@
+<ion-header [translucent]="true">
+  <ion-item>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Purchase Entry </ion-title>
+  </ion-item>
+</ion-header>
+<ion-content>
+<form  #form="ngForm" autocomplete="off" *ngIf="purchaseService.formData"  >
+<input type="hidden"  name="OrderID" #OrderID="ngModel" [(ngModel)]="purchaseService.formData.OrderID">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Purchase No.</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">#</div>
+            </div>
+            <input name="purchaseNumber" #purchaseNumber="ngModel" [(ngModel)]="purchaseService.formData.purchaseNumber" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <ion-label>Date:</ion-label>
+          <ion-datetime name="date" #date="ngModel" [(ngModel)]="purchaseService.formData.date" displayFormat="MM/DD/YYYY" value={{currentDate}}></ion-datetime> 
+        </div>
+        <div class="form-group">
+          <label>Vender Name</label>
+          <select name="venderName" #venderName="ngModel" [(ngModel)]="purchaseService.formData.venderName" class="form-control"
+          [class.is-invalid]="!isValid && purchaseService.formData.VendorId==0">
+            <option value="0">-Select-</option>
+            <option *ngFor="let item of vendorList" >{{item.vendorName}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Payment Method</label>
+          <select name="PMethod" #PMethod="ngModel" [(ngModel)]="purchaseService.formData.type" class="form-control">
+            <option value="">-Select-</option>
+            <option value="Cash">Cash</option>
+            <option value="Card">Card</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Grand Total</label>
+           <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">$</div>
+            </div>
+            <input name="totalAmount" #totalAmount="ngModel" [(ngModel)]="this.purchaseService.formData.totalAmount" class="form-control" readonly>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- order items table-->
+    <table class="table table-borderless">
+      <thead class="thead-light">
+        <th>Item And Description</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>
+          <a class="btn btn-sm btn-success text-white" (click)="AddOrEditOrderItem(null,purchaseService.formData.OrderID)"><i class="fa fa-plus"></i> Add Item</a>
+        </th>
+      </thead>
+      <tbody>
+        <tr *ngIf="purchaseService.orderItems.length==0" [class.text-danger]="!isValid && purchaseService.orderItems.length==0">
+          <td class="font-italic text-center" colspan="5">
+            No  item selected for this order.
+          </td>
+        </tr>
+        <tr *ngFor="let item of purchaseService.orderItems;let i=index;">
+          <td>{{item.ItemName}}</td>
+          <td>{{item.Price}}</td>
+          <td>{{item.Quantity}}</td>
+          <td>{{item.subTotal}}</td>
+          <td>
+            <a class="btn btn-sm btn-info text-white" (click)="AddOrEditOrderItem(i,purchaseService.formData.OrderID)"><i class="fa fa-pencil"></i></a>
+            <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeleteOrderItem(item.vocherId,i)"><i class="fa fa-trash"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="form-group">
+      <button type="submit"(click)=onSubmit() class="btn btn-dark"><i class="fa fa-database"></i> Submit</button>
+      <a class="btn btn-outline-dark ml-1" routerLink="/orders-view"><i class="fa fa-table"></i> View Orders</a>
+    </div>
+  </form>
+</ion-content>

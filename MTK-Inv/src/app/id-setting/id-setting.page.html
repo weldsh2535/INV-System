@@ -1,0 +1,131 @@
+<ion-header>
+  <ion-toolbar color="primary" >
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div>
+      <ion-item color="primary" lines="none">
+      <ion-label>Id Setting</ion-label>
+      <ion-badge color="success" slot="end">{{lengthOfIdSetting}}</ion-badge>
+      </ion-item>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-list>
+    <form [formGroup]="regform">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <ion-item>
+              <ion-label position="floating">Prefix</ion-label>
+              <ion-input formControlName="prefix" ></ion-input>
+              <small class="form-text text-muted" *ngIf="!regform.get('prefix').valid && regform.get('prefix').touched" > This field is required! </small> 
+            </ion-item>
+          </div>
+          <div class="col-md-6">
+            <ion-item>
+              <ion-label position="floating">Length</ion-label>
+              <ion-input formControlName="length"></ion-input>
+               <small class="form-text text-muted" *ngIf="!regform.get('length').valid && regform.get('length').touched" > This field is required! </small> 
+            </ion-item>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <ion-item>
+              <ion-label position="floating">Suffix</ion-label>
+              <ion-input formControlName="suffix"></ion-input>
+              <small class="form-text text-muted" *ngIf="!regform.get('suffix').valid && regform.get('suffix').touched" > This field is required! </small> 
+            </ion-item>
+          </div>
+          <div class="col-md-6">
+            <ion-item>
+              <ion-label position="floating">Current Id</ion-label>
+              <ion-input formControlName="currentId"></ion-input>
+              <small class="form-text text-muted" *ngIf="!regform.get('currentId').valid && regform.get('currentId').touched" > This field is required! </small> 
+            </ion-item>
+          </div>
+        </div>
+      </div>
+     <div style="text-align: center; margin: auto;">
+      <ion-button id="add items" (click)="Save()"> 
+        <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+        {{editMode?'Update Id Setting':'Add Id Setting'}}</ion-button>
+    </div>
+  </form>
+  </ion-list>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="form-group">
+       <ion-searchbar showCancelButton="never" [(ngModel)]="searchText" placeholder="Search"></ion-searchbar>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+          <div class="d-flex flex-row-reverse bd-highlight mb-2">
+            <div class="p-2 bd-highlight">
+              <select (change)="onTableSizeChange($event)" class="custom-select">
+                <option *ngFor="let size of tableSizes" [ngValue]="size">
+                  {{ size }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  
+  <table class="table" >
+    <colgroup>
+      <col width="15%">
+      <col width="15%">
+      <col width="15%">
+      <col width="15%">
+    </colgroup>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Preffix</th>
+        <th scope="col">Suffix</th>
+        <th scope="col">Length</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="idSettingList?.length==0" >
+        <td class="font-italic text-center" colspan="5">
+          No  item selected for this order.
+        </td>
+      </tr>
+      <tr *ngFor="let item of idSettingList|filter:searchText  | paginate : {
+                                              itemsPerPage: tableSize,
+                                              currentPage: page,
+                                              totalItems: count
+                                            };
+                                      let i = index" [class.active]="i == currentIndex">
+        <th scope="row">{{i + 1}}</th>
+        <td>{{item.prefix}}</td>
+        <td>{{item.suffix}}</td>
+        <td>{{item.length}}</td>
+        <td (click)="Edit(item)"><ion-icon  name="create" slot="icon-only"></ion-icon></td>
+        <td (click)="delete(item)"><ion-icon  name="trash" slot="icon-only"></ion-icon></td>
+      </tr>
+    </tbody>
+  
+  </table>
+  <!-- <div *ngIf="(idSettingList | filter: searchText).length === 0">
+    <div>error</div>
+    <div >0 results</div>
+    <div>No matching this search input data!!!</div>
+  </div> -->
+  <div class="d-flex justify-content-center">
+    <pagination-controls 
+      responsive="true" 
+      previousLabel="Prev" 
+      nextLabel="Next" 
+      (pageChange)="onTableDataChange($event)">
+    </pagination-controls>
+  </div>
+
+</ion-content>

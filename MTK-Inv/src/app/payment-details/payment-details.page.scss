@@ -1,0 +1,25 @@
+.mat-dialog-container {
+    display: block;
+    padding: 11px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    overflow: auto;
+    outline: 0;
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    max-height: inherit;
+}
+
+.mat-dialog-container {
+    box-shadow: 2px 11px 7px 0px rgb(199 195 195 / 20%), 0px 17px 38px 3px rgb(65 88 150 / 14%), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+    background: #dee2e6;
+    color: rgba(0,0,0,.87);
+}
+hr {
+    height: 1px;
+    border-width: 0;
+    box-sizing: content-box;
+    background-color: #333;
+    width: 611px;
+  }

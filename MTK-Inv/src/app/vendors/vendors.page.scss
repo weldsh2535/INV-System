@@ -1,0 +1,17 @@
+ion-content ion-segment {
+    margin: 5px 0;
+  }
+  table.table-hover tbody tr:hover {
+    cursor: pointer;
+  }
+  .modal-wrapper {
+    background: #222;
+  }
+  
+  /* Works - pass "my-custom-class" in cssClass to increase specificity */
+  .my-custom-class .modal-wrapper {
+    background: #222;
+  }
+  .my-custom-class {
+    --background: #222;
+  }

@@ -1,0 +1,149 @@
+:root {
+    --ion-safe-area-top: 20px;
+    --ion-safe-area-bottom: 22px;
+  }
+  .control-buttons {
+    text-align: right;    
+}
+
+.control-buttons img {
+    cursor: pointer;
+}
+.e-bigger #Items_popup .e-dropdownbase .e-list-item {
+  line-height: 40px;
+  height: 64px;
+}
+
+.e-bigger #Items_popup.e-popup .empImage {
+  margin: 10px 16px;
+}
+
+#Items .name {
+  padding: 7px 42px;
+  opacity: .87;
+  line-height: 1.063em;
+}
+#Items .valueTemp {
+  border-radius: 50%;
+  float: left;
+  margin-top: 2px;
+  margin-left: 2px;
+}
+
+.e-bigger #Items .valueTemp {
+  margin-top: 7px;
+}
+
+.e-bigger #Items .name {
+  padding: 11px 42px;
+}
+
+#Items_popup .head {
+  font-weight: 600;
+  height: 48px;
+  padding: 15px 0 0 16px;
+  color: rgba(0, 0, 0, .54);
+  font-size: 16px;
+  background-color: #f5f5f5;
+}
+
+.fabric #Items_popup .head {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  color: #0078d7;
+  font-weight: 400;
+}
+
+.highcontrast #Items_popup .head {
+  color: #fff;
+  background-color: #000;
+}
+
+.bootstrap4 #Items_popup .head {
+  color: #6c757d;
+}
+
+.e-bigger #Items_popup .e-dropdownbase .e-list-item {
+  line-height: 40px;
+  height: 80px;
+}
+
+#Items_popup .ename {
+  display: block !important;
+  opacity: .87;
+  font-size: 16px;
+  margin-top: 9px;
+}
+
+#Items_popup .job {
+  opacity: .54;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 11px;
+}
+
+.e-bigger #Items_popup .job {
+  margin-top: -16px;
+}
+
+#Items_popup .empImage {
+  margin: 6px 16px;
+  float: left;
+  width: 50px;
+  height: 50px;
+}
+
+#Items_popup .e-dropdownbase .e-list-item * {
+  display: block;
+  text-indent: 0;
+}
+
+.bootstrap4 #Items_popup.e-popup .empImage {
+  margin: 0px 16px;
+}
+
+.bootstrap4 #Items_popup.e-popup .job {
+  margin-top: 0;
+}
+
+.e-bigger.bootstrap4 #Items_popup.e-popup .job {
+  margin-top: -15px;
+}
+#Items_popup .location {
+  margin: 6px 16px;
+  font-size: 16px;
+  margin-top: 9px;
+  margin-left: 100px;
+}
+#Items_popup .phonenumber {
+  margin: 6px 16px;
+  font-size: 16px;
+  margin-top: -39px;
+  float: right;
+}
+#Items_popup .fullname {
+  margin: 6px 16px;
+  float: left;
+  font-size: 16px;
+  margin-top: 0px;
+}
+.e-bigger #Items_popup .phonenumber {
+  margin-top: -16px;
+}
+.e-bigger #Items_popup .location {
+  margin-top: -16px;
+}
+.e-bigger #Items_popup .fullname {
+  margin-top: -16px;
+}
+.bootstrap4 #Items_popup.e-popup .fullname {
+  margin: 0px 16px;
+}
+
+.bootstrap4 #Items_popup.e-popup .phonenumber {
+  margin-top: 0;
+}
+
+.e-bigger.bootstrap4 #Items_popup.e-popup .phonenumber {
+  margin-top: 15px;
+}
