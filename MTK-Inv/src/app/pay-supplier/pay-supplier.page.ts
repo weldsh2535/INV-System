@@ -49,7 +49,6 @@ export class PaySupplierPage implements OnInit {
     this.vonderService.getAllVendor().subscribe(res=>{
       this.listOfVonder=res;
      this.defaultSelectedCurrency = this.listOfVonder[0].id;
-     this. getVoucherByVendorId(this.defaultSelectedCurrency);
    })
   }
   SelectedValue($event){
@@ -57,6 +56,7 @@ export class PaySupplierPage implements OnInit {
     if(this.filterVendor.length>0){
       this.selectedVendorBalance = this.filterVendor[0].balance;
       this.updateBalance = this.selectedVendorBalance;
+      this. getVoucherByVendorId(this.defaultSelectedCurrency);
     }
     else{
       this.updateBalance = this.selectedVendorBalance;
