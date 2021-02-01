@@ -67,7 +67,6 @@ export class LineItemsPage implements OnInit {
       this.dialogRef.close();
     }
   }
-
   validateForm(formData: LineItem) {
     this.isValid = true;
     if (formData.ItemID == 0)
