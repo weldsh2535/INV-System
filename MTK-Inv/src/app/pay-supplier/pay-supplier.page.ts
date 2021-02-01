@@ -5,6 +5,7 @@ import { Vendors } from 'src/Tabels/tabels-list';
 import { AppError } from '../common/app-error';
 import { BadInput } from '../common/bad-input';
 import { VendorsService } from '../Service/vendors.service';
+import { VocherService } from '../Service/vocher.service';
 
 @Component({
   selector: 'app-pay-supplier',
@@ -20,9 +21,11 @@ export class PaySupplierPage implements OnInit {
   recieveBalanceId: string;
   listOfVonder: Vendors[];
   filterVendor:Vendors[];
+  listOfVoucher: any;
+  listOfVoucherVendor: any;
   constructor(private fb: FormBuilder,
               private vonderService:VendorsService,
-              private alertController:AlertController) { }
+              private alertController:AlertController,private voucherService:VocherService) { }
 
   ngOnInit() {
     this.regform=this.fb.group({
@@ -46,6 +49,7 @@ export class PaySupplierPage implements OnInit {
     this.vonderService.getAllVendor().subscribe(res=>{
       this.listOfVonder=res;
      this.defaultSelectedCurrency = this.listOfVonder[0].id;
+     this. getVoucherByVendorId(this.defaultSelectedCurrency);
    })
   }
   SelectedValue($event){
@@ -57,7 +61,11 @@ export class PaySupplierPage implements OnInit {
     else{
       this.updateBalance = this.selectedVendorBalance;
     }
-   
+  }
+  getVoucherByVendorId(defaultSelectedCurrency:string){
+    this.listOfVoucherVendor = this.voucherService.getVocherVonderById(defaultSelectedCurrency).subscribe(res=>{
+      this.listOfVoucher=res;
+    })
   }
   reCalculateBalance(){
     {

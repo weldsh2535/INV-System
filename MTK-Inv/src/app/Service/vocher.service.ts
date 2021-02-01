@@ -41,6 +41,17 @@ export class VocherService {
     );
     return this.vocherList;
   }
+  getVocherVonderById(vendor: string) {
+    const voucherListObj = this.db.collection('Vocher', ref => ref.where('vendor', '==', vendor)).snapshotChanges();
+    this.vocherList = voucherListObj.pipe(
+      map(changes => changes.map(a => {
+        const data = a.payload.doc.data() as Vocher;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
+    return this.vocherList;
+  }
   getAllVoucherItems() {
     this.joined$ = this.db.collection<vocherTransation>('vocherTransation').valueChanges()
       .pipe(
