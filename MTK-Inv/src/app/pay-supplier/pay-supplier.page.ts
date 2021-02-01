@@ -73,7 +73,6 @@ export class PaySupplierPage implements OnInit {
       this.listOfVoucher.forEach(element => {
        this.totalBalance=+this.totalBalance+element.subTotal
       });
-      //subTotal:this.subTotal,
     if(this.updateBalance>this.totalBalance){
       this.remainderBalance=0
     }
