@@ -54,13 +54,8 @@ export class RecievePaymentPage implements OnInit {
     const previousValue = $event.previousValue;
     this.id = newValue || previousValue;
     this.filterCustomer = this.listOfCustomer.filter(c=>c.id == this.id);
-    if(this.filterCustomer.length>0){
       this.selectedCustomerBalance = this.filterCustomer[0].balance;
       this.updateBalance = this.selectedCustomerBalance;
-    }
-    else{
-      this.updateBalance = this.selectedCustomerBalance;
-    }
   }
   // getListBalance(){
   //  this.balanceService.getBalanceById(this.defaultSelectedCurrency).subscribe(res=>{
@@ -80,7 +75,6 @@ export class RecievePaymentPage implements OnInit {
             balance:+this.updateBalance+this.regform.get("payment").value,
             address:this.filterCustomer[0].address
            }
-        
            this.customerService.updateCustomer(updateCustomerData,this.defaultSelectedCurrency).then(
             () =>
             (error: AppError) => {
@@ -91,9 +85,6 @@ export class RecievePaymentPage implements OnInit {
             }
           );
         }
-        // else{
-        //  this.idSettingService.updateIdSetting(this.regform.value,this.IdSettingId)
-        // }
         this.regform.reset();
         this.recieveBalanceId="";
         this.presentAlert(" Sucess");
@@ -103,7 +94,6 @@ export class RecievePaymentPage implements OnInit {
       }
     }
   }
-
     async presentAlert(message) {
      const alert = await this.alertController.create({
        cssClass: 'my-custom-class',
