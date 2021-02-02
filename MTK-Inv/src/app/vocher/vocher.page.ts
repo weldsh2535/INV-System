@@ -638,7 +638,7 @@ export class VocherPage implements OnInit {
         fullname:this.filterCustomer[0].fullname,
         phonenumber:this.filterCustomer[0].phonenumber,
         location:this.filterCustomer[0].location,
-        balance:this.values,
+        balance:this.filterCustomer[0].balance-this.paidForm.get('paid').value,
         address:this.filterCustomer[0].address
        }   
        this.customerService.updateCustomer(updateCustomerData,this.defaultSelectedCurrency).then(
