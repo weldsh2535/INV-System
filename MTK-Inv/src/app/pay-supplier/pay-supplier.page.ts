@@ -55,16 +55,9 @@ export class PaySupplierPage implements OnInit {
   }
   SelectedValue($event){
     this.filterVendor = this.listOfVonder.filter((c)=>c.id == $event.value);
-    if(this.filterVendor.length>0){
       this.selectedVendorBalance = this.filterVendor[0].balance;
       this.updateBalance = this.selectedVendorBalance;
       this. getVoucherByVendorId(this.defaultSelectedCurrency);
-    }
-    else{
-      this.updateBalance = this.selectedVendorBalance;
-      this.defaultSelectedCurrency=this.filterVendor[0].id
-      this. getVoucherByVendorId(this.defaultSelectedCurrency);
-    }
   }
   getVoucherByVendorId(defaultSelectedCurrency:string){
     this.totalBalance=0;
