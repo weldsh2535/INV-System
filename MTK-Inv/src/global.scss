@@ -38,5 +38,6 @@
 @import '~animate.css/animate.min.css';
 .my-custom-class{
     padding: 25px;
-    border-radius: 10px;
+    --border-radius: 10px;
+    --height:50%;
 }
