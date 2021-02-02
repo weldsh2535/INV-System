@@ -612,8 +612,8 @@ export class VocherPage implements OnInit {
   }   
   }
   getUpdateBalance(){
-    this.vendorB=parseFloat(this.filterVendor[0].balance)
     if(this.vendor==true){
+      this.vendorB=parseFloat(this.filterVendor[0].balance)
       let updateVendorData ={
         address:this.filterVendor[0].address,
         phonenumber:this.filterVendor[0].phonenumber,
