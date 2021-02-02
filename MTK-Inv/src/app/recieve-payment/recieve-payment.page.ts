@@ -21,6 +21,7 @@ export class RecievePaymentPage implements OnInit {
   recieveBalanceId: string;
   listOfBalance: balance[];
   id: any;
+  Balance: number;
   constructor(private fb: FormBuilder,
               private customerService:CustomerService,
               private alertController:AlertController,
@@ -49,6 +50,9 @@ export class RecievePaymentPage implements OnInit {
      this.defaultSelectedCurrency = this.listOfCustomer[0].id;
    })
   }
+  onKey(){
+    this.Balance= this.updateBalance+this.regform.get("payment").value;
+     }
   SelectedValue($event){
     const newValue = $event.value;
     const previousValue = $event.previousValue;
