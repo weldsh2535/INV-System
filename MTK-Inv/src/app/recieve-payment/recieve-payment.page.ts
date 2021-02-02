@@ -20,6 +20,7 @@ export class RecievePaymentPage implements OnInit {
   updateBalance: number;
   recieveBalanceId: string;
   listOfBalance: balance[];
+  id: any;
   constructor(private fb: FormBuilder,
               private customerService:CustomerService,
               private alertController:AlertController,
@@ -48,8 +49,11 @@ export class RecievePaymentPage implements OnInit {
      this.defaultSelectedCurrency = this.listOfCustomer[0].id;
    })
   }
-  SelectedValue(event){
-    this.filterCustomer = this.listOfCustomer.filter(c=>c.id == event.value);
+  SelectedValue($event){
+    const newValue = $event.value;
+    const previousValue = $event.previousValue;
+    this.id = newValue || previousValue;
+    this.filterCustomer = this.listOfCustomer.filter(c=>c.id == this.id);
     if(this.filterCustomer.length>0){
       this.selectedCustomerBalance = this.filterCustomer[0].balance;
       this.updateBalance = this.selectedCustomerBalance;
