@@ -162,7 +162,7 @@ export class VocherPage implements OnInit {
    }
   voucherTypeID: string;
   ngOnInit() {
-    this.paidForm = this.fb.group({ paid:[""], values:0,totalAmount:[""]})
+    this.paidForm = this.fb.group({ paid:0, values:0,totalAmount:[""]})
     this.regform = this.fb.group({
       date: ["", Validators.required],
       item: ["", Validators.required],
@@ -613,12 +613,11 @@ export class VocherPage implements OnInit {
   }
   getUpdateBalance(){
     if(this.vendor==true){
-      this.vendorB=parseFloat(this.filterVendor[0].balance)
       let updateVendorData ={
         address:this.filterVendor[0].address,
         phonenumber:this.filterVendor[0].phonenumber,
         contact:this.filterVendor[0].contact,
-        balance:this.vendorB-this.paidForm.get('paid').value,
+        balance:this.values-this.paidForm.get('paid').value,
         vendorName:this.filterVendor[0].vendorName,
         email:this.filterVendor[0].email,
         website:this.filterVendor[0].website
@@ -638,7 +637,7 @@ export class VocherPage implements OnInit {
         fullname:this.filterCustomer[0].fullname,
         phonenumber:this.filterCustomer[0].phonenumber,
         location:this.filterCustomer[0].location,
-        balance:this.filterCustomer[0].balance-this.paidForm.get('paid').value,
+        balance:this.values-this.paidForm.get('paid').value,
         address:this.filterCustomer[0].address
        }   
        this.customerService.updateCustomer(updateCustomerData,this.defaultSelectedCurrency).then(
