@@ -13,7 +13,6 @@ import { VocherService } from '../Service/vocher.service';
   styleUrls: ['./pay-supplier.page.scss'],
 })
 export class PaySupplierPage implements OnInit {
-
   regform = this.fb.group({});
   defaultSelectedCurrency: string;
   selectedVendorBalance: any;
