@@ -134,6 +134,7 @@ export class VocherPage implements OnInit {
   receivedChildMessage: string;
   listOfVendorBalance: any;
   listOfVendorB: Vendors[];
+  vendorB: number;
   constructor(
     private fb: FormBuilder,
     private lookupService: LookupService,
@@ -611,12 +612,13 @@ export class VocherPage implements OnInit {
   }   
   }
   getUpdateBalance(){
+    this.vendorB=parseFloat(this.filterVendor[0].balance)
     if(this.vendor==true){
       let updateVendorData ={
         address:this.filterVendor[0].address,
         phonenumber:this.filterVendor[0].phonenumber,
         contact:this.filterVendor[0].contact,
-        balance:this.values,
+        balance:this.vendorB-this.paidForm.get('paid').value,
         vendorName:this.filterVendor[0].vendorName,
         email:this.filterVendor[0].email,
         website:this.filterVendor[0].website
