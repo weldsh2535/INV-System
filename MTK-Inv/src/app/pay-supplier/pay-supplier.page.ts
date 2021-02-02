@@ -25,6 +25,7 @@ export class PaySupplierPage implements OnInit {
   listOfVoucherVendor: any;
   totalBalance: number;
   remainderBalance: number;
+  id: any;
   constructor(private fb: FormBuilder,
               private vonderService:VendorsService,
               private alertController:AlertController,private voucherService:VocherService) { }
@@ -54,6 +55,9 @@ export class PaySupplierPage implements OnInit {
    })
   }
   SelectedValue($event){
+    const newValue = $event.value;
+    const previousValue = $event.previousValue;
+    this.id = newValue || previousValue;
     this.filterVendor = this.listOfVonder.filter((c)=>c.id == $event.value);
       this.selectedVendorBalance = this.filterVendor[0].balance;
       this.updateBalance = this.selectedVendorBalance;
