@@ -112,7 +112,7 @@ export class VocherPage implements OnInit {
   vendor:boolean=false;
   grandTotalLabel:boolean=false;
   grandTotalVendorLabel: boolean=false;
-  paid: number;
+  paid: number=0;
   paidForm = this.fb.group({});
   grandTotalUpdate: number=0;
   SubTotalGrandTotal: number=0;
