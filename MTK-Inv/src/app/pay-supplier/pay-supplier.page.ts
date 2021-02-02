@@ -27,6 +27,7 @@ export class PaySupplierPage implements OnInit {
   remainderBalance: number;
   id: any;
   payment:number
+  Balance: number;
   constructor(private fb: FormBuilder,
               private vonderService:VendorsService,
               private alertController:AlertController,private voucherService:VocherService) { }
@@ -56,7 +57,7 @@ export class PaySupplierPage implements OnInit {
    })
   }
   onKey(){
-    this.updateBalance= this.updateBalance+this.regform.get("payment").value
+    this.Balance= this.updateBalance+this.regform.get("payment").value;
      }
   SelectedValue($event){
     const newValue = $event.value;
