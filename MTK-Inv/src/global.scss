@@ -35,7 +35,9 @@
 @import '../node_modules/@syncfusion/ej2-angular-dropdowns/styles/material.css';
 @import '~devextreme/dist/css/dx.common.css';
 @import '~devextreme/dist/css/dx.light.css';
+@import '~animate.css/animate.min.css';
 .my-custom-class{
     padding: 25px;
     border-radius: 10px;
+    height:50px;
 }
