@@ -58,7 +58,7 @@ export class PaySupplierPage implements OnInit {
     const newValue = $event.value;
     const previousValue = $event.previousValue;
     this.id = newValue || previousValue;
-    this.filterVendor = this.listOfVonder.filter((c)=>c.id == $event.value);
+    this.filterVendor = this.listOfVonder.filter((c)=>c.id == this.id);
       this.selectedVendorBalance = this.filterVendor[0].balance;
       this.updateBalance = this.selectedVendorBalance;
       this. getVoucherByVendorId(this.defaultSelectedCurrency);
