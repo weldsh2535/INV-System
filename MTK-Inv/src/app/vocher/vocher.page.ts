@@ -18,8 +18,6 @@ import { CustomerService } from "../Service/customer.service";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { PaymentDetailsPage } from "../payment-details/payment-details.page";
-import { EventHandlerVars } from "@angular/compiler/src/compiler_util/expression_converter";
-import { data } from "jquery";
 @Component({
   selector: "app-vocher",
   templateUrl: "./vocher.page.html",
@@ -722,7 +720,7 @@ export class VocherPage implements OnInit {
     });
     return await modal.present().then(_ => {
       // triggered when opening the modal
-    console.log('Sending: ',data);
+    console.log('Sending: ',this.defaultSelectedCurrency);
     });
   }
  
