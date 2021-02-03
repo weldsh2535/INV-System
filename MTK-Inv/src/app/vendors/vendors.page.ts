@@ -54,7 +54,7 @@ export class VendorsPage implements OnInit {
    }}
    openModal(){
     this.modalController.create({component:VendorModalPage,
-      cssClass: 'my-custom-class'}).then((modelElement)=>{
+      cssClass: 'my-custom'}).then((modelElement)=>{
       modelElement.present();
     })
    }
