@@ -697,18 +697,6 @@ export class VocherPage implements OnInit {
     this.page = event;
     this.ListOfItems;
   }
-  // payment() {
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.autoFocus = true;
-  //   dialogConfig.disableClose = true;
-  //   dialogConfig.width = "370%";
-  //   dialogConfig.height ="420px";
-  //   dialogConfig.data = {selectCustomer:this.defaultSelectedCurrency,balance:this.values};
-  //   this.dialog.open(PaymentDetailsPage, dialogConfig).afterClosed().subscribe(res => {
-  //     let p = res;
-  //    //console.log('Dialog result ',p);
-  //   });
-  // }
   async Payment() {
     const modal = await this.modalController.create({
       component: PaymentDetailsPage,

@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ModalController } from '@ionic/angular';
 import { Customer, Vocher } from 'src/Tabels/tabels-list';
 import { CustomerService } from '../Service/customer.service';
@@ -22,13 +21,8 @@ export class PaymentDetailsPage implements OnInit {
   paymentValue: any;
   @Input() public balance;
   @Input() public data;
-  // @Output() messageToEmit = new EventEmitter<string>();
- 
   constructor( 
-    // @Inject(MAT_DIALOG_DATA) public data,
-  // public dialogRef: MatDialogRef<PaymentDetailsPage>,
   private voucherService:VocherService,
-  // public dialog: MatDialog, 
   private modalController:ModalController,
   private sharedService: SharedService,
   private fb:FormBuilder,private customerService:CustomerService) { }
