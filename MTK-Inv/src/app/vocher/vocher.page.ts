@@ -714,13 +714,14 @@ export class VocherPage implements OnInit {
       component: PaymentDetailsPage,
       cssClass:'my-custom',
       componentProps: {
-        //data: this.defaultSelectedCurrency,
+        data: this.defaultSelectedCurrency,
         balance:this.values
       }
     });
     return await modal.present().then(_ => {
       // triggered when opening the modal
     console.log('Sending: ',this.values);
+    console.log('Sending: ',this.defaultSelectedCurrency);
     });
   }
  

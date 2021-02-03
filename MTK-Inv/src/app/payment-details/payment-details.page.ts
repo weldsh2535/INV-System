@@ -21,6 +21,7 @@ export class PaymentDetailsPage implements OnInit {
   updateBalancePayment: any;
   paymentValue: any;
   @Input() public balance;
+  @Input() public data;
   // @Output() messageToEmit = new EventEmitter<string>();
  
   constructor( 
@@ -38,6 +39,7 @@ export class PaymentDetailsPage implements OnInit {
     payment:0
     })
     console.log(this.balance);
+    console.log(this.data);
   //console.log(this.data.balance);
     this.updateBalancePayment=this.balance;
    this.getAllVoucher();
