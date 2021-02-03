@@ -36,7 +36,7 @@
         <small class="form-text text-muted" *ngIf="!regform.get('payment').valid && regform.get('payment').touched" > This field is required! </small> 
     </ion-item>
     <div style="text-align: center; margin: auto;">
-      <ion-button id="add items" (click)="reCalculateBalance()"> 
+      <ion-button id="add items" (click)="reCalculateBalance()" [disabled]="!regform.valid"> 
         <ion-icon slot="start" name="add-circle-outline"></ion-icon>Calculate Balance
        </ion-button>
     </div>
