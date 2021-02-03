@@ -33,10 +33,10 @@ export class PaymentDetailsPage implements OnInit {
   ngOnInit() {
     this.regform=this.fb.group({
      date:["",Validators.required],
-    // payment:this.data.updateBalance
+    payment:0
     })
     console.log(Object.assign(this.data));
-  console.log(this.data.balance);
+  //console.log(this.data.balance);
     this.updateBalancePayment=this.data.balance;
    this.getAllVoucher();
   }
