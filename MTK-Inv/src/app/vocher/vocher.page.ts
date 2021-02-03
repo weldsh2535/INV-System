@@ -224,7 +224,7 @@ export class VocherPage implements OnInit {
             this.prefix = Result[0].prefix;
           if (this.VoucherName == "Sale order") {
             this.ToStore = false;
-            this.regform.get("toStore").reset();
+            // this.regform.get("toStore").reset();
             this.FromStore = true;
             this.customers = true;
             this.vendors=false;
@@ -236,7 +236,7 @@ export class VocherPage implements OnInit {
             this.ListOfItems=[];
            } else if (this.VoucherName == "Cash Sales") {
             this.ToStore = false;
-            this.regform.get("toStore").reset();
+            // this.regform.get("toStore").reset();
             this.FromStore = true;
             this.customers = true;
             this.vendors=false;
@@ -248,7 +248,7 @@ export class VocherPage implements OnInit {
             this.ListOfItems=[];
           } else if (this.VoucherName == "Purchase order") {
             this.FromStore = false;
-            this.regform.get("fromStore").reset();
+            // this.regform.get("fromStore").reset();
             this.ToStore = true;
             this.customers = false;
             this.vendors=true;
@@ -261,7 +261,7 @@ export class VocherPage implements OnInit {
             this.ListOfItems=[];
           } else if (this.VoucherName == "Good Recieve") {
             this.FromStore = false;
-            this.regform.get("fromStore").reset();
+            // this.regform.get("fromStore").reset();
             this.vendors = true;
             this.ToStore = true;
             this.customers = false;
