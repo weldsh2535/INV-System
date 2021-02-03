@@ -20,7 +20,8 @@ export class PaymentDetailsPage implements OnInit {
   updateBalancePayment: any;
   paymentValue: any;
   @Input() public balance;
-  @Input() public data;
+  @Input() public customerId;
+  @Input() public vendorId;
   constructor( 
   private voucherService:VocherService,
   private modalController:ModalController,
@@ -33,20 +34,27 @@ export class PaymentDetailsPage implements OnInit {
     payment:0
     })
     console.log(this.balance);
-    console.log(this.data);
+    console.log(this.customerId);
+    console.log(this.vendorId)
   //console.log(this.data.balance);
     this.updateBalancePayment=this.balance;
    this.getAllVoucher();
   }
  getAllVoucher(){
-   this.voucherService.getVocherByVendorID(this.data).subscribe(res=>{
-     this.listOfVoucher = res;
-     console.log(res)
-   } )
-  //  this.voucherService.getVocherByCustomerID(this.data).subscribe(res=>{
-  //   this.listOfVoucher = res;
-  //   console.log(res)
-  // } )
+   if(this.vendorId!=null)
+   {
+    this.voucherService.getVocherByVendorID(this.vendorId).subscribe(res=>{
+      this.listOfVoucher = res;
+      console.log(res)
+    } )
+   }
+  else{
+    this.voucherService.getVocherByCustomerID(this.customerId).subscribe(res=>{
+      this.listOfVoucher = res;
+      console.log(res)
+    } )
+  }
+
  }
  updatePayment(){
    this.payment =parseFloat((this.regform.get("payment").value))
