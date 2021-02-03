@@ -35,7 +35,7 @@ export class PaymentDetailsPage implements OnInit {
      date:["",Validators.required],
     payment:0
     })
-    console.log(Object.assign(this.data));
+    console.log(this.data);
   //console.log(this.data.balance);
     this.updateBalancePayment=this.data.balance;
    this.getAllVoucher();
