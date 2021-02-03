@@ -45,13 +45,13 @@ export class PaymentDetailsPage implements OnInit {
    {
     this.voucherService.getVocherByVendorID(this.vendorId).subscribe(res=>{
       this.listOfVoucher = res;
-      console.log(res)
+      //console.log(res)
     } )
    }
   else{
     this.voucherService.getVocherByCustomerID(this.customerId).subscribe(res=>{
       this.listOfVoucher = res;
-      console.log(res)
+      //console.log(res)
     } )
   }
 
@@ -62,12 +62,6 @@ export class PaymentDetailsPage implements OnInit {
  }
  close(){
   this.modalController.dismiss();
-}
-getAllCustomerList(){
-  this.customerService.getAllCustomer().subscribe(res=>{
-    this.listOfCustomer=res;
-   this.defaultSelectedCurrency = this.listOfCustomer[0].id;
- })
 }
 submitPayment() {
  let payment={ 
