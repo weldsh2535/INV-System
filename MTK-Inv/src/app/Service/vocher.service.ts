@@ -129,10 +129,6 @@ export class VocherService {
     return this.vocherCollectionList.doc(id).delete()
       .catch(this.handleError);
   }
-  calcBalance(updateBalance:number):number{
-    //console.log(updateBalance);
-    return updateBalance;  
-}
   private handleError(error: Response) {
     if (error.status === 400)
       return Observable.throw(new BadInput(error.json()));

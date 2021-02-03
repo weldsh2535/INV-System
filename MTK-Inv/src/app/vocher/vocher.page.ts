@@ -384,10 +384,7 @@ export class VocherPage implements OnInit {
     });
     // }
   }
-  getBalance(){
-    const a = this.vocherService.calcBalance(this.Balance);
-    //console.log(a);
-  }
+
   getLookupById(id: string) {
     this.lookupService.getLookUpByType(id).subscribe((result) => {
       this.listoflookup = result;
