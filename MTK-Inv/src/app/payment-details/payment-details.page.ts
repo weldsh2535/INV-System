@@ -24,9 +24,10 @@ export class PaymentDetailsPage implements OnInit {
  
   constructor( 
     // @Inject(MAT_DIALOG_DATA) public data,
-  public dialogRef: MatDialogRef<PaymentDetailsPage>,
+  // public dialogRef: MatDialogRef<PaymentDetailsPage>,
   private voucherService:VocherService,
-  public dialog: MatDialog, private sharedService: SharedService,
+  // public dialog: MatDialog, 
+  private sharedService: SharedService,
   private fb:FormBuilder,private customerService:CustomerService) { }
   
   ngOnInit() {
@@ -48,7 +49,7 @@ export class PaymentDetailsPage implements OnInit {
    this.updateBalancePayment=this.data.balance-this.payment;
  }
  close(){
-  this.dialogRef.close();
+  // this.dialogRef.close();
 }
 getAllCustomerList(){
   this.customerService.getAllCustomer().subscribe(res=>{
@@ -62,7 +63,7 @@ submitPayment() {
    paymnetBalance:this.payment
 }
   this.sharedService.balance.next(payment);
-  this.dialogRef.close();
+  // this.dialogRef.close();
 }
 
 }
