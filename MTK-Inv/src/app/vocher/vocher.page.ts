@@ -134,6 +134,8 @@ export class VocherPage implements OnInit {
   listOfVendorBalance: any;
   listOfVendorB: Vendors[];
   vendorB: number;
+  fromStoreValue: Lookup[];
+  toStoreValue: Lookup[];
   constructor(
     private fb: FormBuilder,
     private lookupService: LookupService,
@@ -361,6 +363,14 @@ export class VocherPage implements OnInit {
       this.SelectedDiv = false;
     }
   }
+  SelectedFromStoreValue($event){
+    this.fromStoreValue = this.listofStore.filter(c=> c.id == $event.value);
+    this.defaultSelectedFromStored = this.listofStore[0].id;
+  }
+  SelectedToStoreValue($event){
+   this.toStoreValue = this.listofStore.filter(c=>c.id == $event.value);
+   this.defaultSelectedToStored = this.listofStore[0].id;
+  }
   getItemCategory() {
     // try {
     this.itemCategoryService.getAllItemCategories().subscribe((result) => {
@@ -390,6 +400,7 @@ export class VocherPage implements OnInit {
       this.defaultSelectedToStored = this.listofStore[0].id;
     });
   }
+ 
   getAllVendorList(){
     this.vendorService.getAllVendor().subscribe(res=>{
       this.listOfVendor=res;

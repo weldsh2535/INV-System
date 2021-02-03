@@ -22,7 +22,7 @@
         <dx-lookup style="border: none;font: 400 16px Arial;" [items]="listofStore" *ngIf="FromStore" [(ngModel)]="defaultSelectedFromStored"
            valueExpr="id"
           [displayExpr]="getDisplayStore" placeholder="Select Store" formControlName="fromStore"
-           itemTemplate="listofStore" >
+          (onValueChanged)="SelectedFromStoreValue($event)" itemTemplate="listofStore" >
           <dxo-drop-down-options title="Select Store"></dxo-drop-down-options>
           <div *dxTemplate="let item of 'listofStore'">
             <div class="custom-item">
@@ -36,7 +36,7 @@
         <dx-lookup style="border: none;font: 400 16px Arial;" [items]="listofStore" *ngIf="ToStore" [(ngModel)]="defaultSelectedToStored"
            valueExpr="id"
           [displayExpr]="getDisplayStore" placeholder="Select Store" formControlName="toStore"
-           itemTemplate="listofStore" >
+          (onValueChanged)="SelectedToStoreValue($event)" itemTemplate="listofStore" >
           <dxo-drop-down-options title="Select Store"></dxo-drop-down-options>
           <div *dxTemplate="let item of 'listofStore'">
             <div class="custom-item">
