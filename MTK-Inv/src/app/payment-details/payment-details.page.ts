@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ModalController } from '@ionic/angular';
 import { Customer, Vocher } from 'src/Tabels/tabels-list';
 import { CustomerService } from '../Service/customer.service';
 import { SharedService } from '../Service/shared.service';
@@ -27,6 +28,7 @@ export class PaymentDetailsPage implements OnInit {
   // public dialogRef: MatDialogRef<PaymentDetailsPage>,
   private voucherService:VocherService,
   // public dialog: MatDialog, 
+  private modalController:ModalController,
   private sharedService: SharedService,
   private fb:FormBuilder,private customerService:CustomerService) { }
   
@@ -50,7 +52,7 @@ export class PaymentDetailsPage implements OnInit {
    this.updateBalancePayment=this.balance-this.payment;
  }
  close(){
-  // this.dialogRef.close();
+  this.modalController.dismiss();
 }
 getAllCustomerList(){
   this.customerService.getAllCustomer().subscribe(res=>{
@@ -64,7 +66,7 @@ submitPayment() {
    paymnetBalance:this.payment
 }
   this.sharedService.balance.next(payment);
-  // this.dialogRef.close();
+  this.modalController.dismiss();
 }
 
 }
