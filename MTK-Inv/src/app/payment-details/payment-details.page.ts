@@ -19,7 +19,7 @@ export class PaymentDetailsPage implements OnInit {
   defaultSelectedCurrency: string;
   updateBalancePayment: any;
   paymentValue: any;
-  @Input() public data;
+  @Input() public balance;
   // @Output() messageToEmit = new EventEmitter<string>();
  
   constructor( 
@@ -35,9 +35,9 @@ export class PaymentDetailsPage implements OnInit {
      date:["",Validators.required],
     payment:0
     })
-    console.log(this.data);
+    console.log(this.balance);
   //console.log(this.data.balance);
-    this.updateBalancePayment=this.data;
+    this.updateBalancePayment=this.balance;
    this.getAllVoucher();
   }
  getAllVoucher(){
