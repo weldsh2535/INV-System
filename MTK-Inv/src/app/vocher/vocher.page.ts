@@ -624,7 +624,7 @@ export class VocherPage implements OnInit {
         address:this.filterVendor[0].address,
         phonenumber:this.filterVendor[0].phonenumber,
         contact:this.filterVendor[0].contact,
-        balance:this.selectedCustomerBalance-this.paid,
+        balance: this.vendorBalance-this.paid,
         vendorName:this.filterVendor[0].vendorName,
         email:this.filterVendor[0].email,
         website:this.filterVendor[0].website
