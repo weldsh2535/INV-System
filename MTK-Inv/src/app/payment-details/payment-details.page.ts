@@ -37,7 +37,7 @@ export class PaymentDetailsPage implements OnInit {
     })
     console.log(this.data);
   //console.log(this.data.balance);
-    //this.updateBalancePayment=this.data.balance;
+    this.updateBalancePayment=this.data;
    this.getAllVoucher();
   }
  getAllVoucher(){
