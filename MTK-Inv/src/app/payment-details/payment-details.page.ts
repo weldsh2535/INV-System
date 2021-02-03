@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Customer, Vocher } from 'src/Tabels/tabels-list';
@@ -19,10 +19,11 @@ export class PaymentDetailsPage implements OnInit {
   defaultSelectedCurrency: string;
   updateBalancePayment: any;
   paymentValue: any;
+  @Input() public data;
   // @Output() messageToEmit = new EventEmitter<string>();
  
   constructor( 
-    @Inject(MAT_DIALOG_DATA) public data,
+    // @Inject(MAT_DIALOG_DATA) public data,
   public dialogRef: MatDialogRef<PaymentDetailsPage>,
   private voucherService:VocherService,
   public dialog: MatDialog, private sharedService: SharedService,

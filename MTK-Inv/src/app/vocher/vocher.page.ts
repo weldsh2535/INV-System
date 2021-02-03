@@ -1,7 +1,7 @@
 import { IdSettingService } from "./../Service/id-setting.service";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { AlertController } from "@ionic/angular";
+import { AlertController, ModalController } from "@ionic/angular";
 import { Customer, ItemCategory, Items, LineItem, Lookup, Vendors } from "src/Tabels/tabels-list";
 import { BalanceService } from "../Service/balance.service";
 import { ItemCategoryService } from "../Service/item-category.service";
@@ -150,6 +150,7 @@ export class VocherPage implements OnInit {
     private vendorService:VendorsService,
     private customerService:CustomerService,
     private dialog: MatDialog,
+    private modalController:ModalController
   ) {
     //setting min date
     let date:Date =new Date();
@@ -697,16 +698,30 @@ export class VocherPage implements OnInit {
     this.page = event;
     this.ListOfItems;
   }
-  payment() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.autoFocus = true;
-    dialogConfig.disableClose = true;
-    dialogConfig.width = "370%";
-    dialogConfig.height ="420px";
-    dialogConfig.data = {selectCustomer:this.defaultSelectedCurrency,balance:this.values};
-    this.dialog.open(PaymentDetailsPage, dialogConfig).afterClosed().subscribe(res => {
-      let p = res;
-     //console.log('Dialog result ',p);
+  // payment() {
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.autoFocus = true;
+  //   dialogConfig.disableClose = true;
+  //   dialogConfig.width = "370%";
+  //   dialogConfig.height ="420px";
+  //   dialogConfig.data = {selectCustomer:this.defaultSelectedCurrency,balance:this.values};
+  //   this.dialog.open(PaymentDetailsPage, dialogConfig).afterClosed().subscribe(res => {
+  //     let p = res;
+  //    //console.log('Dialog result ',p);
+  //   });
+  // }
+  async Payment() {
+    const modal = await this.modalController.create({
+      component: PaymentDetailsPage,
+      cssClass:'my-custom',
+      componentProps: {
+        data: this.defaultSelectedCurrency,
+        balance:this.values
+      }
+    });
+    return await modal.present().then(_ => {
+      // triggered when opening the modal
+     //console.log('Sending: ',item);
     });
   }
  
