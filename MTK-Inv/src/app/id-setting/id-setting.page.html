@@ -49,7 +49,7 @@
         </div>
       </div>
      <div style="text-align: center; margin: auto;">
-      <ion-button id="add items" (click)="Save()"> 
+      <ion-button id="add items" (click)="Save()"  [disabled]="!regform.valid"> 
         <ion-icon slot="start" name="add-circle-outline"></ion-icon>
         {{editMode?'Update Id Setting':'Add Id Setting'}}</ion-button>
     </div>
