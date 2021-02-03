@@ -43,10 +43,10 @@ export class PaymentDetailsPage implements OnInit {
      this.listOfVoucher = res;
      console.log(res)
    } )
-   this.voucherService.getVocherByCustomerID(this.data).subscribe(res=>{
-    this.listOfVoucher = res;
-    console.log(res)
-  } )
+  //  this.voucherService.getVocherByCustomerID(this.data).subscribe(res=>{
+  //   this.listOfVoucher = res;
+  //   console.log(res)
+  // } )
  }
  updatePayment(){
    this.payment =parseFloat((this.regform.get("payment").value))
