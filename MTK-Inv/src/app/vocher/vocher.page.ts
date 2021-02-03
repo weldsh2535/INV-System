@@ -698,6 +698,12 @@ export class VocherPage implements OnInit {
     this.ListOfItems;
   }
   async Payment() {
+    if(this.vendor==false){
+      this.defaultSelectedCurrency=this.defaultSelectedCurrency
+    }
+    else{
+      this.defaultSelectedCurrency=this.defaultSelectedVendor
+    }
     const modal = await this.modalController.create({
       component: PaymentDetailsPage,
       cssClass:'my-custom',
