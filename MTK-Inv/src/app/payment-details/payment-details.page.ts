@@ -47,7 +47,7 @@ export class PaymentDetailsPage implements OnInit {
  }
  updatePayment(){
    this.payment =parseFloat((this.regform.get("payment").value))
-   this.updateBalancePayment=this.data.balance-this.payment;
+   this.updateBalancePayment=this.balance-this.payment;
  }
  close(){
   // this.dialogRef.close();
