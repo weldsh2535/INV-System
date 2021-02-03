@@ -41,6 +41,7 @@ export class PaymentDetailsPage implements OnInit {
  getAllVoucher(){
    this.voucherService.getVocherByID(this.data).subscribe(res=>{
      this.listOfVoucher = res;
+     console.log(res)
    } )
  }
  updatePayment(){
