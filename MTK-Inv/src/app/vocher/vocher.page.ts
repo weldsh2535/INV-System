@@ -184,7 +184,6 @@ export class VocherPage implements OnInit {
     this.getAllVendorList();
     this.getAllCustomerList();
     this.getStoreById();
-    this.getBalance();
     //this.reloadiv = true;
     this.sharedService.balance.subscribe(res=>{
       this.paid=res.paymnetBalance;
