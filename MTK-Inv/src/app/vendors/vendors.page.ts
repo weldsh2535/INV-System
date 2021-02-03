@@ -131,6 +131,7 @@ export class VendorsPage implements OnInit {
   async update(item:Vendors) {
     const modal = await this.modalController.create({
       component: VendorModalPage,
+      cssClass:'my-custom',
       componentProps: {
         data: item
       }
