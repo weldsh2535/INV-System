@@ -39,7 +39,7 @@ export class PaymentDetailsPage implements OnInit {
    this.getAllVoucher();
   }
  getAllVoucher(){
-   this.voucherService.getAllVocher().subscribe(res=>{
+   this.voucherService.getVocherByID(this.data).subscribe(res=>{
      this.listOfVoucher = res;
    } )
  }
