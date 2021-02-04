@@ -436,7 +436,8 @@ export class VocherPage implements OnInit {
     return this.isValid;
   }
   Save() {
-    if (this.regform.valid) {
+    let storeValidition=this.regform.get("fromStore").value || this.regform.get("toStore").value ;
+    if(storeValidition !== null && storeValidition !==""){
       let value = {
         voucherId: this.VocherNo,
         ItemName: this.listofItems.find((c) => c.id == this.regform.get("item").value).name,
