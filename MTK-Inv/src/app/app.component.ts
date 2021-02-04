@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   name: string;
   selectedList: boolean = false;
   public selectedIndex1 = 0;
+  public selectedIndex2 = 0;
   public appPages = [
     {
       title: 'Home',
