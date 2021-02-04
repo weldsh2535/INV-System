@@ -91,9 +91,14 @@ export class AppComponent implements OnInit {
     {
       tittle: 'Report ',
       url: 'report',
-      icon: 'add-circle'
-    },
-
+      icon: 'add-circle',
+      subPages: [{ title: 'Product Price list', url: '' },
+      { title: 'Product Sales', url: '' },
+      { title: 'Sale Order summary', url: '' },
+      { title: 'Sale Order Profile', url: '' },
+      { title: 'Customer', url: '' }
+      ]
+    }
   ];
   selectedPage: boolean = false;
   constructor(
@@ -116,7 +121,7 @@ export class AppComponent implements OnInit {
   show(): void {
     this.selectedList = !this.selectedList;
   }
-  reportPageShow(){
+  reportPageShow() {
     this.selectedPage = !this.selectedPage;
   }
   ngOnInit() {
