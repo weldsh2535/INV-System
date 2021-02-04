@@ -17,8 +17,8 @@ export class AppComponent implements OnInit {
   public selectedIndex = 0;
   vouchertype: Lookup[];
   name: string;
-  selectedList:boolean=false;
-  public selectedIndex1=0;
+  selectedList: boolean = false;
+  public selectedIndex1 = 0;
   public appPages = [
     {
       title: 'Home',
@@ -71,20 +71,28 @@ export class AppComponent implements OnInit {
       icon: 'add-circle'
     },
     {
-      title:'Recieve Payment',
-      url:'/recieve-payment',
-      icon:'add-circle'
+      title: 'Recieve Payment',
+      url: '/recieve-payment',
+      icon: 'add-circle'
     },
     {
-      title:'Pay Supplier',
-      url:'/pay-supplier',
-      icon:'add-circle'
+      title: 'Pay Supplier',
+      url: '/pay-supplier',
+      icon: 'add-circle'
     }
     // {
     //   title: 'Filter Example',
     //   url: '/filter',
     //   icon: 'add-circle',
     // }  
+  ];
+  public reportPage = [
+    {
+      tittle: '',
+      url: '',
+      icon: ''
+    },
+
   ];
   constructor(
     private platform: Platform,
@@ -104,16 +112,16 @@ export class AppComponent implements OnInit {
     });
   }
   show(): void {
-    this.selectedList=!this.selectedList;
+    this.selectedList = !this.selectedList;
   }
   ngOnInit() {
     const path = window.location.pathname.split('folder/')[1];
     if (path !== undefined) {
-     this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
+      this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }
     this.lookupService.getLookUpByType('HuXhQ8ChpLL3DbXQR6yh').subscribe(result => {
       this.vouchertype = result;
-      this.name=result[0].name;
+      this.name = result[0].name;
       // console.log(this.vouchertype);
     })
   }
