@@ -27,7 +27,7 @@
 
           <ion-item id="sidenav" (click)="show()">
             <ion-icon name="list-outline"></ion-icon>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transation </ion-item>
-          <ion-list *ngIf="selectedList" (click)="show()" class="manu-list" >
+          <ion-list *ngIf="selectedList" class="manu-list" >
           <ion-menu-toggle  *ngFor="let p of vouchertype; let i = index; ">
             <ion-item (click)="selectedIndex1 = i" [class.selected]="selectedIndex1==i" [routerLink]="['/p.name']" (click)="readPath(p)" routerDirection="root" lines="none">
               <ion-icon name="add-circle-outline"></ion-icon>
