@@ -38,7 +38,7 @@
         </ion-list>
         <ion-list>
           <ion-item id="sidenav" (click)="reportPageShow()">
-          <ion-icon name="list-outline"></ion-icon> &nbsp;&nbsp;Report</ion-item>
+            <ion-icon name="bar-chart-outline"></ion-icon> &nbsp;&nbsp;Report</ion-item>
           <ion-list *ngIf="selectedPage" (click)="reportPageShow()" class="manu-list">
            <ion-menu-toggle auto-hide="false" *ngFor="let page of reportPage; let i= index">
              <ion-item (click)="selectedIndex2 = i" [class.selected]="selectedIndex2==i" [routerLink]="[page.url]" lines="none" routerDirection="root">
