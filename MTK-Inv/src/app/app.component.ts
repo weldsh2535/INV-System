@@ -50,11 +50,11 @@ export class AppComponent implements OnInit {
       url: '/customer',
       icon: 'person-circle'
     },
-    {
-      title: 'Supplier Registration',
-      url: '/supplier',
-      icon: 'person-add'
-    },
+    // {
+    //   title: 'Supplier Registration',
+    //   url: '/supplier',
+    //   icon: 'person-add'
+    // },
     {
       title: 'Item Category',
       url: '/item-category',
