@@ -99,6 +99,10 @@ const routes: Routes = [
     path: 'vendor-modal',
     loadChildren: () => import('./vendors/vendor-modal/vendor-modal.module').then( m => m.VendorModalPageModule)
   },
+  {
+    path: 'report',
+    loadChildren: () => import('./report/report.module').then( m => m.ReportPageModule)
+  },
 ];
 
 @NgModule({
