@@ -101,6 +101,7 @@ export class AppComponent implements OnInit {
     }
   ];
   selectedPage: boolean = false;
+  subReport:boolean = false;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -123,6 +124,9 @@ export class AppComponent implements OnInit {
   }
   reportPageShow() {
     this.selectedPage = !this.selectedPage;
+  }
+  subReportShow(){
+   this.subReport = !this.subReport;
   }
   ngOnInit() {
     const path = window.location.pathname.split('folder/')[1];
