@@ -92,7 +92,7 @@ export class AppComponent implements OnInit {
   public reportPage = [
     {
       tittle: 'Sale',
-      url: '/Sale',
+      url: '',
       icon: 'bag-handle',
       subPages: [{ title: 'Product Price list', url: '/product-price-list',icon: 'list' },
       { title: 'Product Sales', url: 'product-sale',icon: 'list' },
@@ -103,7 +103,7 @@ export class AppComponent implements OnInit {
     },
     {
       tittle: 'Purchasing',
-      url: '/Purchases',
+      url: '',
       icon: 'briefcase',
       subPages: [{ title: 'Orders', url: '/orders', icon: 'list' },
       { title: 'Vendors', url: '/vendors', icon: 'list' },
@@ -112,7 +112,7 @@ export class AppComponent implements OnInit {
     },
     {
       tittle: 'Stock Levels',
-      url: '/Stock-Level',
+      url: '',
       icon: 'bag',
       subPages: [{ title: 'Inventory', url: '/inventory', icon: 'list' },
       { title: 'Historical inventory', url: '/historical-inventory', icon: 'list' },
@@ -120,7 +120,7 @@ export class AppComponent implements OnInit {
     },
     {
       tittle: 'Payment and Accounting',
-      url: '/Inventory-payment',
+      url: '',
       icon: 'bar-chart',
       subPages: [{ title: 'Customer Payment', url: '/customer-payments', icon: 'list' },
       { title: 'Vendor payment details', url: '/vendor-payment-details', icon: 'list' },
@@ -129,7 +129,7 @@ export class AppComponent implements OnInit {
     },
     {
       tittle: 'Audit Log',
-      url: '/Audit',
+      url: '',
       icon: 'reader',
       subPages: [{ title: 'Inventory movement', url: '/inventory-movement-log', icon: 'list' },
       { title: 'Product cost', url: '/product-cost', icon: 'list' },
