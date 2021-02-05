@@ -98,7 +98,7 @@ export class AppComponent implements OnInit {
       { title: 'Product Sales', url: 'product-sale',icon: 'list' },
       { title: 'Sale Order summary', url: 'sale-order-summary',icon: 'list' },
       { title: 'Sale Order Profile', url: 'sale-order-profit',icon: 'list' },
-      { title: 'Customer', url: 'customer',icon: 'list' },
+      { title: 'Customer', url: 'customers',icon: 'list' },
       { title: 'operations',url:'operations',icon:'list'}]
     },
     {
