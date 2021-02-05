@@ -92,45 +92,45 @@ export class AppComponent implements OnInit {
       tittle: 'Sales ',
       url: '/',
       icon: 'add-circle',
-      subPages: [{ title: 'Product Price list', url: '',icon: 'add-circle' },
-      { title: 'Product Sales', url: '',icon: 'add-circle' },
-      { title: 'Sale Order summary', url: '',icon: 'add-circle' },
-      { title: 'Sale Order Profile', url: '',icon: 'add-circle' },
-      { title: 'Customer', url: '',icon: 'add-circle' }]
+      subPages: [{ title: 'Product Price list', url: '',icon: 'list-outline' },
+      { title: 'Product Sales', url: '',icon: 'list-outline' },
+      { title: 'Sale Order summary', url: '',icon: 'list-outline' },
+      { title: 'Sale Order Profile', url: '',icon: 'list-outline' },
+      { title: 'Customer', url: '',icon: 'list-outline' }]
     },
     {
       tittle: 'Purchasing',
       url: '/',
       icon: 'add-circle',
-      subPages: [{ tittle: 'Orders', url: '', icon: 'add-circle' },
-      { tittle: 'Vendors', url: '', icon: 'add-circle' },
-      { tittle: 'Purchase Orders Status', url: '', icon: 'add-circle' },
-      { tittle: 'Purchasing tax', url: '', icon: 'add-circle' }]
+      subPages: [{ tittle: 'Orders', url: '', icon: 'list-outline' },
+      { tittle: 'Vendors', url: '', icon: 'list-outline' },
+      { tittle: 'Purchase Orders Status', url: '', icon: 'list-outline' },
+      { tittle: 'Purchasing tax', url: '', icon: 'list-outline' }]
     },
     {
       tittle: 'Stock Levels',
       url: '/',
       icon: 'add-circle',
-      subPages: [{ tittle: 'Inventory', url: '', icon: 'add-circle' },
-      { tittle: 'Historical inventory', url: '', icon: 'add-circle' },
-      { tittle: 'Inventory Aging', url: '', icon: 'add-circle' }]
+      subPages: [{ tittle: 'Inventory', url: '', icon: 'list-outline' },
+      { tittle: 'Historical inventory', url: '', icon: 'list-outline' },
+      { tittle: 'Inventory Aging', url: '', icon: 'list-outline' }]
     },
     {
       tittle: 'Payment and Accounting',
       url: '/',
       icon: 'add-circle',
-      subPages: [{ tittle: 'Customer Payment', url: '', icon: 'add-circle' },
-      { tittle: 'Vendor payment details', url: '', icon: 'add-circle' },
-      { tittle: 'Taxes', url: '', icon: 'add-circle' },
-      { tittle: 'Sale Order Profit', url: '', icon: 'add-circle' }]
+      subPages: [{ tittle: 'Customer Payment', url: '', icon: 'list-outline' },
+      { tittle: 'Vendor payment details', url: '', icon: 'list-outline' },
+      { tittle: 'Taxes', url: '', icon: 'list-outline' },
+      { tittle: 'Sale Order Profit', url: '', icon: 'list-outline' }]
     },
     {
       tittle: 'Audit Log',
       url: '/',
       icon: 'add-circle',
-      subPages: [{ tittle: 'Inventory movement', url: '', icon: 'add-circle' },
-      { tittle: 'Product cost', url: '', icon: 'add-circle' },
-      { tittle: 'Stock Transfer', url: '', icon: 'add-circle' }]
+      subPages: [{ tittle: 'Inventory movement', url: '', icon: 'list-outline' },
+      { tittle: 'Product cost', url: '', icon: 'list-outline' },
+      { tittle: 'Stock Transfer', url: '', icon: 'list-outline' }]
     },
   ];
   selectedPage: boolean = false;
