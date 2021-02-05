@@ -92,11 +92,11 @@ export class AppComponent implements OnInit {
       tittle: 'Sales ',
       url: '/',
       icon: 'add-circle',
-      subPages: [{ title: 'Product Price list', url: '' },
-      { title: 'Product Sales', url: '' },
-      { title: 'Sale Order summary', url: '' },
-      { title: 'Sale Order Profile', url: '' },
-      { title: 'Customer', url: '' }]
+      subPages: [{ title: 'Product Price list', url: '',icon: 'add-circle' },
+      { title: 'Product Sales', url: '',icon: 'add-circle' },
+      { title: 'Sale Order summary', url: '',icon: 'add-circle' },
+      { title: 'Sale Order Profile', url: '',icon: 'add-circle' },
+      { title: 'Customer', url: '',icon: 'add-circle' }]
     },
     {
       tittle: 'Purchasing',
