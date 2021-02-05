@@ -101,10 +101,6 @@ const routes: Routes = [
   },
   //generate report 
   {
-    path: 'report',
-    loadChildren: () => import('./report/report.module').then( m => m.ReportPageModule)
-  },
-  {
     path: 'product-price-list',
     loadChildren: () => import('./report/Sale/product-price-list/product-price-list.module').then( m => m.ProductPriceListPageModule)
   },
