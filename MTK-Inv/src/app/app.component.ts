@@ -92,47 +92,49 @@ export class AppComponent implements OnInit {
   public reportPage = [
     {
       tittle: 'Sales',
-      url: '/',
+      url: '/report',
       icon: 'bag-handle',
-      subPages: [{ title: 'Product Price list', url: '',icon: 'list' },
-      { title: 'Product Sales', url: '',icon: 'list' },
-      { title: 'Sale Order summary', url: '',icon: 'list' },
-      { title: 'Sale Order Profile', url: '',icon: 'list' },
-      { title: 'Customer', url: '',icon: 'list' }]
+      subPages: [{ title: 'Product Price list', url: '/report/Sale/product-price-list',icon: 'list' },
+      { title: 'Product Sales', url: '/report/Sale/product-sale',icon: 'list' },
+      { title: 'Sale Order summary', url: '/report/Sale/sale-order-summary',icon: 'list' },
+      { title: 'Sale Order Profile', url: '/report/Sale/sale-order-profit',icon: 'list' },
+      { title: 'Customer', url: '/report/Sale/customer',icon: 'list' },
+      { title: 'operations',url:'/report/Sale/operations',icon:'list'}]
     },
     {
       tittle: 'Purchasing',
-      url: '/',
+      url: '/report',
       icon: 'briefcase',
-      subPages: [{ title: 'Orders', url: '', icon: 'list' },
-      { title: 'Vendors', url: '', icon: 'list' },
-      { title: 'Purchase Orders Status', url: '', icon: 'list' },
-      { title: 'Purchasing tax', url: '', icon: 'list' }]
+      subPages: [{ title: 'Orders', url: '/report/Purchases/orders', icon: 'list' },
+      { title: 'Vendors', url: '/report/Purchases/vendors', icon: 'list' },
+      { title: 'Purchase Orders Status', url: '/report/Purchases/purchase-order-status', icon: 'list' },
+      { title: 'Purchasing tax', url: '/report/Purchases/purchasing-tax', icon: 'list' }]
     },
     {
       tittle: 'Stock Levels',
-      url: '/',
+      url: '/report',
       icon: 'bag',
-      subPages: [{ title: 'Inventory', url: '', icon: 'list' },
-      { title: 'Historical inventory', url: '', icon: 'list' },
-      { title: 'Inventory Aging', url: '', icon: 'list' }]
+      subPages: [{ title: 'Inventory', url: '/report/Stock-Level/inventory', icon: 'list' },
+      { title: 'Historical inventory', url: '/report/Stock-Level/historical-inventory', icon: 'list' },
+      { title: 'Inventory Aging', url: '/report/Stock-Level/inventory-aging', icon: 'list' }]
     },
     {
       tittle: 'Payment and Accounting',
-      url: '/',
+      url: '/report',
       icon: 'bar-chart',
-      subPages: [{ title: 'Customer Payment', url: '', icon: 'list' },
-      { title: 'Vendor payment details', url: '', icon: 'list' },
-      { title: 'Taxes', url: '', icon: 'list' },
-      { title: 'Sale Order Profit', url: '', icon: 'list' }]
+      subPages: [{ title: 'Customer Payment', url: '/report/Inventory-Payment/customer-payments', icon: 'list' },
+      { title: 'Vendor payment details', url: '/report/Inventory-Payment/vendor-payment-details', icon: 'list' },
+      { title: 'Taxes', url: '/report/Inventory-Payment/taxes', icon: 'list' },
+      { title: 'Sale Order Profit', url: '/report/Inventory-Payment/sales-order-profit', icon: 'list' }]
     },
     {
       tittle: 'Audit Log',
-      url: '/',
+      url: '/report',
       icon: 'reader',
-      subPages: [{ title: 'Inventory movement', url: '', icon: 'list' },
-      { title: 'Product cost', url: '', icon: 'list' },
-      { title: 'Stock Transfer', url: '', icon: 'list' }]
+      subPages: [{ title: 'Inventory movement', url: '/report/Audit/inventory-movement-log', icon: 'list' },
+      { title: 'Product cost', url: '/report/Audit/product-cost', icon: 'list' },
+      { title: 'Stock Transfer', url: '/report/Audit/stock-transfer', icon: 'list' },
+      { title: 'Count Sheet', url: '/report/Audit/count-sheet', icon: 'list' }]
     },
   ];
   selectedPage: boolean = false;
