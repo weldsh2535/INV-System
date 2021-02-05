@@ -99,101 +99,102 @@ const routes: Routes = [
     path: 'vendor-modal',
     loadChildren: () => import('./vendors/vendor-modal/vendor-modal.module').then( m => m.VendorModalPageModule)
   },
+  //generate report 
   {
     path: 'report',
     loadChildren: () => import('./report/report.module').then( m => m.ReportPageModule)
   },
   {
     path: 'product-price-list',
-    loadChildren: () => import('./Sale/product-price-list/product-price-list.module').then( m => m.ProductPriceListPageModule)
+    loadChildren: () => import('./report/Sale/product-price-list/product-price-list.module').then( m => m.ProductPriceListPageModule)
   },
   {
     path: 'product-sale',
-    loadChildren: () => import('./Sale/product-sale/product-sale.module').then( m => m.ProductSalePageModule)
+    loadChildren: () => import('./report/Sale/product-sale/product-sale.module').then( m => m.ProductSalePageModule)
   },
   {
     path: 'sale-order-profit',
-    loadChildren: () => import('./Sale/sale-order-profit/sale-order-profit.module').then( m => m.SaleOrderProfitPageModule)
+    loadChildren: () => import('./report/Sale/sale-order-profit/sale-order-profit.module').then( m => m.SaleOrderProfitPageModule)
   },
   {
     path: 'sale-order-summary',
-    loadChildren: () => import('./Sale/sale-order-summary/sale-order-summary.module').then( m => m.SaleOrderSummaryPageModule)
+    loadChildren: () => import('./report/Sale/sale-order-summary/sale-order-summary.module').then( m => m.SaleOrderSummaryPageModule)
   },
   {
     path: 'sale-order-by-sales',
-    loadChildren: () => import('./Sale/sale-order-by-sales/sale-order-by-sales.module').then( m => m.SaleOrderBySalesPageModule)
+    loadChildren: () => import('./report/Sale/sale-order-by-sales/sale-order-by-sales.module').then( m => m.SaleOrderBySalesPageModule)
   },
   {
     path: 'customer',
-    loadChildren: () => import('./Sale/customer/customer.module').then( m => m.CustomerPageModule)
+    loadChildren: () => import('./report/Sale/customer/customer.module').then( m => m.CustomerPageModule)
   },
   {
     path: 'operations',
-    loadChildren: () => import('./Sale/operations/operations.module').then( m => m.OperationsPageModule)
+    loadChildren: () => import('./report/Sale/operations/operations.module').then( m => m.OperationsPageModule)
   },
   {
     path: 'sale-taxes',
-    loadChildren: () => import('./Sale/sale-taxes/sale-taxes.module').then( m => m.SaleTaxesPageModule)
+    loadChildren: () => import('./report/Sale/sale-taxes/sale-taxes.module').then( m => m.SaleTaxesPageModule)
   },
   {
     path: 'orders',
-    loadChildren: () => import('./Purchases/orders/orders.module').then( m => m.OrdersPageModule)
+    loadChildren: () => import('./report/Purchases/orders/orders.module').then( m => m.OrdersPageModule)
   },
   {
     path: 'vendors',
-    loadChildren: () => import('./Purchases/vendors/vendors.module').then( m => m.VendorsPageModule)
+    loadChildren: () => import('./report/Purchases/vendors/vendors.module').then( m => m.VendorsPageModule)
   },
   {
     path: 'purchase-order-status',
-    loadChildren: () => import('./Purchases/purchase-order-status/purchase-order-status.module').then( m => m.PurchaseOrderStatusPageModule)
+    loadChildren: () => import('./report/Purchases/purchase-order-status/purchase-order-status.module').then( m => m.PurchaseOrderStatusPageModule)
   },
   {
     path: 'purchasing-tax',
-    loadChildren: () => import('./Purchases/purchasing-tax/purchasing-tax.module').then( m => m.PurchasingTaxPageModule)
+    loadChildren: () => import('./report/Purchases/purchasing-tax/purchasing-tax.module').then( m => m.PurchasingTaxPageModule)
   },
   {
     path: 'inventory',
-    loadChildren: () => import('./Stock-Level/inventory/inventory.module').then( m => m.InventoryPageModule)
+    loadChildren: () => import('./report/Stock-Level/inventory/inventory.module').then( m => m.InventoryPageModule)
   },
   {
     path: 'historical-inventory',
-    loadChildren: () => import('./Stock-Level/historical-inventory/historical-inventory.module').then( m => m.HistoricalInventoryPageModule)
+    loadChildren: () => import('./report/Stock-Level/historical-inventory/historical-inventory.module').then( m => m.HistoricalInventoryPageModule)
   },
   {
     path: 'inventory-aging',
-    loadChildren: () => import('./Stock-Level/inventory-aging/inventory-aging.module').then( m => m.InventoryAgingPageModule)
+    loadChildren: () => import('./report/Stock-Level/inventory-aging/inventory-aging.module').then( m => m.InventoryAgingPageModule)
   },
   {
     path: 'customer-payments',
-    loadChildren: () => import('./Inventory-Payment/customer-payments/customer-payments.module').then( m => m.CustomerPaymentsPageModule)
+    loadChildren: () => import('./report/Inventory-Payment/customer-payments/customer-payments.module').then( m => m.CustomerPaymentsPageModule)
   },
   {
     path: 'vendor-payment-details',
-    loadChildren: () => import('./Inventory-Payment/vendor-payment-details/vendor-payment-details.module').then( m => m.VendorPaymentDetailsPageModule)
+    loadChildren: () => import('./report/Inventory-Payment/vendor-payment-details/vendor-payment-details.module').then( m => m.VendorPaymentDetailsPageModule)
   },
   {
     path: 'taxes',
-    loadChildren: () => import('./Inventory-Payment/taxes/taxes.module').then( m => m.TaxesPageModule)
+    loadChildren: () => import('./report/Inventory-Payment/taxes/taxes.module').then( m => m.TaxesPageModule)
   },
   {
     path: 'sales-order-profit',
-    loadChildren: () => import('./Inventory-Payment/sales-order-profit/sales-order-profit.module').then( m => m.SalesOrderProfitPageModule)
+    loadChildren: () => import('./report/Inventory-Payment/sales-order-profit/sales-order-profit.module').then( m => m.SalesOrderProfitPageModule)
   },
   {
     path: 'inventory-movement-log',
-    loadChildren: () => import('./Audit/inventory-movement-log/inventory-movement-log.module').then( m => m.InventoryMovementLogPageModule)
+    loadChildren: () => import('./report/Audit/inventory-movement-log/inventory-movement-log.module').then( m => m.InventoryMovementLogPageModule)
   },
   {
     path: 'product-cost',
-    loadChildren: () => import('./Audit/product-cost/product-cost.module').then( m => m.ProductCostPageModule)
+    loadChildren: () => import('./report/Audit/product-cost/product-cost.module').then( m => m.ProductCostPageModule)
   },
   {
     path: 'stock-transfer',
-    loadChildren: () => import('./Audit/stock-transfer/stock-transfer.module').then( m => m.StockTransferPageModule)
+    loadChildren: () => import('./report/Audit/stock-transfer/stock-transfer.module').then( m => m.StockTransferPageModule)
   },
   {
     path: 'count-sheet',
-    loadChildren: () => import('./Audit/count-sheet/count-sheet.module').then( m => m.CountSheetPageModule)
+    loadChildren: () => import('./report/Audit/count-sheet/count-sheet.module').then( m => m.CountSheetPageModule)
   },
 ];
 
