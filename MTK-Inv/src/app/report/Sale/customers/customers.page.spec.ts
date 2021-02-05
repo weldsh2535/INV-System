@@ -1,9 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { CustomersPage } from './customer.page';
+import { CustomersPage } from './customers.page';
 
-describe('CustomerPage', () => {
+describe('CustomersPage', () => {
   let component: CustomersPage;
   let fixture: ComponentFixture<CustomersPage>;
 
