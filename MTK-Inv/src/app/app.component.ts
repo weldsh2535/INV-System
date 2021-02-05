@@ -89,7 +89,7 @@ export class AppComponent implements OnInit {
   ];
   public reportPage = [
     {
-      tittle: 'Sales ',
+      tittle: 'Sales',
       url: '/',
       icon: 'add-circle',
       subPages: [{ title: 'Product Price list', url: '',icon: 'list' },
