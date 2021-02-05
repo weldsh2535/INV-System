@@ -122,7 +122,7 @@ const routes: Routes = [
   },
   {
     path: 'customer',
-    loadChildren: () => import('./report/Sale/customer/customer.module').then( m => m.CustomerPageModule)
+    loadChildren: () => import('./report/Sale/customers/customer.module').then( m => m.CustomerPageModule)
   },
   {
     path: 'operations',
