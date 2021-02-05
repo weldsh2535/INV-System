@@ -20,6 +20,8 @@ export class AppComponent implements OnInit {
   selectedList: boolean = false;
   public selectedIndex1 = 11;
   public selectedIndex2 = 15;
+  showLevel1 = null;
+  showLevel2 = null;
   public appPages = [
     {
       title: 'Home',
@@ -161,6 +163,28 @@ export class AppComponent implements OnInit {
   subReportShow() {
     this.subReport = !this.subReport;
   }
+  toggleLevel1(idx) {
+    if (this.isLevel1Shown(idx)) {
+      this.showLevel1 = null;
+    } else {
+      this.showLevel1 = idx;
+    }
+  };
+  toggleLevel2(idx) {
+    if (this.isLevel2Shown(idx)) {
+      this.showLevel1 = null;
+      this.showLevel2 = null;
+    } else {
+      this.showLevel1 = idx;
+      this.showLevel2 = idx;
+    }
+  };
+  isLevel1Shown(idx) {
+    return this.showLevel1 === idx;
+  };
+  isLevel2Shown(idx) {
+    return this.showLevel2 === idx;
+  };
   ngOnInit() {
     const path = window.location.pathname.split('folder/')[1];
     if (path !== undefined) {
