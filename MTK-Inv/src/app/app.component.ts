@@ -102,7 +102,7 @@ export class AppComponent implements OnInit {
       tittle: 'Purchasing',
       url: '/',
       icon: 'add-circle',
-      subPages: [{ tittle: 'Orders', url: '', icon: 'list' },
+      subPages: [{ title: 'Orders', url: '', icon: 'list' },
       { title: 'Vendors', url: '', icon: 'list' },
       { title: 'Purchase Orders Status', url: '', icon: 'list' },
       { title: 'Purchasing tax', url: '', icon: 'list' }]
@@ -111,7 +111,7 @@ export class AppComponent implements OnInit {
       tittle: 'Stock Levels',
       url: '/',
       icon: 'add-circle',
-      subPages: [{ tittle: 'Inventory', url: '', icon: 'list' },
+      subPages: [{ title: 'Inventory', url: '', icon: 'list' },
       { title: 'Historical inventory', url: '', icon: 'list' },
       { title: 'Inventory Aging', url: '', icon: 'list' }]
     },
@@ -119,7 +119,7 @@ export class AppComponent implements OnInit {
       tittle: 'Payment and Accounting',
       url: '/',
       icon: 'add-circle',
-      subPages: [{ tittle: 'Customer Payment', url: '', icon: 'list' },
+      subPages: [{ title: 'Customer Payment', url: '', icon: 'list' },
       { title: 'Vendor payment details', url: '', icon: 'list' },
       { title: 'Taxes', url: '', icon: 'list' },
       { title: 'Sale Order Profit', url: '', icon: 'list' }]
@@ -128,7 +128,7 @@ export class AppComponent implements OnInit {
       tittle: 'Audit Log',
       url: '/',
       icon: 'add-circle',
-      subPages: [{ tittle: 'Inventory movement', url: '', icon: 'list' },
+      subPages: [{ title: 'Inventory movement', url: '', icon: 'list' },
       { title: 'Product cost', url: '', icon: 'list' },
       { title: 'Stock Transfer', url: '', icon: 'list' }]
     },
