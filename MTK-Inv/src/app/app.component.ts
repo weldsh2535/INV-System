@@ -96,12 +96,11 @@ export class AppComponent implements OnInit {
       { title: 'Product Sales', url: '' },
       { title: 'Sale Order summary', url: '' },
       { title: 'Sale Order Profile', url: '' },
-      { title: 'Customer', url: '' }
-      ]
+      { title: 'Customer', url: '' }]
     },
     {
       tittle: 'Purchasing',
-      url: '',
+      url: '/',
       icon: 'add-circle',
       subPages: [{ tittle: 'Orders', url: '', icon: 'add-circle' },
       { tittle: 'Vendors', url: '', icon: 'add-circle' },
@@ -110,7 +109,7 @@ export class AppComponent implements OnInit {
     },
     {
       tittle: 'Stock Levels',
-      url: '',
+      url: '/',
       icon: 'add-circle',
       subPages: [{ tittle: 'Inventory', url: '', icon: 'add-circle' },
       { tittle: 'Historical inventory', url: '', icon: 'add-circle' },
@@ -118,7 +117,7 @@ export class AppComponent implements OnInit {
     },
     {
       tittle: 'Payment and Accounting',
-      url: '',
+      url: '/',
       icon: 'add-circle',
       subPages: [{ tittle: 'Customer Payment', url: '', icon: 'add-circle' },
       { tittle: 'Vendor payment details', url: '', icon: 'add-circle' },
@@ -127,7 +126,7 @@ export class AppComponent implements OnInit {
     },
     {
       tittle: 'Audit Log',
-      url: '',
+      url: '/',
       icon: 'add-circle',
       subPages: [{ tittle: 'Inventory movement', url: '', icon: 'add-circle' },
       { tittle: 'Product cost', url: '', icon: 'add-circle' },
