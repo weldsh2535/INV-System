@@ -90,7 +90,7 @@ export class AppComponent implements OnInit {
   public reportPage = [
     {
       tittle: 'Report ',
-      url: '',
+      url: '/',
       icon: 'add-circle',
       subPages: [{ title: 'Product Price list', url: '' },
       { title: 'Product Sales', url: '' },
