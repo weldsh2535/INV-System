@@ -41,7 +41,7 @@
             <ion-icon name="bar-chart-outline"></ion-icon> &nbsp;&nbsp;Report</ion-item>
           <ion-list *ngIf="selectedPage" class="manu-list" >
            <ion-menu-toggle auto-hide="false" *ngFor="let page of reportPage; let i=index" text-wrap (click)="toggleLevel1('idx'+i)" [ngClass]="{active: isLevel1Shown('idx'+i)}" >
-             <ion-item (click)="selectedIndex2 = i" [class.selected]="selectedIndex2==i" [routerLink]="[page.url]" lines="none" routerDirection="root">
+             <ion-item (click)="selectedIndex2 = i" [class.selected]="selectedIndex2==i"  lines="none" routerDirection="root">
              <!-- <ion-icon slot="start" [ios]="page.icon + '-outline'" [md]="page.icon+'-sharp'"></ion-icon> -->
              <ion-icon slot="start" [ios]="page.icon + '-outline'" [md]="page.icon+'-sharp'"
                   color="success" item-right [name]="isLevel1Shown('idx'+i) ? 'arrow-dropdown' : 'arrow-dropright'">
