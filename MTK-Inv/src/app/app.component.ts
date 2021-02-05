@@ -103,34 +103,34 @@ export class AppComponent implements OnInit {
       url: '/',
       icon: 'add-circle',
       subPages: [{ tittle: 'Orders', url: '', icon: 'list' },
-      { tittle: 'Vendors', url: '', icon: 'list' },
-      { tittle: 'Purchase Orders Status', url: '', icon: 'list' },
-      { tittle: 'Purchasing tax', url: '', icon: 'list' }]
+      { title: 'Vendors', url: '', icon: 'list' },
+      { title: 'Purchase Orders Status', url: '', icon: 'list' },
+      { title: 'Purchasing tax', url: '', icon: 'list' }]
     },
     {
       tittle: 'Stock Levels',
       url: '/',
       icon: 'add-circle',
       subPages: [{ tittle: 'Inventory', url: '', icon: 'list' },
-      { tittle: 'Historical inventory', url: '', icon: 'list' },
-      { tittle: 'Inventory Aging', url: '', icon: 'list' }]
+      { title: 'Historical inventory', url: '', icon: 'list' },
+      { title: 'Inventory Aging', url: '', icon: 'list' }]
     },
     {
       tittle: 'Payment and Accounting',
       url: '/',
       icon: 'add-circle',
       subPages: [{ tittle: 'Customer Payment', url: '', icon: 'list' },
-      { tittle: 'Vendor payment details', url: '', icon: 'list' },
-      { tittle: 'Taxes', url: '', icon: 'list' },
-      { tittle: 'Sale Order Profit', url: '', icon: 'list' }]
+      { title: 'Vendor payment details', url: '', icon: 'list' },
+      { title: 'Taxes', url: '', icon: 'list' },
+      { title: 'Sale Order Profit', url: '', icon: 'list' }]
     },
     {
       tittle: 'Audit Log',
       url: '/',
       icon: 'add-circle',
       subPages: [{ tittle: 'Inventory movement', url: '', icon: 'list' },
-      { tittle: 'Product cost', url: '', icon: 'list' },
-      { tittle: 'Stock Transfer', url: '', icon: 'list' }]
+      { title: 'Product cost', url: '', icon: 'list' },
+      { title: 'Stock Transfer', url: '', icon: 'list' }]
     },
   ];
   selectedPage: boolean = false;
