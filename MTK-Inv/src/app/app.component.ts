@@ -94,47 +94,47 @@ export class AppComponent implements OnInit {
       tittle: 'Sale',
       url: '/Sale',
       icon: 'bag-handle',
-      subPages: [{ title: 'Product Price list', url: '/report/Sale/product-price-list',icon: 'list' },
-      { title: 'Product Sales', url: '/report/Sale/product-sale',icon: 'list' },
-      { title: 'Sale Order summary', url: '/report/Sale/sale-order-summary',icon: 'list' },
-      { title: 'Sale Order Profile', url: '/report/Sale/sale-order-profit',icon: 'list' },
-      { title: 'Customer', url: '/report/Sale/customer',icon: 'list' },
-      { title: 'operations',url:'/report/Sale/operations',icon:'list'}]
+      subPages: [{ title: 'Product Price list', url: '/product-price-list',icon: 'list' },
+      { title: 'Product Sales', url: 'product-sale',icon: 'list' },
+      { title: 'Sale Order summary', url: 'sale-order-summary',icon: 'list' },
+      { title: 'Sale Order Profile', url: 'sale-order-profit',icon: 'list' },
+      { title: 'Customer', url: 'customer',icon: 'list' },
+      { title: 'operations',url:'operations',icon:'list'}]
     },
     {
       tittle: 'Purchasing',
       url: '/Purchases',
       icon: 'briefcase',
-      subPages: [{ title: 'Orders', url: '/report/Purchases/orders', icon: 'list' },
-      { title: 'Vendors', url: '/report/Purchases/vendors', icon: 'list' },
-      { title: 'Purchase Orders Status', url: '/report/Purchases/purchase-order-status', icon: 'list' },
-      { title: 'Purchasing tax', url: '/report/Purchases/purchasing-tax', icon: 'list' }]
+      subPages: [{ title: 'Orders', url: '/orders', icon: 'list' },
+      { title: 'Vendors', url: '/vendors', icon: 'list' },
+      { title: 'Purchase Orders Status', url: '/purchase-order-status', icon: 'list' },
+      { title: 'Purchasing tax', url: '/purchasing-tax', icon: 'list' }]
     },
     {
       tittle: 'Stock Levels',
       url: '/Stock-Level',
       icon: 'bag',
-      subPages: [{ title: 'Inventory', url: '/report/Stock-Level/inventory', icon: 'list' },
-      { title: 'Historical inventory', url: '/report/Stock-Level/historical-inventory', icon: 'list' },
-      { title: 'Inventory Aging', url: '/report/Stock-Level/inventory-aging', icon: 'list' }]
+      subPages: [{ title: 'Inventory', url: '/inventory', icon: 'list' },
+      { title: 'Historical inventory', url: '/historical-inventory', icon: 'list' },
+      { title: 'Inventory Aging', url: '/inventory-aging', icon: 'list' }]
     },
     {
       tittle: 'Payment and Accounting',
       url: '/Inventory-payment',
       icon: 'bar-chart',
-      subPages: [{ title: 'Customer Payment', url: '/report/Inventory-Payment/customer-payments', icon: 'list' },
-      { title: 'Vendor payment details', url: '/report/Inventory-Payment/vendor-payment-details', icon: 'list' },
-      { title: 'Taxes', url: '/report/Inventory-Payment/taxes', icon: 'list' },
-      { title: 'Sale Order Profit', url: '/report/Inventory-Payment/sales-order-profit', icon: 'list' }]
+      subPages: [{ title: 'Customer Payment', url: '/customer-payments', icon: 'list' },
+      { title: 'Vendor payment details', url: '/vendor-payment-details', icon: 'list' },
+      { title: 'Taxes', url: '/taxes', icon: 'list' },
+      { title: 'Sale Order Profit', url: '/sales-order-profit', icon: 'list' }]
     },
     {
       tittle: 'Audit Log',
       url: '/Audit',
       icon: 'reader',
-      subPages: [{ title: 'Inventory movement', url: '/report/Audit/inventory-movement-log', icon: 'list' },
-      { title: 'Product cost', url: '/report/Audit/product-cost', icon: 'list' },
-      { title: 'Stock Transfer', url: '/report/Audit/stock-transfer', icon: 'list' },
-      { title: 'Count Sheet', url: '/report/Audit/count-sheet', icon: 'list' }]
+      subPages: [{ title: 'Inventory movement', url: '/inventory-movement-log', icon: 'list' },
+      { title: 'Product cost', url: '/product-cost', icon: 'list' },
+      { title: 'Stock Transfer', url: '/stock-transfer', icon: 'list' },
+      { title: 'Count Sheet', url: '/count-sheet', icon: 'list' }]
     },
   ];
   selectedPage: boolean = false;
