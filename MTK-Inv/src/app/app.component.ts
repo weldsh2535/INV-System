@@ -98,10 +98,44 @@ export class AppComponent implements OnInit {
       { title: 'Sale Order Profile', url: '' },
       { title: 'Customer', url: '' }
       ]
-    }
+    },
+    {
+      tittle: 'Purchasing',
+      url: '',
+      icon: 'add-circle',
+      subPages: [{ tittle: 'Orders', url: '', icon: 'add-circle' },
+      { tittle: 'Vendors', url: '', icon: 'add-circle' },
+      { tittle: 'Purchase Orders Status', url: '', icon: 'add-circle' },
+      { tittle: 'Purchasing tax', url: '', icon: 'add-circle' }]
+    },
+    {
+      tittle: 'Stock Levels',
+      url: '',
+      icon: 'add-circle',
+      subPages: [{ tittle: 'Inventory', url: '', icon: 'add-circle' },
+      { tittle: 'Historical inventory', url: '', icon: 'add-circle' },
+      { tittle: 'Inventory Aging', url: '', icon: 'add-circle' }]
+    },
+    {
+      tittle: 'Payment and Accounting',
+      url: '',
+      icon: 'add-circle',
+      subPages: [{ tittle: 'Customer Payment', url: '', icon: 'add-circle' },
+      { tittle: 'Vendor payment details', url: '', icon: 'add-circle' },
+      { tittle: 'Taxes', url: '', icon: 'add-circle' },
+      { tittle: 'Sale Order Profit', url: '', icon: 'add-circle' }]
+    },
+    {
+      tittle: 'Audit Log',
+      url: '',
+      icon: 'add-circle',
+      subPages: [{ tittle: 'Inventory movement', url: '', icon: 'add-circle' },
+      { tittle: 'Product cost', url: '', icon: 'add-circle' },
+      { tittle: 'Stock Transfer', url: '', icon: 'add-circle' }]
+    },
   ];
   selectedPage: boolean = false;
-  subReport:boolean = false;
+  subReport: boolean = false;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -125,8 +159,8 @@ export class AppComponent implements OnInit {
   reportPageShow() {
     this.selectedPage = !this.selectedPage;
   }
-  subReportShow(){
-   this.subReport = !this.subReport;
+  subReportShow() {
+    this.subReport = !this.subReport;
   }
   ngOnInit() {
     const path = window.location.pathname.split('folder/')[1];
