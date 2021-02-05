@@ -121,6 +121,10 @@ const routes: Routes = [
     loadChildren: () => import('./report/Sale/sale-order-by-sales/sale-order-by-sales.module').then( m => m.SaleOrderBySalesPageModule)
   },
   {
+    path: 'customers',
+    loadChildren: () => import('./report/Sale/customers/customers.module').then( m => m.CustomersPageModule)
+  },
+  {
     path: 'operations',
     loadChildren: () => import('./report/Sale/operations/operations.module').then( m => m.OperationsPageModule)
   },
