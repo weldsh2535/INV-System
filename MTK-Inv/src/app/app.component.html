@@ -44,10 +44,11 @@
              <ion-item (click)="selectedIndex2 = i" [class.selected]="selectedIndex2==i" [routerLink]="[page.url]" lines="none" routerDirection="root">
              <!-- <ion-icon slot="start" [ios]="page.icon + '-outline'" [md]="page.icon+'-sharp'"></ion-icon> -->
              <ion-icon slot="start" [ios]="page.icon + '-outline'" [md]="page.icon+'-sharp'"
-                  color="success" item-right [name]="isLevel1Shown('idx'+i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+                  color="success" item-right [name]="isLevel1Shown('idx'+i) ? 'arrow-dropdown' : 'arrow-dropright'">
+                </ion-icon>
              <ion-label>{{page.tittle}}</ion-label>
              </ion-item>
-             <ion-list class="manu-list">
+             <ion-list class="manu-list"  *ngIf="isLevel1Shown('idx'+i)">
               <ion-menu-toggle auto-hide="false" *ngFor="let s of page.subPages; let i = index">
                 <ion-item [routerDirection]="'root'" [routerLink]="[s.url]" lines="none" routerDirection="root">
                   <ion-icon slot="start" [ios]="s.icon + '-outline'" [md]="s.icon+'-sharp'"></ion-icon>
