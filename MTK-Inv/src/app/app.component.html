@@ -48,9 +48,8 @@
              <ion-list >
               <ion-menu-toggle auto-hide="false" *ngFor="let s of page.subPages">
                 <ion-item [routerDirection]="'root'" [routerLink]="[s.url]">
-                  <ion-label>
-                    {{s.title}}
-                  </ion-label>
+                  <ion-icon slot="start" [ios]="page.icon + '-outline'" [md]="page.icon+'-sharp'"></ion-icon>
+                  <ion-label> {{s.title}}</ion-label>
                 </ion-item>
               </ion-menu-toggle>
             </ion-list>
