@@ -9,7 +9,7 @@
 </ion-header>
 <ion-content>
   <table class="table table-hover">
-    <colgroup >
+    <colgroup>
       <col width="5%">
       <col width="5%">
       <col width="5%">
@@ -24,22 +24,26 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of customerList" >
+      <tr *ngFor="let item of customerList">
         <td>{{item.fullname}}</td>
         <td>{{item.address}}</td>
         <td>{{item.phonenumber}}</td>
         <td>{{item.location}}</td>
       </tr>
     </tbody>
+
+  </table>
+  <ion-content fullscreen>
     <ion-card>
       <ion-card-header>
-        <ion-card-subtitle>Destination</ion-card-subtitle>
-        <ion-card-title>Madison, WI</ion-card-title>
+        <ion-card-title>Customer List</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-       <ion-button (click)="generate()">generate</ion-button>
+        List of customers and their contact information
+        Want to customize this report?
+        Just change the settings at the top of this window before selecting Generate.
+        <ion-button (click)="generate()">generate</ion-button>
       </ion-card-content>
     </ion-card>
-  </table>
   </ion-content>
-
+</ion-content>
