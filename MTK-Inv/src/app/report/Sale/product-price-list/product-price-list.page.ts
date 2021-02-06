@@ -24,8 +24,10 @@ export class ProductPriceListPage implements OnInit {
       if(this.a==0){
         this.itemsOfList=null
       }
-      this.itemsOfList = itemList;
-      this.generateList=false;
+      else{
+        this.itemsOfList = itemList;
+        this.generateList=false;
+      }
     })
   }
   generate(){
