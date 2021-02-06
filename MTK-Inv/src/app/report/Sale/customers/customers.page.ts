@@ -10,7 +10,7 @@ import { Customer } from 'src/Tabels/tabels-list';
 export class CustomersPage implements OnInit {
   customerList: Customer[];
   generateB: number=0;
-
+  generateList:boolean=true;
   constructor(private customerService:CustomerService) { }
 
   ngOnInit() {
@@ -21,9 +21,10 @@ export class CustomersPage implements OnInit {
      if(this.generateB==0){
       this.customerList = null;
      }
-     else(this.generateB==1)
+     else
      {
       this.customerList = res;
+      this.generateList=false;
      }
     
    });

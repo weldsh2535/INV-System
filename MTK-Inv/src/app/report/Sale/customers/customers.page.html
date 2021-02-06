@@ -33,7 +33,7 @@
     </tbody>
 
   </table>
-  <ion-content fullscreen>
+  <div *ngIf="generateList">
     <ion-card>
       <ion-card-header>
         <ion-card-title>Customer List</ion-card-title>
@@ -45,5 +45,5 @@
         <ion-button (click)="generate()">generate</ion-button>
       </ion-card-content>
     </ion-card>
-  </ion-content>
+  </div>
 </ion-content>
