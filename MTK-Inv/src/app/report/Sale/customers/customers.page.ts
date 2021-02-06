@@ -30,5 +30,6 @@ export class CustomersPage implements OnInit {
  }
  generate(){ 
    this.generateB=1
+   this.getCustomerList();
  }
 }
