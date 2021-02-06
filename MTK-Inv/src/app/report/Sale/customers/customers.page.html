@@ -9,8 +9,8 @@
 
 <ion-content>
 <ion-item>
-  <ion-grid *ngFor="let customerL of customerList">
-    <ion-row>
+  <ion-grid >
+    <ion-row *ngFor="let customerL of customerList">
       <ion-col size="3">
        {{customerL.fullname}}
       </ion-col>

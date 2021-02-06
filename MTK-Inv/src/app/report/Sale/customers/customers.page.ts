@@ -13,6 +13,7 @@ export class CustomersPage implements OnInit {
   constructor(private customerService:CustomerService) { }
 
   ngOnInit() {
+    this.getCustomerList();
   }
  getCustomerList(){
    this.customerService.getAllCustomer().subscribe(res=>{
