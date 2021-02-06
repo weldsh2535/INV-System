@@ -34,7 +34,6 @@ export class CustomersPage implements OnInit {
  }
  generate(){ 
   this.presentLoading();
-   
  }
  async presentLoading() {
   const loading = await this.loadingController.create({
