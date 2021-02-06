@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { ItemsService } from 'src/app/Service/items.service';
+import { Items } from 'src/Tabels/tabels-list';
 
 @Component({
   selector: 'app-product-price-list',
@@ -8,7 +9,7 @@ import { ItemsService } from 'src/app/Service/items.service';
   styleUrls: ['./product-price-list.page.scss'],
 })
 export class ProductPriceListPage implements OnInit {
-  itemsOfList: any[];
+  itemsOfList: Items[];
   a: number=0;
   private loading;
   generateList:boolean=true;
@@ -16,6 +17,7 @@ export class ProductPriceListPage implements OnInit {
     private loadingController:LoadingController) { }
 
   ngOnInit() {
+    this.getItemList();
   }
   getItemList(){
     this.itemsService.getAllItem().subscribe(itemList=>{
