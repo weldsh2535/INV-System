@@ -8,5 +8,41 @@
 </ion-header>
 
 <ion-content>
-
+  <table class="table table-hover">
+    <colgroup>
+      <col width="5%">
+      <col width="5%">
+      <col width="5%">
+      <col width="5%">
+    </colgroup>
+    <thead style="background-color: cadetblue;">
+      <tr>
+        <th scope="col">Full Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">Phone number</th>
+        <th scope="col">Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of itemsOfList">
+        <td>{{item.name}}</td>
+        <td>{{item.address}}</td>
+        <td>{{item.phonenumber}}</td>
+        <td>{{item.location}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="generateList">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Customer List</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        List of customers and their contact information
+        Want to customize this report?
+        Just change the settings at the top of this window before selecting Generate.
+        <ion-button (click)="generate()">generate</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
