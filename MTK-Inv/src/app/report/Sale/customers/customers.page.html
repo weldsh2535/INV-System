@@ -6,33 +6,30 @@
     <ion-title>Customers</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <ion-item>
-    <ion-grid >
-      <ion-item color="gray" >
-        <ion-row text-center nowrap>
-          <ion-col size="3">Date</ion-col>
-          <ion-col size="3" >Credit</ion-col>
-          <ion-col size="3" >Debit</ion-col>
-          <ion-col size="3" >Running Balance</ion-col>
-        </ion-row>
-      </ion-item>
-      <ion-row *ngFor="let customerL of customerList">
-        <ion-col size="3">
-         {{customerL.fullname}}
-        </ion-col>
-        <ion-col size="3">
-          {{customerL.location}}
-        </ion-col>
-        <ion-col size="3">
-          {{customerL.address}}
-        </ion-col>
-        <ion-col size="3">
-          {{customerL.phonenumber}}
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-item>
+  <table class="table table-hover">
+    <colgroup>
+      <col width="5%">
+      <col width="*">
+      <col width="10%">
+      <col width="15%">
+    </colgroup>
+    <thead>
+      <tr>
+        <th scope="col">Full Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">Phone number</th>
+        <th scope="col">Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of customerList" >
+        <td>{{item.fullname}}</td>
+        <td>{{item.address}}</td>
+        <td>{{item.phonenumber}}</td>
+        <td>{{item.location}}</td>
+      </tr>
+    </tbody>
+  </table>
   </ion-content>
 
