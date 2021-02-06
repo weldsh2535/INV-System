@@ -32,6 +32,9 @@ export class CustomersPage implements OnInit {
     
    });
  }
+ filter(){
+   
+ }
  generate(){ 
   this.presentLoading();
  }
