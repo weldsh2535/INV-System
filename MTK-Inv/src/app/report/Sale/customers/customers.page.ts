@@ -20,4 +20,7 @@ export class CustomersPage implements OnInit {
      this.customerList = res;
    });
  }
+ generate(){
+   
+ }
 }
