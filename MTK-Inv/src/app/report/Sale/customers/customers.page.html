@@ -12,23 +12,23 @@
     <ion-grid >
       <ion-item color="gray" >
         <ion-row text-center nowrap>
-          <ion-col col-8 style="font-size:11pt">Date</ion-col>
-          <ion-col col-10 >Credit</ion-col>
-          <ion-col col-10 >Debit</ion-col>
-          <ion-col col-10 >Running Balance</ion-col>
+          <ion-col col-20 style="font-size:11pt">Date</ion-col>
+          <ion-col col-20 >Credit</ion-col>
+          <ion-col col-20 >Debit</ion-col>
+          <ion-col col-20 >Running Balance</ion-col>
         </ion-row>
       </ion-item>
       <ion-row *ngFor="let customerL of customerList">
-        <ion-col col-8 style="font-size:11pt">
+        <ion-col col-20 style="font-size:11pt">
          {{customerL.fullname}}
         </ion-col>
-        <ion-col  col-10>
+        <ion-col  col-20>
           {{customerL.location}}
         </ion-col>
-        <ion-col  col-10>
+        <ion-col  col-20>
           {{customerL.address}}
         </ion-col>
-        <ion-col col-10>
+        <ion-col col-20>
           {{customerL.phonenumber}}
         </ion-col>
       </ion-row>
