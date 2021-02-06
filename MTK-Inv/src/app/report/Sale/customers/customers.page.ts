@@ -9,6 +9,7 @@ import { Customer } from 'src/Tabels/tabels-list';
 })
 export class CustomersPage implements OnInit {
   customerList: Customer[];
+  generateB: number=0;
 
   constructor(private customerService:CustomerService) { }
 
@@ -17,10 +18,17 @@ export class CustomersPage implements OnInit {
   }
  getCustomerList(){
    this.customerService.getAllCustomer().subscribe(res=>{
-     this.customerList = res;
+     if(this.generateB==0){
+      this.customerList = null;
+     }
+     else(this.generateB==1)
+     {
+      this.customerList = res;
+     }
+    
    });
  }
- generate(){
-   
+ generate(){ 
+   this.generateB=1
  }
 }
