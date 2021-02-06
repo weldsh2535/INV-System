@@ -12,6 +12,7 @@ export class CustomersPage implements OnInit {
   customerList: Customer[];
   generateB: number=0;
   generateList:boolean=true;
+  filterList:any;
   private loading;
   constructor(private customerService:CustomerService,
     public loadingController: LoadingController) { }
@@ -33,7 +34,8 @@ export class CustomersPage implements OnInit {
    });
  }
  filter(){
-   
+  this.filterList = ["Full Name", "Address", "Location"];
+  console.log(this.filterList);
  }
  generate(){ 
   this.presentLoading();
