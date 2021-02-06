@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadingController } from '@ionic/angular';
 import { CustomerService } from 'src/app/Service/customer.service';
 import { Customer } from 'src/Tabels/tabels-list';
 
@@ -11,7 +12,9 @@ export class CustomersPage implements OnInit {
   customerList: Customer[];
   generateB: number=0;
   generateList:boolean=true;
-  constructor(private customerService:CustomerService) { }
+  private loading;
+  constructor(private customerService:CustomerService,
+    public loadingController: LoadingController) { }
 
   ngOnInit() {
     this.getCustomerList();
@@ -30,7 +33,20 @@ export class CustomersPage implements OnInit {
    });
  }
  generate(){ 
-   this.generateB=1
-   this.getCustomerList();
+  this.presentLoading();
+   
  }
+ async presentLoading() {
+  const loading = await this.loadingController.create({
+    message: 'Please wait...'
+  }).then((overlay)=>{
+    this.loading =overlay
+    this.loading.present();
+  });
+setTimeout(()=>{
+this.loading.dismiss();
+this.generateB=1
+this.getCustomerList();
+},4000);
+}
 }
