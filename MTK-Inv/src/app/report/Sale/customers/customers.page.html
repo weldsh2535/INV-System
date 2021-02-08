@@ -5,16 +5,12 @@
     </ion-buttons>
     <ion-title>Reports</ion-title>
     <ion-label>Customer List</ion-label>
+    <ion-button (click)="createPdf()">creat pdf</ion-button>
+    <ion-button (click)="downloadPdf()">download</ion-button>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <ion-button (click)="filter()"><ion-icon name="list-circle-outline"></ion-icon>Filters
-  <ion-select class="custom-options" multiple="true">
-    <ion-select-option value="brown">Brown</ion-select-option>
-    <ion-select-option value="blonde">Blonde</ion-select-option>
-    <ion-select-option value="black">Black</ion-select-option>
-    <ion-select-option value="red">Red</ion-select-option>
-  </ion-select>
 </ion-button>
   <table class="table table-hover">
     <colgroup>

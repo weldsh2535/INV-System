@@ -8,6 +8,7 @@ import { File } from '@ionic-native/file/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import * as pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-customers',
@@ -21,11 +22,12 @@ export class CustomersPage implements OnInit {
   private loading;
   csvData: any[] = [];
   headerRow: any[] = [];
+  pdfObj= null;
   constructor(private customerService: CustomerService,
     public loadingController: LoadingController,
     private papa: Papa, private platform: Platform,
-    private file: File,
-    private socialSharing: SocialSharing
+    private file: File,private fileOpener:FileOpener
+    //private socialSharing: SocialSharing
   ) {
     this.loadCSV();
   }
@@ -52,38 +54,38 @@ export class CustomersPage implements OnInit {
     });
   }
 
-  exportCSV() {
-    let csv = this.papa.unparse({
-      fields: this.headerRow,
-      data: this.csvData
-    });
+  // exportCSV() {
+  //   let csv = this.papa.unparse({
+  //     fields: this.headerRow,
+  //     data: this.csvData
+  //   });
 
-    if (this.platform.is('cordova')) {
-      this.file.writeFile(this.file.dataDirectory, 'data.csv', csv, { replace: true }).then(res => {
-        this.socialSharing.share(null, null, res.nativeURL, null).then(e => {
-          // Success
-        }).catch(e => {
-          console.log('Share failed:', e)
-        });
-      }, err => {
-        console.log('Error: ', err);
-      });
+  //   if (this.platform.is('cordova')) {
+  //     this.file.writeFile(this.file.dataDirectory, 'data.csv', csv, { replace: true }).then(res => {
+  //       this.socialSharing.share(null, null, res.nativeURL, null).then(e => {
+  //         // Success
+  //       }).catch(e => {
+  //         console.log('Share failed:', e)
+  //       });
+  //     }, err => {
+  //       console.log('Error: ', err);
+  //     });
 
-    } else {
-      // Dummy implementation for Desktop download purpose
-      var blob = new Blob([csv]);
-      var a = window.document.createElement('a');
-      a.href = window.URL.createObjectURL(blob);
-      a.download = 'newdata.csv';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-    }
-  }
+  //   } else {
+  //     // Dummy implementation for Desktop download purpose
+  //     var blob = new Blob([csv]);
+  //     var a = window.document.createElement('a');
+  //     a.href = window.URL.createObjectURL(blob);
+  //     a.download = 'newdata.csv';
+  //     document.body.appendChild(a);
+  //     a.click();
+  //     document.body.removeChild(a);
+  //   }
+  // }
 
-  trackByFn(index: any, item: any) {
-    return index;
-  }
+  // trackByFn(index: any, item: any) {
+  //   return index;
+  // }
   getCustomerList() {
     this.customerService.getAllCustomer().subscribe(res => {
       if (this.generateB == 0) {
@@ -114,5 +116,40 @@ export class CustomersPage implements OnInit {
       this.generateB = 1
       this.getCustomerList();
     }, 4000);
+  }
+  createPdf(){
+    const docDefinition ={
+       watermark:{text:'customer list report',color:'blur', opacity:0.2.toString,bold:true},
+       content:[
+         {
+         columns:[]
+       },
+       {text:'REMINDER',style:'header'},
+       {
+         columns:[{
+           width:'50',
+           text: this.customerList[0].fullname
+         }]
+       },
+      ],
+       style:{
+         header:{
+           fontSize:18,bold:true,margin:[0,15,0,0]
+         },
+         subheader:{
+           fontSize:15,bold:true,margin:[0,15,0,0]
+         }
+       }
+    }
+    this.pdfObj = pdfMake.createPdf(docDefinition);
+  }
+  downloadPdf(){
+   if( this.platform.is('cordova'))
+   {
+
+   }
+   else{
+     this.pdfObj.download();
+   }
   }
 }
