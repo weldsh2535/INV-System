@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Catagory</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <form [formGroup]=\"regform\">\n    <ion-list>\n     \n\n    <ion-item>\n      <ion-label>Name</ion-label>\n      <ion-input   formControlName=\"name\"></ion-input>\n      <span *ngIf=\"!regform.get('name').valid && regform.get('name').touched\" > Enter Name </span> \n    </ion-item>\n    <div class=\"picker\">\n      <ion-img\n        role=\"button\"\n        class=\"image\"\n        (click)=\"onPickImage()\"\n        [src]=\"base64textString\"\n        *ngIf=\"base64textString\"\n      ></ion-img>\n      <ion-button color=\"primary\" (click)=\"onPickImage()\" *ngIf=\"!base64textString\">\n        <ion-icon name=\"camera\" slot=\"start\"></ion-icon>\n        <ion-label>Take Picture</ion-label>\n      </ion-button>\n    </div>\n    <input  hidden\n      type=\"file\"\n      accept=\"image/jpeg\"\n      *ngIf=\"usePicker\"\n      #filePicker\n      (change)=\"onFileChosen($event)\"\n    />\n    <ion-button expand=\"full\" (click)=\"Save()\" > Save </ion-button>\n  </ion-list>\n  </form>\n  <ion-searchbar\n  (keyup)=\"filter($event)\"  showCancelButton=\"never\"></ion-searchbar>\n\n   <ion-item-sliding  *ngFor=\"let item of filteredCategory \"   #slidingItem >\n    <ion-item detail>\n      <ion-thumbnail slot=\"start\">\n        <img [src]=\"item.picture\">\n      </ion-thumbnail>\n      <ion-label> {{item.name}}</ion-label>\n      \n    </ion-item>\n    <ion-item-options side=\"start\">\n      <ion-item-option color=\"danger\" (click)=\"Edit(item,slidingItem)\">\n     <ion-icon  name=\"create\" slot=\"icon-only\"></ion-icon></ion-item-option>\n     <ion-item-option color=\"danger\" (click)=\"delete(item,slidingItem)\">\n      <ion-icon  name=\"trash\" slot=\"icon-only\"></ion-icon></ion-item-option>\n    </ion-item-options>\n  </ion-item-sliding>\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar color=\"primary\" >\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Lookup Catagory</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <form [formGroup]=\"regform\">\n    <ion-list>\n    <ion-item>\n      <ion-label style=\"color: rgb(63, 5, 170);\">Name</ion-label>\n      <ion-input   formControlName=\"name\"></ion-input>\n      <small class=\"form-text text-muted\" *ngIf=\"!regform.get('name').valid && regform.get('name').touched\" > This field is required! </small> \n      </ion-item>\n    <div class=\"picker\">\n      <ion-img\n        role=\"button\"\n        class=\"image\"\n        (click)=\"onPickImage()\"\n        [src]=\"base64textString\"\n        *ngIf=\"base64textString\"\n      ></ion-img>\n      <ion-button color=\"primary\" (click)=\"onPickImage()\" *ngIf=\"!base64textString\">\n        <ion-icon name=\"camera\" slot=\"start\"></ion-icon>\n        <ion-label>Take Picture</ion-label>\n      </ion-button>\n    </div>\n    <input  hidden\n      type=\"file\"\n      accept=\"image/jpeg\"\n      *ngIf=\"usePicker\"\n      #filePicker\n      (change)=\"onFileChosen($event)\"/>\n    <div style=\"text-align: center; margin: auto;\">\n      <ion-button id=\"add items\" (click)=\"Save()\"> \n        <ion-icon slot=\"start\" name=\"add-circle-outline\"></ion-icon>\n        {{editMode?'Update Catagory':'Add Catagory'}}</ion-button>\n    </div>\n  </ion-list>\n  </form>\n  <ion-searchbar\n  (keyup)=\"filter($event)\"  showCancelButton=\"never\" ></ion-searchbar>\n<ion-list >\n   <ion-item-sliding  *ngFor=\"let item of filteredCategory \" #slidingItem >\n    <ion-item detail>\n      <ion-thumbnail slot=\"start\">\n        <img [src]=\"item.picture\">\n      </ion-thumbnail>\n      <ion-label> {{item.name}}</ion-label>  \n    </ion-item>\n    <ion-item-options side=\"start\">\n      <ion-item-option color=\"danger\" (click)=\"Edit(item,slidingItem)\">\n     <ion-icon  name=\"create\" slot=\"icon-only\"></ion-icon></ion-item-option>\n     <ion-item-option color=\"danger\" (click)=\"delete(item,slidingItem)\">\n      <ion-icon  name=\"trash\" slot=\"icon-only\"></ion-icon></ion-item-option>\n    </ion-item-options>\n  </ion-item-sliding>\n</ion-list>\n</ion-content>\n";
       /***/
     },
 
@@ -147,13 +147,19 @@
       var _catagory_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! ./catagory.page */
       "./src/app/catagory/catagory.page.ts");
+      /* harmony import */
+
+
+      var ng2_search_filter__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      /*! ng2-search-filter */
+      "./node_modules/ng2-search-filter/__ivy_ngcc__/ng2-search-filter.js");
 
       var CatagoryPageModule = function CatagoryPageModule() {
         _classCallCheck(this, CatagoryPageModule);
       };
 
       CatagoryPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"], _catagory_routing_module__WEBPACK_IMPORTED_MODULE_5__["CatagoryPageRoutingModule"]],
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"], _catagory_routing_module__WEBPACK_IMPORTED_MODULE_5__["CatagoryPageRoutingModule"], ng2_search_filter__WEBPACK_IMPORTED_MODULE_7__["Ng2SearchPipeModule"]],
         declarations: [_catagory_page__WEBPACK_IMPORTED_MODULE_6__["CatagoryPage"]]
       })], CatagoryPageModule);
       /***/
@@ -175,7 +181,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = ".picker {\n  width: 30rem;\n  max-width: 80%;\n  height: 20rem;\n  max-height: 30vh;\n  border: 1px solid var(--ion-color-primary);\n  margin: auto;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.image {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2F0YWdvcnkvY2F0YWdvcnkucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksWUFBQTtFQUNBLGNBQUE7RUFDQSxhQUFBO0VBQ0EsZ0JBQUE7RUFDQSwwQ0FBQTtFQUNBLFlBQUE7RUFDQSxhQUFBO0VBQ0EsdUJBQUE7RUFDQSxtQkFBQTtBQUNKOztBQUVFO0VBQ0UsV0FBQTtFQUNBLFlBQUE7RUFDQSxvQkFBQTtLQUFBLGlCQUFBO0FBQ0oiLCJmaWxlIjoic3JjL2FwcC9jYXRhZ29yeS9jYXRhZ29yeS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIucGlja2VyIHtcclxuICAgIHdpZHRoOiAzMHJlbTtcclxuICAgIG1heC13aWR0aDogODAlO1xyXG4gICAgaGVpZ2h0OiAyMHJlbTtcclxuICAgIG1heC1oZWlnaHQ6IDMwdmg7XHJcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1pb24tY29sb3ItcHJpbWFyeSk7XHJcbiAgICBtYXJnaW46IGF1dG87XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gIH1cclxuICBcclxuICAuaW1hZ2Uge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBoZWlnaHQ6IDEwMCU7XHJcbiAgICBvYmplY3QtZml0OiBjb3ZlcjtcclxuICB9XHJcbiAgICAiXX0= */";
+      __webpack_exports__["default"] = ".picker {\n  width: 30rem;\n  max-width: 80%;\n  height: 20rem;\n  max-height: 30vh;\n  border: 1px solid var(--ion-color-primary);\n  margin: auto;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.image {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n\n.alert-custom {\n  color: #99004d;\n  background-color: #f169b4;\n  border-color: #800040;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2F0YWdvcnkvY2F0YWdvcnkucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksWUFBQTtFQUNBLGNBQUE7RUFDQSxhQUFBO0VBQ0EsZ0JBQUE7RUFDQSwwQ0FBQTtFQUNBLFlBQUE7RUFDQSxhQUFBO0VBQ0EsdUJBQUE7RUFDQSxtQkFBQTtBQUNKOztBQUVFO0VBQ0UsV0FBQTtFQUNBLFlBQUE7RUFDQSxvQkFBQTtLQUFBLGlCQUFBO0FBQ0o7O0FBQ0c7RUFDQyxjQUFBO0VBQ0EseUJBQUE7RUFDQSxxQkFBQTtBQUVKIiwiZmlsZSI6InNyYy9hcHAvY2F0YWdvcnkvY2F0YWdvcnkucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnBpY2tlciB7XHJcbiAgICB3aWR0aDogMzByZW07XHJcbiAgICBtYXgtd2lkdGg6IDgwJTtcclxuICAgIGhlaWdodDogMjByZW07XHJcbiAgICBtYXgtaGVpZ2h0OiAzMHZoO1xyXG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xyXG4gICAgbWFyZ2luOiBhdXRvO1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICB9XHJcbiAgXHJcbiAgLmltYWdlIHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgaGVpZ2h0OiAxMDAlO1xyXG4gICAgb2JqZWN0LWZpdDogY292ZXI7XHJcbiAgfVxyXG4gICAuYWxlcnQtY3VzdG9tIHtcclxuICAgIGNvbG9yOiAjOTkwMDRkO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2YxNjliNDtcclxuICAgIGJvcmRlci1jb2xvcjogIzgwMDA0MDtcclxuICB9XHJcbiBcclxuXHJcbiAgICAiXX0= */";
       /***/
     },
 
@@ -234,6 +240,18 @@
       var _capacitor_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! @capacitor/core */
       "./node_modules/@capacitor/core/dist/esm/index.js");
+      /* harmony import */
+
+
+      var _common_bad_input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      /*! ../common/bad-input */
+      "./src/app/common/bad-input.ts");
+      /* harmony import */
+
+
+      var _common_not_found_error__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      /*! ../common/not-found-error */
+      "./src/app/common/not-found-error.ts");
 
       var CatagoryPage = /*#__PURE__*/function () {
         function CatagoryPage(fb, platform, CategoryService, alertController) {
@@ -245,6 +263,7 @@
           this.alertController = alertController;
           this.usePicker = false;
           this.regform = this.fb.group({});
+          this.editMode = false;
         }
 
         _createClass(CatagoryPage, [{
@@ -252,7 +271,7 @@
           value: function ngOnInit() {
             this.regform = this.fb.group({
               name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-              picture: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+              picture: [''],
               remark: ['']
             });
             this.getCategory();
@@ -267,7 +286,7 @@
             var _this = this;
 
             try {
-              this.CategoryService.getallCategorys().subscribe(function (result) {
+              this.CategoryService.getAllLookUpCategory().subscribe(function (result) {
                 if (result.length > 0) {
                   _this.ListOfCategory = result;
                   _this.filteredCategory = result;
@@ -370,13 +389,27 @@
         }, {
           key: "Save",
           value: function Save() {
+            var _this4 = this;
+
             this.regform.get('picture').setValue(this.base64textString);
 
             if (this.regform.valid) {
               if (!this.CatagoryId) {
-                this.CategoryService.create(this.regform.value);
+                this.CategoryService.create(this.regform.value).then(function () {
+                  return function (error) {
+                    if (error instanceof _common_bad_input__WEBPACK_IMPORTED_MODULE_6__["BadInput"]) {
+                      _this4.regform.setErrors(error.originalError);
+                    } else throw error;
+                  };
+                });
               } else {
-                this.CategoryService.updateCategory(this.regform.value, this.CatagoryId);
+                this.CategoryService.updateCategory(this.regform.value, this.CatagoryId).then(function () {
+                  return function (error) {
+                    if (error instanceof _common_bad_input__WEBPACK_IMPORTED_MODULE_6__["BadInput"]) {
+                      _this4.regform.setErrors(error.originalError);
+                    } else throw error;
+                  };
+                });
               }
 
               this.presentAlert();
@@ -391,13 +424,17 @@
         }, {
           key: "delete",
           value: function _delete(item, slidingItem) {
-            this.presentAlertConfirm(item);
+            this.presentAlertConfirm(item).then(function () {
+              return function (error) {
+                if (error instanceof _common_not_found_error__WEBPACK_IMPORTED_MODULE_7__["NotFoundError"]) alert('This post has already been deleted.');else throw error;
+              };
+            });
           }
         }, {
           key: "presentAlertConfirm",
           value: function presentAlertConfirm(item) {
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-              var _this4 = this;
+              var _this5 = this;
 
               var alert;
               return regeneratorRuntime.wrap(function _callee2$(_context2) {
@@ -407,7 +444,7 @@
                       _context2.next = 2;
                       return this.alertController.create({
                         header: 'Confirm!',
-                        message: '<strong>are you sure you want delete?</strong>',
+                        message: '<strong>Are you sure you want delete?</strong>',
                         buttons: [{
                           text: 'Cancel',
                           role: 'cancel',
@@ -418,11 +455,11 @@
                         }, {
                           text: 'OK',
                           handler: function handler() {
-                            _this4.CategoryService.removeCategory(item.id);
+                            _this5.CategoryService.removeCategory(item.id);
 
-                            _this4.regform.reset();
+                            _this5.regform.reset();
 
-                            _this4.CatagoryId = null;
+                            _this5.CatagoryId = null;
                           }
                         }]
                       });
@@ -454,7 +491,7 @@
                         cssClass: 'my-custom-class',
                         header: 'Error',
                         // subHeader: 'Subtitle',
-                        message: 'Pleas Enter All field.',
+                        message: 'Please Enter All field.',
                         buttons: ['OK']
                       });
 
@@ -505,6 +542,7 @@
         }, {
           key: "Edit",
           value: function Edit(item, slidingItem) {
+            this.editMode = true;
             this.CatagoryId = item.id;
             this.regform.get('name').setValue(item.name);
             this.regform.get('remark').setValue(item.remark);

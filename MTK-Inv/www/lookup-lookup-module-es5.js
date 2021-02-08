@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Lookup</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n \n    <ion-list>\n    <form [formGroup]=\"regform\">\n    <ion-item>\n      <ion-label position=\"floating\">name</ion-label>\n      <ion-input formControlName=\"name\"></ion-input>\n      <span *ngIf=\"!regform.get('name').valid && regform.get('name').touched\" > Enter Name </span> \n     </ion-item>\n    \n    <ion-item>\n      <ion-label position=\"floating\">value</ion-label>\n      <ion-input formControlName=\"value\"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Category</ion-label>\n      <ion-select  name=\"type\" interface=\"popover\" formControlName=\"type\">\n          <ion-select-option *ngFor=\"let code of listofcatagory\" value=\"{{code?.id}}\">\n               {{code?.name}}\n         </ion-select-option>\n      </ion-select>\n    </ion-item>\n    \n    <ion-item>\n      <ion-label>Remark</ion-label>\n      <ion-input formControlName=\"remark\"></ion-input>\n    </ion-item>\n    <ion-button expand=\"full\" (click)=\"Save()\"> Save </ion-button>\n  </form>\n  </ion-list>\n\n<!-- <ion-searchbar\n  (keyup)=\"filter($event)\"  showCancelButton=\"never\"></ion-searchbar> -->\n\n   <ion-item-sliding  *ngFor=\"let item of listoflookup \"   #slidingItem >\n    <ion-item detail>\n      <ion-label> {{item.name}}</ion-label>\n      <ion-label  style=\"text-align: end;\"> {{item.value}}</ion-label>\n    </ion-item>\n    <ion-item-options side=\"start\">\n      <ion-item-option color=\"danger\" (click)=\"Edit(item,slidingItem)\">\n     <ion-icon  name=\"create\" slot=\"icon-only\"></ion-icon></ion-item-option>\n     <ion-item-option color=\"danger\" (click)=\"delete(item,slidingItem)\">\n      <ion-icon  name=\"trash\" slot=\"icon-only\"></ion-icon></ion-item-option>\n    </ion-item-options>\n  </ion-item-sliding> \n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"primary\" > \n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Lookup</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n    <ion-list>\n    <form [formGroup]=\"regform\">\n    <ion-item>\n      <ion-label position=\"floating\">Name</ion-label>\n      <ion-input formControlName=\"name\" type=\"text\"></ion-input>\n      <div *ngIf=\"regform.get('name').invalid && (regform.get('name').dirty ||regform.get('name').touched)\"\n        class=\"alert alert-danger\"> \n        <div *ngIf=\"regform.get('name').errors.required\">This field is required!</div>\n      </div>\n        </ion-item>\n    <ion-item>\n      <ion-label position=\"floating\">Value</ion-label>\n      <ion-input formControlName=\"value\" type=\"number\"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Lookup Category</ion-label>\n      <ion-select  name=\"type\" interface=\"popover\" formControlName=\"type\"[(ngModel)]=\"SelectedLookup\" (ionChange)=\"SelectedValue($event)\">\n          <ion-select-option *ngFor=\"let code of listOfLookupCatagory\" value=\"{{code?.id}}\">\n               {{code?.name}}\n         </ion-select-option>\n      </ion-select>\n    </ion-item>\n    <ion-item>\n      <ion-label>Remark</ion-label>\n      <ion-textarea type=\"text\" formControlName=\"remark\" placeholder=\"Enter more information here...\"></ion-textarea>\n     </ion-item>\n    <div style=\"text-align: center; margin: auto;\">\n      <ion-button id=\"add items\" (click)=\"Save()\"> \n        <ion-icon slot=\"start\" name=\"add-circle-outline\"></ion-icon>\n        {{editMode?'Update Lookup':'Add Lookup'}}</ion-button>\n    </div>\n  </form>\n  </ion-list>\n <ion-searchbar\n  (keyup)=\"filter($event)\"  showCancelButton=\"never\"></ion-searchbar> \n   <ion-item-sliding  *ngFor=\"let item of filteredLookUp \" #slidingItem >\n    <ion-item detail>\n      <ion-label> {{item.name}}</ion-label>\n      <ion-label  style=\"text-align: end;\"> {{item.value}}</ion-label>\n    </ion-item>\n    <ion-item-options side=\"start\">\n      <ion-item-option color=\"danger\" (click)=\"Edit(item,slidingItem)\">\n     <ion-icon  name=\"create\" slot=\"icon-only\"></ion-icon></ion-item-option>\n     <ion-item-option color=\"danger\" (click)=\"delete(item,slidingItem)\">\n      <ion-icon  name=\"trash\" slot=\"icon-only\"></ion-icon></ion-item-option>\n    </ion-item-options>\n  </ion-item-sliding> \n</ion-content>\n";
       /***/
     },
 
@@ -207,27 +207,27 @@
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      var _Service_lookup_catagory_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! ./../Service/lookup-catagory.service */
+      "./src/app/Service/lookup-catagory.service.ts");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/core */
       "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
-      var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @angular/forms */
       "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
       /* harmony import */
 
 
-      var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @ionic/angular */
       "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
-      /* harmony import */
-
-
-      var _Service_catagory_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-      /*! ../Service/catagory.service */
-      "./src/app/Service/catagory.service.ts");
       /* harmony import */
 
 
@@ -236,26 +236,27 @@
       "./src/app/Service/lookup.service.ts");
 
       var LookupPage = /*#__PURE__*/function () {
-        function LookupPage(fb, catagoryService, lookupService, alertController) {
+        function LookupPage(fb, lookupService, alertController, lookupCatagoryService) {
           _classCallCheck(this, LookupPage);
 
           this.fb = fb;
-          this.catagoryService = catagoryService;
           this.lookupService = lookupService;
           this.alertController = alertController;
+          this.lookupCatagoryService = lookupCatagoryService;
           this.regform = this.fb.group({});
+          this.editMode = false;
         }
 
         _createClass(LookupPage, [{
           key: "ngOnInit",
           value: function ngOnInit() {
             this.regform = this.fb.group({
-              name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-              type: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+              name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].pattern("[a-zA-Z0-9]*")])],
+              type: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
               value: [''],
               remark: ['']
             });
-            this.allcatagory();
+            this.allLookupCatagory();
             this.readLookup();
           }
         }, {
@@ -263,17 +264,37 @@
           value: function readLookup() {
             var _this = this;
 
-            this.lookupService.getalllookup().subscribe(function (res) {
-              _this.listoflookup = res;
+            this.lookupService.getAllLookUp().subscribe(function (res) {
+              _this.listOflookUp = res;
             });
           }
         }, {
-          key: "allcatagory",
-          value: function allcatagory() {
+          key: "SelectedValue",
+          value: function SelectedValue($event) {
             var _this2 = this;
 
-            this.catagoryService.getallCategorys().subscribe(function (result) {
-              _this2.listofcatagory = result;
+            this.lookupService.getAllLookUp().subscribe(function (res) {
+              _this2.listOflookUp = res;
+              _this2.filteredLookUp = _this2.listOflookUp.filter(function (c) {
+                return c.type == $event.target.value;
+              });
+            });
+          }
+        }, {
+          key: "filter",
+          value: function filter(query) {
+            this.filteredLookUp = query.target.value ? this.listOflookUp.filter(function (p) {
+              return p.name.toLowerCase().includes(query.target.value.toLowerCase());
+            }) : this.listOflookUp;
+          }
+        }, {
+          key: "allLookupCatagory",
+          value: function allLookupCatagory() {
+            var _this3 = this;
+
+            this.lookupCatagoryService.getAllLookupCatagory().subscribe(function (result) {
+              _this3.listOfLookupCatagory = result;
+              _this3.SelectedLookup = _this3.listOfLookupCatagory[0].id;
             });
           }
         }, {
@@ -283,14 +304,14 @@
               if (!this.lookupId) {
                 this.lookupService.create(this.regform.value);
               } else {
-                this.lookupService.updatelookup(this.regform.value, this.lookupId);
+                this.lookupService.updateLookup(this.regform.value, this.lookupId);
               }
 
               this.regform.reset();
               this.lookupId = "";
               this.presentAlert("Save Sucessfully");
             } else {
-              this.presentAlert("plase enter all filds");
+              this.presentAlert("plase enter all fields");
             }
           }
         }, {
@@ -327,15 +348,66 @@
         }, {
           key: "Edit",
           value: function Edit(item, slidingItem) {
+            this.editMode = true;
             this.lookupId = item.id;
             this.regform.get("name").setValue(item.name);
             this.regform.get("type").setValue(item.type);
             this.regform.get("value").setValue(item.value);
             this.regform.get("remark").setValue(item.remark);
+            slidingItem.close();
           }
         }, {
           key: "delete",
-          value: function _delete(item, slidingItem) {}
+          value: function _delete(item, slidingItem) {
+            this.presentAlertConfirm(item);
+          }
+        }, {
+          key: "presentAlertConfirm",
+          value: function presentAlertConfirm(item) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+              var _this4 = this;
+
+              var alert;
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      _context2.next = 2;
+                      return this.alertController.create({
+                        header: 'Confirm!',
+                        message: '<strong>Are you sure you want delete?</strong>',
+                        buttons: [{
+                          text: 'Cancel',
+                          role: 'cancel',
+                          cssClass: 'secondary',
+                          handler: function handler(blah) {
+                            console.log('Confirm Cancel: blah');
+                          }
+                        }, {
+                          text: 'OK',
+                          handler: function handler() {
+                            _this4.lookupService.removeLookup(item.id);
+
+                            _this4.regform.reset();
+
+                            _this4.lookupId = null;
+                          }
+                        }]
+                      });
+
+                    case 2:
+                      alert = _context2.sent;
+                      _context2.next = 5;
+                      return alert.present();
+
+                    case 5:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+          }
         }]);
 
         return LookupPage;
@@ -343,17 +415,17 @@
 
       LookupPage.ctorParameters = function () {
         return [{
-          type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"]
-        }, {
-          type: _Service_catagory_service__WEBPACK_IMPORTED_MODULE_4__["CatagoryService"]
+          type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"]
         }, {
           type: _Service_lookup_service__WEBPACK_IMPORTED_MODULE_5__["LookupService"]
         }, {
-          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"]
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"]
+        }, {
+          type: _Service_lookup_catagory_service__WEBPACK_IMPORTED_MODULE_1__["LookupCatagoryService"]
         }];
       };
 
-      LookupPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      LookupPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
         selector: 'app-lookup',
         template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
         /*! raw-loader!./lookup.page.html */

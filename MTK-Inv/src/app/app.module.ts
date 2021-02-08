@@ -29,6 +29,9 @@ import {
 import { AppErrorHandler } from './common/app-error-handler';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ValidateDirective } from './validate-directive.directive';
+import { PapaParseModule } from 'ngx-papaparse';
+import { File } from '@ionic-native/file/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 @NgModule({
   declarations: [AppComponent, ValidateDirective],
   entryComponents: [],
@@ -54,14 +57,17 @@ import { ValidateDirective } from './validate-directive.directive';
     Ng2SearchPipeModule,
     DxDataGridModule,
     DxSelectBoxModule,
-    DxCheckBoxModule
+    DxCheckBoxModule,
+    PapaParseModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     PurchaseService,
-    { provide: ErrorHandler, useClass: AppErrorHandler }
+    { provide: ErrorHandler, useClass: AppErrorHandler },
+    File,
+    SocialSharing
   ],
   bootstrap: [AppComponent]
 })
