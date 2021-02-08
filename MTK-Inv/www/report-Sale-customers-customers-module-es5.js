@@ -222,15 +222,40 @@
       var src_app_Service_customer_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! src/app/Service/customer.service */
       "./src/app/Service/customer.service.ts");
+      /* harmony import */
+
+
+      var ngx_papaparse__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! ngx-papaparse */
+      "./node_modules/ngx-papaparse/__ivy_ngcc__/fesm2015/ngx-papaparse.js");
+      /* harmony import */
+
+
+      var _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! @ionic-native/file/ngx */
+      "./node_modules/@ionic-native/file/__ivy_ngcc__/ngx/index.js");
+      /* harmony import */
+
+
+      var _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      /*! @ionic-native/social-sharing/ngx */
+      "./node_modules/@ionic-native/social-sharing/__ivy_ngcc__/ngx/index.js");
 
       var CustomersPage = /*#__PURE__*/function () {
-        function CustomersPage(customerService, loadingController) {
+        function CustomersPage(customerService, loadingController, papa, platform, file, socialSharing) {
           _classCallCheck(this, CustomersPage);
 
           this.customerService = customerService;
           this.loadingController = loadingController;
+          this.papa = papa;
+          this.platform = platform;
+          this.file = file;
+          this.socialSharing = socialSharing;
           this.generateB = 0;
           this.generateList = true;
+          this.csvData = [];
+          this.headerRow = [];
+          this.loadCSV();
         }
 
         _createClass(CustomersPage, [{
@@ -239,16 +264,79 @@
             this.getCustomerList();
           }
         }, {
-          key: "getCustomerList",
-          value: function getCustomerList() {
+          key: "loadCSV",
+          value: function loadCSV() {
             var _this = this;
 
+            this.customerService.getAllCustomer().subscribe(function (data) {
+              return _this.extractData(JSON.stringify(data));
+            }, function (err) {
+              return console.log('something went wrong: ', err);
+            });
+          }
+        }, {
+          key: "extractData",
+          value: function extractData(res) {
+            var _this2 = this;
+
+            var csvData = res || '';
+            this.papa.parse(csvData, {
+              complete: function complete(parsedData) {
+                _this2.headerRow = parsedData.data.splice(0, 1)[0];
+                console.log("header -----------" + _this2.headerRow);
+                _this2.csvData = parsedData.data;
+                console.log("data list----" + _this2.csvData);
+              }
+            });
+          }
+        }, {
+          key: "exportCSV",
+          value: function exportCSV() {
+            var _this3 = this;
+
+            var csv = this.papa.unparse({
+              fields: this.headerRow,
+              data: this.csvData
+            });
+
+            if (this.platform.is('cordova')) {
+              this.file.writeFile(this.file.dataDirectory, 'data.csv', csv, {
+                replace: true
+              }).then(function (res) {
+                _this3.socialSharing.share(null, null, res.nativeURL, null).then(function (e) {// Success
+                })["catch"](function (e) {
+                  console.log('Share failed:', e);
+                });
+              }, function (err) {
+                console.log('Error: ', err);
+              });
+            } else {
+              // Dummy implementation for Desktop download purpose
+              var blob = new Blob([csv]);
+              var a = window.document.createElement('a');
+              a.href = window.URL.createObjectURL(blob);
+              a.download = 'newdata.csv';
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+            }
+          }
+        }, {
+          key: "trackByFn",
+          value: function trackByFn(index, item) {
+            return index;
+          }
+        }, {
+          key: "getCustomerList",
+          value: function getCustomerList() {
+            var _this4 = this;
+
             this.customerService.getAllCustomer().subscribe(function (res) {
-              if (_this.generateB == 0) {
-                _this.customerList = null;
+              if (_this4.generateB == 0) {
+                _this4.customerList = null;
               } else {
-                _this.customerList = res;
-                _this.generateList = false;
+                _this4.customerList = res;
+                _this4.generateList = false;
               }
             });
           }
@@ -264,7 +352,7 @@
           key: "presentLoading",
           value: function presentLoading() {
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-              var _this2 = this;
+              var _this5 = this;
 
               var loading;
               return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -275,19 +363,19 @@
                       return this.loadingController.create({
                         message: 'Please wait...'
                       }).then(function (overlay) {
-                        _this2.loading = overlay;
+                        _this5.loading = overlay;
 
-                        _this2.loading.present();
+                        _this5.loading.present();
                       });
 
                     case 2:
                       loading = _context.sent;
                       setTimeout(function () {
-                        _this2.loading.dismiss();
+                        _this5.loading.dismiss();
 
-                        _this2.generateB = 1;
+                        _this5.generateB = 1;
 
-                        _this2.getCustomerList();
+                        _this5.getCustomerList();
                       }, 4000);
 
                     case 4:
@@ -308,6 +396,14 @@
           type: src_app_Service_customer_service__WEBPACK_IMPORTED_MODULE_3__["CustomerService"]
         }, {
           type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"]
+        }, {
+          type: ngx_papaparse__WEBPACK_IMPORTED_MODULE_4__["Papa"]
+        }, {
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"]
+        }, {
+          type: _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_5__["File"]
+        }, {
+          type: _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_6__["SocialSharing"]
         }];
       };
 

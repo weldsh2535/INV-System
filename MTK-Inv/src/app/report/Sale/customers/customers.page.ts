@@ -6,6 +6,9 @@ import { Papa } from 'ngx-papaparse';
 import { Platform } from '@ionic/angular';
 import { File } from '@ionic-native/file/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import * as pdfMake from "pdfmake/build/pdfmake";
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+(<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.page.html',
@@ -33,17 +36,18 @@ export class CustomersPage implements OnInit {
   private loadCSV() {
     this.customerService.getAllCustomer()
       .subscribe(
-        data => this.extractData(data),
+        data =>  this.extractData(JSON.stringify(data)),
         err => console.log('something went wrong: ', err)
       );
   }
   private extractData(res) {
     let csvData = res || '';
-
     this.papa.parse(csvData, {
       complete: parsedData => {
         this.headerRow = parsedData.data.splice(0, 1)[0];
+        console.log("header -----------"+this.headerRow)
         this.csvData = parsedData.data;
+        console.log("data list----"+this.csvData)
       }
     });
   }

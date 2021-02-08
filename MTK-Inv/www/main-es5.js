@@ -1717,6 +1717,24 @@
       var _validate_directive_directive__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(
       /*! ./validate-directive.directive */
       "./src/app/validate-directive.directive.ts");
+      /* harmony import */
+
+
+      var ngx_papaparse__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(
+      /*! ngx-papaparse */
+      "./node_modules/ngx-papaparse/__ivy_ngcc__/fesm2015/ngx-papaparse.js");
+      /* harmony import */
+
+
+      var _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(
+      /*! @ionic-native/file/ngx */
+      "./node_modules/@ionic-native/file/__ivy_ngcc__/ngx/index.js");
+      /* harmony import */
+
+
+      var _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(
+      /*! @ionic-native/social-sharing/ngx */
+      "./node_modules/@ionic-native/social-sharing/__ivy_ngcc__/ngx/index.js");
 
       var AppModule = function AppModule() {
         _classCallCheck(this, AppModule);
@@ -1725,14 +1743,14 @@
       AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["NgModule"])({
         declarations: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"], _validate_directive_directive__WEBPACK_IMPORTED_MODULE_25__["ValidateDirective"]],
         entryComponents: [],
-        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_12__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_12__["ReactiveFormsModule"], angularfire2_database__WEBPACK_IMPORTED_MODULE_14__["AngularFireDatabaseModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["IonicModule"].forRoot(), angularfire2__WEBPACK_IMPORTED_MODULE_13__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_11__["environment"].firebase), angularfire2_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestoreModule"], _angular_fire_auth__WEBPACK_IMPORTED_MODULE_15__["AngularFireAuthModule"], angularfire2_database__WEBPACK_IMPORTED_MODULE_14__["AngularFireDatabaseModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_16__["NgbModule"], _syncfusion_ej2_angular_dropdowns__WEBPACK_IMPORTED_MODULE_17__["DropDownListModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_19__["BrowserAnimationsModule"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_20__["MatDialogModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"], ngx_toastr__WEBPACK_IMPORTED_MODULE_21__["ToastrModule"].forRoot(), devextreme_angular__WEBPACK_IMPORTED_MODULE_22__["DxLookupModule"], devextreme_angular__WEBPACK_IMPORTED_MODULE_22__["DxTemplateModule"], ng2_search_filter__WEBPACK_IMPORTED_MODULE_24__["Ng2SearchPipeModule"], devextreme_angular__WEBPACK_IMPORTED_MODULE_22__["DxDataGridModule"], devextreme_angular__WEBPACK_IMPORTED_MODULE_22__["DxSelectBoxModule"], devextreme_angular__WEBPACK_IMPORTED_MODULE_22__["DxCheckBoxModule"]],
+        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_12__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_12__["ReactiveFormsModule"], angularfire2_database__WEBPACK_IMPORTED_MODULE_14__["AngularFireDatabaseModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["IonicModule"].forRoot(), angularfire2__WEBPACK_IMPORTED_MODULE_13__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_11__["environment"].firebase), angularfire2_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestoreModule"], _angular_fire_auth__WEBPACK_IMPORTED_MODULE_15__["AngularFireAuthModule"], angularfire2_database__WEBPACK_IMPORTED_MODULE_14__["AngularFireDatabaseModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_16__["NgbModule"], _syncfusion_ej2_angular_dropdowns__WEBPACK_IMPORTED_MODULE_17__["DropDownListModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_19__["BrowserAnimationsModule"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_20__["MatDialogModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"], ngx_toastr__WEBPACK_IMPORTED_MODULE_21__["ToastrModule"].forRoot(), devextreme_angular__WEBPACK_IMPORTED_MODULE_22__["DxLookupModule"], devextreme_angular__WEBPACK_IMPORTED_MODULE_22__["DxTemplateModule"], ng2_search_filter__WEBPACK_IMPORTED_MODULE_24__["Ng2SearchPipeModule"], devextreme_angular__WEBPACK_IMPORTED_MODULE_22__["DxDataGridModule"], devextreme_angular__WEBPACK_IMPORTED_MODULE_22__["DxSelectBoxModule"], devextreme_angular__WEBPACK_IMPORTED_MODULE_22__["DxCheckBoxModule"], ngx_papaparse__WEBPACK_IMPORTED_MODULE_26__["PapaParseModule"]],
         providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_6__["SplashScreen"], {
           provide: _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouteReuseStrategy"],
           useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["IonicRouteStrategy"]
         }, _Service_purchase_service__WEBPACK_IMPORTED_MODULE_18__["PurchaseService"], {
           provide: _angular_core__WEBPACK_IMPORTED_MODULE_4__["ErrorHandler"],
           useClass: _common_app_error_handler__WEBPACK_IMPORTED_MODULE_23__["AppErrorHandler"]
-        }],
+        }, _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_27__["File"], _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_28__["SocialSharing"]],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"]]
       })], AppModule);
       /***/

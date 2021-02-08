@@ -119,19 +119,78 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
 /* harmony import */ var src_app_Service_customer_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/Service/customer.service */ "./src/app/Service/customer.service.ts");
+/* harmony import */ var ngx_papaparse__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-papaparse */ "./node_modules/ngx-papaparse/__ivy_ngcc__/fesm2015/ngx-papaparse.js");
+/* harmony import */ var _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/file/ngx */ "./node_modules/@ionic-native/file/__ivy_ngcc__/ngx/index.js");
+/* harmony import */ var _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/social-sharing/ngx */ "./node_modules/@ionic-native/social-sharing/__ivy_ngcc__/ngx/index.js");
+
+
+
+
 
 
 
 
 let CustomersPage = class CustomersPage {
-    constructor(customerService, loadingController) {
+    constructor(customerService, loadingController, papa, platform, file, socialSharing) {
         this.customerService = customerService;
         this.loadingController = loadingController;
+        this.papa = papa;
+        this.platform = platform;
+        this.file = file;
+        this.socialSharing = socialSharing;
         this.generateB = 0;
         this.generateList = true;
+        this.csvData = [];
+        this.headerRow = [];
+        this.loadCSV();
     }
     ngOnInit() {
         this.getCustomerList();
+    }
+    loadCSV() {
+        this.customerService.getAllCustomer()
+            .subscribe(data => this.extractData(JSON.stringify(data)), err => console.log('something went wrong: ', err));
+    }
+    extractData(res) {
+        let csvData = res || '';
+        this.papa.parse(csvData, {
+            complete: parsedData => {
+                this.headerRow = parsedData.data.splice(0, 1)[0];
+                console.log("header -----------" + this.headerRow);
+                this.csvData = parsedData.data;
+                console.log("data list----" + this.csvData);
+            }
+        });
+    }
+    exportCSV() {
+        let csv = this.papa.unparse({
+            fields: this.headerRow,
+            data: this.csvData
+        });
+        if (this.platform.is('cordova')) {
+            this.file.writeFile(this.file.dataDirectory, 'data.csv', csv, { replace: true }).then(res => {
+                this.socialSharing.share(null, null, res.nativeURL, null).then(e => {
+                    // Success
+                }).catch(e => {
+                    console.log('Share failed:', e);
+                });
+            }, err => {
+                console.log('Error: ', err);
+            });
+        }
+        else {
+            // Dummy implementation for Desktop download purpose
+            var blob = new Blob([csv]);
+            var a = window.document.createElement('a');
+            a.href = window.URL.createObjectURL(blob);
+            a.download = 'newdata.csv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    }
+    trackByFn(index, item) {
+        return index;
     }
     getCustomerList() {
         this.customerService.getAllCustomer().subscribe(res => {
@@ -167,7 +226,11 @@ let CustomersPage = class CustomersPage {
 };
 CustomersPage.ctorParameters = () => [
     { type: src_app_Service_customer_service__WEBPACK_IMPORTED_MODULE_3__["CustomerService"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"] }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"] },
+    { type: ngx_papaparse__WEBPACK_IMPORTED_MODULE_4__["Papa"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
+    { type: _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_5__["File"] },
+    { type: _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_6__["SocialSharing"] }
 ];
 CustomersPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

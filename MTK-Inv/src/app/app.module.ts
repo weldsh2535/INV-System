@@ -32,6 +32,7 @@ import { ValidateDirective } from './validate-directive.directive';
 import { PapaParseModule } from 'ngx-papaparse';
 import { File } from '@ionic-native/file/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
 @NgModule({
   declarations: [AppComponent, ValidateDirective],
   entryComponents: [],
@@ -59,6 +60,7 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
     DxSelectBoxModule,
     DxCheckBoxModule,
     PapaParseModule
+    
   ],
   providers: [
     StatusBar,
@@ -67,7 +69,7 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
     PurchaseService,
     { provide: ErrorHandler, useClass: AppErrorHandler },
     File,
-    SocialSharing
+    SocialSharing,FileOpener
   ],
   bootstrap: [AppComponent]
 })

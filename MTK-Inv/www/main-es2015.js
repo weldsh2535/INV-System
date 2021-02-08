@@ -1052,6 +1052,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_app_error_handler__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./common/app-error-handler */ "./src/app/common/app-error-handler.ts");
 /* harmony import */ var ng2_search_filter__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ng2-search-filter */ "./node_modules/ng2-search-filter/__ivy_ngcc__/ng2-search-filter.js");
 /* harmony import */ var _validate_directive_directive__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./validate-directive.directive */ "./src/app/validate-directive.directive.ts");
+/* harmony import */ var ngx_papaparse__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ngx-papaparse */ "./node_modules/ngx-papaparse/__ivy_ngcc__/fesm2015/ngx-papaparse.js");
+/* harmony import */ var _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @ionic-native/file/ngx */ "./node_modules/@ionic-native/file/__ivy_ngcc__/ngx/index.js");
+/* harmony import */ var _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @ionic-native/social-sharing/ngx */ "./node_modules/@ionic-native/social-sharing/__ivy_ngcc__/ngx/index.js");
+
+
+
 
 
 
@@ -1106,14 +1112,17 @@ AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
             ng2_search_filter__WEBPACK_IMPORTED_MODULE_24__["Ng2SearchPipeModule"],
             devextreme_angular__WEBPACK_IMPORTED_MODULE_22__["DxDataGridModule"],
             devextreme_angular__WEBPACK_IMPORTED_MODULE_22__["DxSelectBoxModule"],
-            devextreme_angular__WEBPACK_IMPORTED_MODULE_22__["DxCheckBoxModule"]
+            devextreme_angular__WEBPACK_IMPORTED_MODULE_22__["DxCheckBoxModule"],
+            ngx_papaparse__WEBPACK_IMPORTED_MODULE_26__["PapaParseModule"]
         ],
         providers: [
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__["StatusBar"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_6__["SplashScreen"],
             { provide: _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["IonicRouteStrategy"] },
             _Service_purchase_service__WEBPACK_IMPORTED_MODULE_18__["PurchaseService"],
-            { provide: _angular_core__WEBPACK_IMPORTED_MODULE_4__["ErrorHandler"], useClass: _common_app_error_handler__WEBPACK_IMPORTED_MODULE_23__["AppErrorHandler"] }
+            { provide: _angular_core__WEBPACK_IMPORTED_MODULE_4__["ErrorHandler"], useClass: _common_app_error_handler__WEBPACK_IMPORTED_MODULE_23__["AppErrorHandler"] },
+            _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_27__["File"],
+            _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_28__["SocialSharing"]
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"]]
     })
