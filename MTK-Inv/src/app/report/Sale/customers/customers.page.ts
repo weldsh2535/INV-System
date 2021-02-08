@@ -13,49 +13,102 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 })
 export class CustomersPage implements OnInit {
   customerList: Customer[];
-  generateB: number=0;
-  generateList:boolean=true;
+  generateB: number = 0;
+  generateList: boolean = true;
   private loading;
   csvData: any[] = [];
   headerRow: any[] = [];
-  constructor(private customerService:CustomerService,
+  constructor(private customerService: CustomerService,
     public loadingController: LoadingController,
-    private papa:Papa,private platform:Platform,
-    private file:File, private socialSharing:SocialSharing) { }
+    private papa: Papa, private platform: Platform,
+    private file: File,
+    private socialSharing: SocialSharing
+  ) {
+    this.loadCSV();
+  }
 
   ngOnInit() {
     this.getCustomerList();
   }
- getCustomerList(){
-   this.customerService.getAllCustomer().subscribe(res=>{
-     if(this.generateB==0){
-      this.customerList = null;
-     }
-     else
-     {
-      this.customerList = res;
-      this.generateList=false;
-     }
-    
-   });
- }
- filter(){
+  private loadCSV() {
+    this.customerService.getAllCustomer()
+      .subscribe(
+        data => this.extractData(data),
+        err => console.log('something went wrong: ', err)
+      );
+  }
+  private extractData(res) {
+    let csvData = res || '';
 
- }
- generate(){ 
-  this.presentLoading();
- }
- async presentLoading() {
-  const loading = await this.loadingController.create({
-    message: 'Please wait...'
-  }).then((overlay)=>{
-    this.loading =overlay
-    this.loading.present();
-  });
-setTimeout(()=>{
-this.loading.dismiss();
-this.generateB=1
-this.getCustomerList();
-},4000);
-}
+    this.papa.parse(csvData, {
+      complete: parsedData => {
+        this.headerRow = parsedData.data.splice(0, 1)[0];
+        this.csvData = parsedData.data;
+      }
+    });
+  }
+
+  exportCSV() {
+    let csv = this.papa.unparse({
+      fields: this.headerRow,
+      data: this.csvData
+    });
+
+    if (this.platform.is('cordova')) {
+      this.file.writeFile(this.file.dataDirectory, 'data.csv', csv, { replace: true }).then(res => {
+        this.socialSharing.share(null, null, res.nativeURL, null).then(e => {
+          // Success
+        }).catch(e => {
+          console.log('Share failed:', e)
+        });
+      }, err => {
+        console.log('Error: ', err);
+      });
+
+    } else {
+      // Dummy implementation for Desktop download purpose
+      var blob = new Blob([csv]);
+      var a = window.document.createElement('a');
+      a.href = window.URL.createObjectURL(blob);
+      a.download = 'newdata.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+  }
+
+  trackByFn(index: any, item: any) {
+    return index;
+  }
+  getCustomerList() {
+    this.customerService.getAllCustomer().subscribe(res => {
+      if (this.generateB == 0) {
+        this.customerList = null;
+      }
+      else {
+        this.customerList = res;
+        this.generateList = false;
+      }
+
+    });
+  }
+  filter() {
+
+  }
+  generate() {
+    this.presentLoading();
+  }
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Please wait...'
+    }).then((overlay) => {
+      this.loading = overlay
+      this.loading.present();
+    });
+    setTimeout(() => {
+      this.loading.dismiss();
+      this.generateB = 1
+      this.getCustomerList();
+    }, 4000);
+  }
 }
