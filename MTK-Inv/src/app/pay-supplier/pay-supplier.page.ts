@@ -53,6 +53,9 @@ export class PaySupplierPage implements OnInit {
     this.vonderService.getAllVendor().subscribe(res=>{
       this.listOfVonder=res;
      this.defaultSelectedCurrency = this.listOfVonder[0].id;
+     this.voucherService.getVocherByVendorID(this.defaultSelectedCurrency).subscribe(res=>{
+      this.listOfVoucher = res;
+    } ) 
    })
   }
   onKey(){
@@ -66,12 +69,6 @@ export class PaySupplierPage implements OnInit {
       this.selectedVendorBalance = this.filterVendor[0].balance;
       this.updateBalance = this.selectedVendorBalance;
       this. getVoucherByVendorId(this.defaultSelectedCurrency);
-  }
-  getVoucherById(){
-     this.voucherService.getVocherByVendorID(this.defaultSelectedCurrency).subscribe(res=>{
-       this.listOfVoucher = res;
-       //console.log(res)
-     } ) 
   }
   getVoucherByVendorId(defaultSelectedCurrency:string){
     this.totalBalance=0;

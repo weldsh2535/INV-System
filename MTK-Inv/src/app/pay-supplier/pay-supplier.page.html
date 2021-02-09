@@ -41,4 +41,31 @@
        </ion-button>
     </div>
   </form>
+  <table class="table table-hover">
+    <colgroup>
+      <col width="5%">
+      <col width="*">
+      <col width="10%">
+      <col width="15%">
+    </colgroup>
+    <thead>
+      <tr>
+        <th scope="col">Order Number</th>
+        <th scope="col">Date</th>
+        <th scope="col">Total</th>
+        <th scope="col">Balance</th>
+        <th scope="col">Payment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listOfVoucher;">
+        <td>{{item.vocherId}}</td>
+        <td>{{item.date}}</td>
+        <td>{{item.grandTotal}}</td>
+        <td>{{item.subTotal}}</td>
+        <td></td><!-- <ion-input formControlName="payment" ></ion-input> -->
+        
+      </tr>
+    </tbody>
+  </table>
 </ion-content>

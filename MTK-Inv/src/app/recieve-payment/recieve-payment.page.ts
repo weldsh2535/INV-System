@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormControl, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
-import { balance, Customer } from 'src/Tabels/tabels-list';
+import { balance, Customer, Vocher } from 'src/Tabels/tabels-list';
 import { CustomerService } from '../Service/customer.service';
 import { AppError } from "../common/app-error";
 import { BadInput } from "../common/bad-input";
@@ -23,7 +23,8 @@ export class RecievePaymentPage implements OnInit {
   listOfBalance: balance[];
   id: any;
   Balance: number;
-  listOfVoucher: import("c:/Users/dell/Documents/invoentry1/invoentry/MTK-Inv/src/Tabels/tabels-list").Vocher[];
+  listOfVoucher: Vocher[];
+  customerId: string;
   constructor(private fb: FormBuilder,
               private customerService:CustomerService,
               private alertController:AlertController,
@@ -36,6 +37,7 @@ export class RecievePaymentPage implements OnInit {
       updateBalance:0
     })
     this.getAllCustomerList();
+    //this.getVoucherById();
   }
   public fields: Object = { text: "phonenumber", value: "fullname" };
   public watermark2: string = "Select Customer";
@@ -51,13 +53,23 @@ export class RecievePaymentPage implements OnInit {
     this.customerService.getAllCustomer().subscribe(res=>{
       this.listOfCustomer=res;
      this.defaultSelectedCurrency = this.listOfCustomer[0].id;
+     this.customerId = this.defaultSelectedCurrency;
+     if(this.customerId!==null){
+      this.voucherService.getVocherByCustomerID(this.customerId).subscribe(res=>{
+        this.listOfVoucher = res;
+        //console.log(res)
+      } )
+    }
    })
   }
   getVoucherById(){
-     this.voucherService.getVocherByCustomerID(this.defaultSelectedCurrency).subscribe(res=>{
-       this.listOfVoucher = res;
-       //console.log(res)
-     } )
+    if(this.customerId!==null){
+      this.voucherService.getVocherByCustomerID(this.customerId).subscribe(res=>{
+        this.listOfVoucher = res;
+        //console.log(res)
+      } )
+    }
+   
   }
   onKey(){
     this.Balance= this.updateBalance-this.regform.get("payment").value;
@@ -69,12 +81,9 @@ export class RecievePaymentPage implements OnInit {
     this.filterCustomer = this.listOfCustomer.filter(c=>c.id == this.id);
       this.selectedCustomerBalance = this.filterCustomer[0].balance;
       this.updateBalance = this.selectedCustomerBalance;
+      this.customerId = this.filterCustomer[0].id;
   }
-  // getListBalance(){
-  //  this.balanceService.getBalanceById(this.defaultSelectedCurrency).subscribe(res=>{
-  //    this.listOfBalance=res;
-  //  })
-  // }
+  
   reCalculateBalance(){
     {
       if(this.regform.valid)
