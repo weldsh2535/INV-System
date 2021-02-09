@@ -723,5 +723,7 @@ export class VocherPage implements OnInit {
     // console.log('Sending: ',this.defaultSelectedCurrency);
     });
   }
- 
+  addItem(){
+    
+  }
 }

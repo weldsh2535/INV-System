@@ -11,18 +11,18 @@
     <ion-item>
       <ion-label>Date:</ion-label>
       <ion-datetime displayFormat="MM/DD/YYYY" formControlName="date" [min]="minDate" [max]="maxDate"
-        [(ngModel)]="currentDate" ></ion-datetime>
-        <small class="form-text text-muted" *ngIf="!regform.get('date').valid && 
+        [(ngModel)]="currentDate"></ion-datetime>
+      <small class="form-text text-muted" *ngIf="!regform.get('date').valid && 
         (regform.get('date').dirty ||regform.get('date').touched) "> This field is required!</small>
       <label style="margin-left: 20px">Voucher No:{{VocherNo}}</label>
     </ion-item>
     <ion-item>
       <ion-label *ngIf="FromStore">From Store </ion-label>
       <div class="dx-field">
-        <dx-lookup style="border: none;font: 400 16px Arial;" [items]="listofStore" *ngIf="FromStore" [(ngModel)]="defaultSelectedFromStored"
-           valueExpr="id"
-          [displayExpr]="getDisplayStore" placeholder="Select Store" formControlName="fromStore"
-          (onValueChanged)="SelectedFromStoreValue($event)" itemTemplate="listofStore" >
+        <dx-lookup style="border: none;font: 400 16px Arial;" [items]="listofStore" *ngIf="FromStore"
+          [(ngModel)]="defaultSelectedFromStored" valueExpr="id" [displayExpr]="getDisplayStore"
+          placeholder="Select Store" formControlName="fromStore" (onValueChanged)="SelectedFromStoreValue($event)"
+          itemTemplate="listofStore">
           <dxo-drop-down-options title="Select Store"></dxo-drop-down-options>
           <div *dxTemplate="let item of 'listofStore'">
             <div class="custom-item">
@@ -30,13 +30,13 @@
             </div>
           </div>
         </dx-lookup>
-       </div>
+      </div>
       <ion-label *ngIf="ToStore">To Store </ion-label>
       <div class="dx-field">
-        <dx-lookup style="border: none;font: 400 16px Arial;" [items]="listofStore" *ngIf="ToStore" [(ngModel)]="defaultSelectedToStored"
-           valueExpr="id"
-          [displayExpr]="getDisplayStore" placeholder="Select Store" formControlName="toStore"
-          (onValueChanged)="SelectedToStoreValue($event)" itemTemplate="listofStore" >
+        <dx-lookup style="border: none;font: 400 16px Arial;" [items]="listofStore" *ngIf="ToStore"
+          [(ngModel)]="defaultSelectedToStored" valueExpr="id" [displayExpr]="getDisplayStore"
+          placeholder="Select Store" formControlName="toStore" (onValueChanged)="SelectedToStoreValue($event)"
+          itemTemplate="listofStore">
           <dxo-drop-down-options title="Select Store"></dxo-drop-down-options>
           <div *dxTemplate="let item of 'listofStore'">
             <div class="custom-item">
@@ -52,7 +52,7 @@
         <dx-lookup style="border: none;font: 400 16px Arial;" [items]="listOfVendor"
           [searchExpr]="['id','vendorName','contact', 'phonenumber','address']" valueExpr="id"
           [displayExpr]="getDisplayVendor" placeholder="Select Vendor" formControlName="vendor"
-          (onValueChanged)="SelectedVendorValue($event)" itemTemplate="listOfVendor" >
+          (onValueChanged)="SelectedVendorValue($event)" itemTemplate="listOfVendor">
           <dxo-drop-down-options title="Select vendors"></dxo-drop-down-options>
           <div *dxTemplate="let item of 'listOfVendor'">
             <div class="custom-item">
@@ -60,16 +60,17 @@
             </div>
           </div>
         </dx-lookup>
-         </div>
+      </div>
     </ion-item>
     <div class="form-group">
-    <div id="SelectedBalance"class="input-group mb-6" *ngIf="vendorsBalance">
-       <span class="input-group-text1">Balance </span>
-        <ion-input [(ngModel)]="vendorBalance" formControlName="vendorBalance" value="{{vendorBalance}}"required readonly>
+      <div id="SelectedBalance" class="input-group mb-6" *ngIf="vendorsBalance">
+        <span class="input-group-text1">Balance </span>
+        <ion-input [(ngModel)]="vendorBalance" formControlName="vendorBalance" value="{{vendorBalance}}" required
+          readonly>
         </ion-input>
         <!-- <ion-label *ngIf="grandTotalVendorLabel">Grand Total : {{grandTotalVendor}}</ion-label> -->
       </div>
-  </div>
+    </div>
     <ion-item *ngIf="customers">
       <ion-label>Customer</ion-label>
       <div class="dx-field">
@@ -87,11 +88,12 @@
       </div>
     </ion-item>
     <div class="form-group">
-    <div id="SelectedBalance" class="input-group mb-6" *ngIf="customerBalance">
-      <span class="input-group-text1">Balance </span>
-        <ion-input [(ngModel)]="updateBalance" formControlName="updateBalance" value="{{selectedCustomerBalance}}" readonly>
+      <div id="SelectedBalance" class="input-group mb-6" *ngIf="customerBalance">
+        <span class="input-group-text1">Balance </span>
+        <ion-input [(ngModel)]="updateBalance" formControlName="updateBalance" value="{{selectedCustomerBalance}}"
+          readonly>
         </ion-input>
-    </div>
+      </div>
     </div>
     <ion-card-content class="item-seleted">
       <div class="form-group">
@@ -100,19 +102,42 @@
           <div class="dx-field">
             <dx-lookup [items]="listofItems" [searchExpr]="['id','name','discrption', 'picture']" valueExpr="id"
               [displayExpr]="getDisplayExpr" placeholder="Select Items" formControlName="item"
-              (onValueChanged)="valueChanged($event)" itemTemplate="listofItems">
-              <dxo-drop-down-options title="Select Items"></dxo-drop-down-options>
+              (onValueChanged)="valueChanged($event)" itemTemplate="listofItems" (click)="addItem()"
+              >
+              <dxo-drop-down-options title="Select Item" (click)="addItem()"></dxo-drop-down-options>
               <div *dxTemplate="let item of 'listofItems'">
                 <div class="custom-item">
                   <img src="{{item.picture}}" />
-                  <div style=" white-space: nowrap;overflow: hidden; text-overflow: ellipsis;">{{item.discrption }} {{item.name }} </div>
-                  <div class="dx-fieldset">button</div>
+                  <div style=" white-space: nowrap;overflow: hidden; text-overflow: ellipsis;">{{item.discrption }}
+                    {{item.name }} </div>
                 </div>
-              </div>
-            </dx-lookup>
+                </div>
+                <div class="custom-item">
+                  <div class="dx-toolbar dx-widget dx-visibility-change-handler dx-collection dx-popup-bottom dx-popup-cancel"
+                  role="toolbar">
+                    <div class="dx-toolbar-items-container">
+                      <div class="dx-toolbar-before"></div>
+                      <div class="dx-item dx-toolbar-item dx-toolbar-button">
+                        <div class="dx-item-content dx-toolbar-item-content">
+                          <div
+                            class="dx-popup-cancel dx-button dx-button-normal dx-button-mode-contained dx-widget dx-button-has-text"
+                            aria-label="Cancel" role="button">
+                            <div class="dx-button-content">
+                              <span class="dx-button-text">Add items</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+             
+               
+              </dx-lookup>
             <small class="form-text text-muted" *ngIf="!regform.get('item').valid && 
                   (regform.get('item').dirty ||regform.get('item').touched) "> This field is required!</small>
           </div>
+      
           <div *ngIf="SelectedDiv">
             <div class="selected" *ngFor="let code of linename">
               <div class="row">
@@ -145,11 +170,11 @@
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text">Quantity</span>
-          <ion-input class="input-field" type="number" [(ngModel)]="Quantity"value="{{Quantity}}" formControlName="Quantity"
-            placeholder="Quantity" [class.is-invalid]="!isValid && Quantity==0"></ion-input>
+          <ion-input class="input-field" type="number" [(ngModel)]="Quantity" value="{{Quantity}}"
+            formControlName="Quantity" placeholder="Quantity" [class.is-invalid]="!isValid && Quantity==0"></ion-input>
           <span class="input-group-text">Price</span>
-          <ion-input class="input-field" type="number" value="{{Price}}" formControlName="Price" [class.is-invalid]="!isValid && Price==0"readonly
-            placeholder="Price"></ion-input>
+          <ion-input class="input-field" type="number" value="{{Price}}" formControlName="Price"
+            [class.is-invalid]="!isValid && Price==0" readonly placeholder="Price"></ion-input>
           <ion-fab-button id="add items" (click)="Save()">
             <ion-icon name="add"></ion-icon>
           </ion-fab-button>
