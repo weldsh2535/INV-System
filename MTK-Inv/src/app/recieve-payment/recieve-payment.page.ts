@@ -53,10 +53,13 @@ export class RecievePaymentPage implements OnInit {
     this.customerService.getAllCustomer().subscribe(res=>{
       this.listOfCustomer=res;
      this.defaultSelectedCurrency = this.listOfCustomer[0].id;
-      this.voucherService.getVocherByCustomerID(this.defaultSelectedCurrency).subscribe(res=>{
+     this.customerId = this.defaultSelectedCurrency;
+     if(this.customerId!==null){
+      this.voucherService.getVocherByCustomerID(this.customerId).subscribe(res=>{
         this.listOfVoucher = res;
         //console.log(res)
       } )
+    }
    })
   }
   getVoucherById(){
