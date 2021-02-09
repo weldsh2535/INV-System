@@ -62,9 +62,9 @@ export class RecievePaymentPage implements OnInit {
     }
    })
   }
-  getVoucherById(){
+  getVoucherById(customerId:string){
     if(this.customerId!==null){
-      this.voucherService.getVocherByCustomerID(this.customerId).subscribe(res=>{
+      this.voucherService.getVocherByCustomerID(customerId).subscribe(res=>{
         this.listOfVoucher = res;
         //console.log(res)
       } )
@@ -82,6 +82,7 @@ export class RecievePaymentPage implements OnInit {
       this.selectedCustomerBalance = this.filterCustomer[0].balance;
       this.updateBalance = this.selectedCustomerBalance;
       this.customerId = this.filterCustomer[0].id;
+      this.getVoucherById(this.customerId);
   }
   
   reCalculateBalance(){
