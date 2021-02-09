@@ -119,18 +119,27 @@ export class CustomersPage implements OnInit {
   }
   createPdf(){
     const docDefinition ={
-       watermark:{text:'customer list report',color:'blur', opacity:0.2.toString,bold:true},
+       watermark:{text:'customer list report',pageBreak: 'before',color:'blur', opacity:0.2.toString,bold:true},
        content:[
-         {
-         columns:[]
-       },
-       {text:'REMINDER',style:'header'},
-       {
-         columns:[{
-           width:'50',
-           text: this.customerList[0].fullname
-         }]
-       },
+        {text: 'Customer list', style: 'header'},
+        'Official documentation is in progress, this document is just a glimpse of what is possible with pdfmake and its layout engine.',
+        {
+          style: 'tableStyle',
+        table: {
+          widths: [200, 'auto', 'auto'],
+          headerRows: 2,
+          // keepWithHeaderRows: 1,
+          body: [
+            [{text: 'Header with Colspan = 2', style: 'tableHeader', colSpan: 2, alignment: 'center'}, {}, {text: 'Header 3', style: 'tableHeader', alignment: 'center'}],
+            [{text: 'Header 1', style: 'tableHeader', alignment: 'center'}, {text: 'Header 2', style: 'tableHeader', alignment: 'center'}, {text: 'Header 3', style: 'tableHeader', alignment: 'center'}],
+            ['Sample value 1', 'Sample value 2', 'Sample value 3'],
+            [{rowSpan: 3, text: 'rowSpan set to 3\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor'}, 'Sample value 2', 'Sample value 3'],
+            ['', 'Sample value 2', 'Sample value 3'],
+            ['Sample value 1', 'Sample value 2', 'Sample value 3'],
+            ['Sample value 1', {colSpan: 2, rowSpan: 2, text: 'Both:\nrowSpan and colSpan\ncan be defined at the same time'}, ''],
+            ['Sample value 1', '', ''],
+          ]
+        }}
       ],
        style:{
          header:{
@@ -138,6 +147,9 @@ export class CustomersPage implements OnInit {
          },
          subheader:{
            fontSize:15,bold:true,margin:[0,15,0,0]
+         },
+         tableStyle:{
+            fontSize:15,bold:true,margin:[0,15,0,0]
          }
        }
     }

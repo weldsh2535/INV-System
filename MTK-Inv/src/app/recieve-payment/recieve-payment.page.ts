@@ -51,7 +51,7 @@ export class RecievePaymentPage implements OnInit {
    })
   }
   onKey(){
-    this.Balance= this.updateBalance+this.regform.get("payment").value;
+    this.Balance= this.updateBalance-this.regform.get("payment").value;
      }
   SelectedValue($event){
     const newValue = $event.value;
@@ -76,7 +76,7 @@ export class RecievePaymentPage implements OnInit {
             fullname:this.filterCustomer[0].fullname,
             phonenumber:this.filterCustomer[0].phonenumber,
             location:this.filterCustomer[0].location,
-            balance:+this.updateBalance+this.regform.get("payment").value,
+            balance:this.updateBalance-this.regform.get("payment").value,
             address:this.filterCustomer[0].address
            }
            this.customerService.updateCustomer(updateCustomerData,this.defaultSelectedCurrency).then(
