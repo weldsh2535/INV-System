@@ -6,6 +6,7 @@ import { CustomerService } from '../Service/customer.service';
 import { AppError } from "../common/app-error";
 import { BadInput } from "../common/bad-input";
 import { BalanceService } from '../Service/balance.service';
+import { VocherService } from '../Service/vocher.service';
 @Component({
   selector: 'app-recieve-payment',
   templateUrl: './recieve-payment.page.html',
@@ -22,10 +23,12 @@ export class RecievePaymentPage implements OnInit {
   listOfBalance: balance[];
   id: any;
   Balance: number;
+  listOfVoucher: import("c:/Users/dell/Documents/invoentry1/invoentry/MTK-Inv/src/Tabels/tabels-list").Vocher[];
   constructor(private fb: FormBuilder,
               private customerService:CustomerService,
               private alertController:AlertController,
-              private balanceService:BalanceService) { }
+              private balanceService:BalanceService,
+              private voucherService:VocherService) { }
   ngOnInit() {
     this.regform=this.fb.group({
       customer:["" ,Validators.required],
@@ -49,6 +52,12 @@ export class RecievePaymentPage implements OnInit {
       this.listOfCustomer=res;
      this.defaultSelectedCurrency = this.listOfCustomer[0].id;
    })
+  }
+  getVoucherById(){
+     this.voucherService.getVocherByCustomerID(this.defaultSelectedCurrency).subscribe(res=>{
+       this.listOfVoucher = res;
+       //console.log(res)
+     } )
   }
   onKey(){
     this.Balance= this.updateBalance-this.regform.get("payment").value;

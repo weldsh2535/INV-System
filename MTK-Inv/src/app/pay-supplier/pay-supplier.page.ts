@@ -67,6 +67,12 @@ export class PaySupplierPage implements OnInit {
       this.updateBalance = this.selectedVendorBalance;
       this. getVoucherByVendorId(this.defaultSelectedCurrency);
   }
+  getVoucherById(){
+     this.voucherService.getVocherByVendorID(this.defaultSelectedCurrency).subscribe(res=>{
+       this.listOfVoucher = res;
+       //console.log(res)
+     } ) 
+  }
   getVoucherByVendorId(defaultSelectedCurrency:string){
     this.totalBalance=0;
     this.listOfVoucherVendor = this.voucherService.getVocherVonderById(defaultSelectedCurrency).subscribe(res=>{
