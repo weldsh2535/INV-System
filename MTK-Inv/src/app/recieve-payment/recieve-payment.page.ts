@@ -25,6 +25,7 @@ export class RecievePaymentPage implements OnInit {
   Balance: number;
   listOfVoucher: Vocher[];
   customerId: string;
+  totalBalance: number;
   constructor(private fb: FormBuilder,
               private customerService:CustomerService,
               private alertController:AlertController,
@@ -63,10 +64,13 @@ export class RecievePaymentPage implements OnInit {
    })
   }
   getVoucherById(customerId:string){
+    this.totalBalance=0;
     if(this.customerId!==null){
       this.voucherService.getVocherByCustomerID(customerId).subscribe(res=>{
         this.listOfVoucher = res;
-        
+        this.listOfVoucher.forEach(element => {
+          this.totalBalance=+this.totalBalance+element.subTotal
+         });
         //console.log(res)
       } )
     }
