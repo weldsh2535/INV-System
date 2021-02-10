@@ -77,7 +77,7 @@ export class RecievePaymentPage implements OnInit {
    
   }
   onKey(){
-    this.Balance= this.updateBalance-this.regform.get("payment").value;
+    this.Balance= this.updateBalance + this.totalBalance - this.regform.get("payment").value;
      }
   SelectedValue($event){
     const newValue = $event.value;
