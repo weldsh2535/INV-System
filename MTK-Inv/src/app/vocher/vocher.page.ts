@@ -597,6 +597,7 @@ export class VocherPage implements OnInit {
       vocherTypeId: this.prefix, //(lookup)
       userId: this.regform.get("customer").value,
       vendor:this.regform.get("vendor").value,
+      PaymentStatus:'Unpaid',
     };
   this.getUpdateBalance();
   if (this.VocherNo||this.regform.valid) {

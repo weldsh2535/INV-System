@@ -105,6 +105,7 @@ export class Vocher {
     vocherTypeId: string//(lookup)
     vendor: string
     userId: string
+    PaymentStatus:string
 }
 export class balance {
     id: string
