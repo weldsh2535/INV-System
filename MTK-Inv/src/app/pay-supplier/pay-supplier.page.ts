@@ -28,7 +28,7 @@ export class PaySupplierPage implements OnInit {
   payment:number
   Balance: number;
   balance: number;
-  payment: number = 0; checkedItems = [];
+ checkedItems = [];
   constructor(private fb: FormBuilder,
               private vonderService:VendorsService,
               private alertController:AlertController,private voucherService:VocherService) { }
@@ -81,6 +81,8 @@ export class PaySupplierPage implements OnInit {
     this.id = newValue || previousValue;
     this.filterVendor = this.listOfVonder.filter((c)=>c.id == this.id);
       this.selectedVendorBalance = this.filterVendor[0].balance;
+      this.checkedItems.splice(0);
+      this.payment=0;
       this.updateBalance = this.selectedVendorBalance;
      this. getVoucherByVendorId(this.defaultSelectedCurrency);
   }
