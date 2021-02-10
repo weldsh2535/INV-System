@@ -103,7 +103,7 @@ export class PaySupplierPage implements OnInit {
             email:this.filterVendor[0].email,
             phonenumber:this.filterVendor[0].phonenumber,
             contact:this.filterVendor[0].contact,
-            balance:this.updateBalance+this.regform.get("payment").value,
+            balance:this.balance+this.regform.get("payment").value,
             address:this.filterVendor[0].address,
             website:this.filterVendor[0].website
            }
