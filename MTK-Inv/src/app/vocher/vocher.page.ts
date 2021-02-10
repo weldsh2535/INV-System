@@ -136,6 +136,7 @@ export class VocherPage implements OnInit {
   vendorB: number;
   fromStoreValue: Lookup[];
   toStoreValue: Lookup[];
+  paymentStatus: string;
   constructor(
     private fb: FormBuilder,
     private lookupService: LookupService,
@@ -588,6 +589,12 @@ export class VocherPage implements OnInit {
         this.voucherTranationService.create(this.vocherTransation);  
     });
      //to insert data in voucher table 
+     if(this.paid == null||this.paid==0){
+       this.paymentStatus = "Unpaid" 
+     }
+     else{
+       this.paymentStatus = "paid"
+     }
      let voucher = {
       vocherId: this.VocherNo,
       subTotal: this.SubTotal,
@@ -597,7 +604,7 @@ export class VocherPage implements OnInit {
       vocherTypeId: this.prefix, //(lookup)
       userId: this.regform.get("customer").value,
       vendor:this.regform.get("vendor").value,
-      PaymentStatus:'Unpaid',
+      PaymentStatus:this.paymentStatus,
     };
   this.getUpdateBalance();
   if (this.VocherNo||this.regform.valid) {
