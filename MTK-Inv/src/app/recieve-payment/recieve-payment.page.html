@@ -29,8 +29,8 @@
       <ion-input [(ngModel)]="balance" formControlName="updateBalance" value="{{balance}}" readonly></ion-input>
    </ion-item>
   <ion-item>
-    <ion-label  position="floating" >Enter Payment </ion-label>
-      <ion-input type="number" formControlName="payment" aria-placeholder="Enter payment" (keyup)="onKey()"></ion-input>
+    <ion-label  >Payment </ion-label>
+      <ion-input type="number"[(ngModel)]="payment" formControlName="payment" aria-placeholder="Enter payment" (keyup)="onKey()"></ion-input>
       <small class="form-text text-muted" *ngIf="!regform.get('payment').valid && regform.get('payment').touched" > This field is required! </small> 
   </ion-item>
   <div style="text-align: center; margin: auto;">
@@ -55,7 +55,7 @@
         <th scope="col">Date</th>
         <th scope="col">Total</th>
         <th scope="col">Balance</th>
-        <th scope="col">Payment</th>
+        <!-- <th scope="col">Payment</th> -->
       </tr>
     </thead>
     <tbody>
@@ -65,7 +65,8 @@
         <td>{{item.date}}</td>
         <td>{{item.grandTotal}}</td>
         <td>{{item.subTotal}}</td>
-        <td>{{this.payment}}</td>  
+        <!-- <td *ngIf="selectIndex">
+          {{this.payment}}</td>   -->
       </tr>
     </tbody>
   </table>
