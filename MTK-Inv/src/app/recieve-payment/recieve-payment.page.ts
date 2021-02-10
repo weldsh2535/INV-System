@@ -26,6 +26,7 @@ export class RecievePaymentPage implements OnInit {
   listOfVoucher: Vocher[];
   customerId: string;
   totalBalance: number;
+  balance: number;
   constructor(private fb: FormBuilder,
               private customerService:CustomerService,
               private alertController:AlertController,
@@ -71,6 +72,7 @@ export class RecievePaymentPage implements OnInit {
         this.listOfVoucher = res;
         this.listOfVoucher.forEach(element => {
           this.totalBalance=+this.totalBalance+element.subTotal
+          this.balance = this.totalBalance+this.updateBalance;
          });
         //console.log(res)
       } )
