@@ -58,6 +58,7 @@ export class RecievePaymentPage implements OnInit {
      if(this.customerId!==null){
       this.voucherService.getVocherByCustomerID(this.customerId).subscribe(res=>{
         this.listOfVoucher = res;
+       
       // console.log(res.length)
       } )
     }
