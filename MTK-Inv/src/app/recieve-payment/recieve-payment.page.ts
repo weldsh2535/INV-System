@@ -27,6 +27,7 @@ export class RecievePaymentPage implements OnInit {
   customerId: string;
   totalBalance: number;
   balance: number;
+  payment:number;
   constructor(private fb: FormBuilder,
               private customerService:CustomerService,
               private alertController:AlertController,
