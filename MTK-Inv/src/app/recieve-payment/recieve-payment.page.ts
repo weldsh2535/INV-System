@@ -59,21 +59,24 @@ export class RecievePaymentPage implements OnInit {
      if(this.customerId!==null){
       this.voucherService.getVocherByCustomerID(this.customerId).subscribe(res=>{
         this.listOfVoucher = res;
-       
-      // console.log(res.length)
       } )
     }
    })
   }
   getVoucherById(customerId:string){
-    this.totalBalance=0;
+    this.totalBalance=0;this.balance=0;
     if(this.customerId!==null){
       this.voucherService.getVocherByCustomerID(customerId).subscribe(res=>{
         this.listOfVoucher = res;
-        this.listOfVoucher.forEach(element => {
-          this.totalBalance=+this.totalBalance+element.subTotal
-          this.balance = this.totalBalance+this.updateBalance;
-         });
+        if(res.length==0){
+          this.balance = this.updateBalance;
+        }
+        else{
+          this.listOfVoucher.forEach(element => {
+            this.totalBalance = +this.totalBalance + element.subTotal
+            this.balance = this.totalBalance+this.updateBalance;
+           });
+        }
         //console.log(res)
       } )
     }

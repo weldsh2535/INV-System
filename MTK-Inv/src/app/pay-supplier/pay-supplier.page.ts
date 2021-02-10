@@ -27,6 +27,7 @@ export class PaySupplierPage implements OnInit {
   id: any;
   payment:number
   Balance: number;
+  balance: number;
   constructor(private fb: FormBuilder,
               private vonderService:VendorsService,
               private alertController:AlertController,private voucherService:VocherService) { }
@@ -71,18 +72,24 @@ export class PaySupplierPage implements OnInit {
      this. getVoucherByVendorId(this.defaultSelectedCurrency);
   }
   getVoucherByVendorId(defaultSelectedCurrency:string){
-    this.totalBalance=0;
+    this.totalBalance=0;this.balance=0;
     this.listOfVoucherVendor = this.voucherService.getVocherVonderById(defaultSelectedCurrency).subscribe(res=>{
       this.listOfVoucher=res;
+     if(res.length==0){
+       this.balance = this.updateBalance;
+     }
+     else{
       this.listOfVoucher.forEach(element => {
-       this.totalBalance=+this.totalBalance+element.subTotal
-      });
-    if(this.updateBalance>this.totalBalance){
-      this.remainderBalance=0
-    }
-    else{
-      this.remainderBalance=this.totalBalance-this.updateBalance
-    }
+        this.totalBalance=+this.totalBalance+element.subTotal
+        this.balance = this.totalBalance+this.updateBalance;
+       });
+     } 
+    // if(this.updateBalance>this.totalBalance){
+    //   this.remainderBalance=0
+    // }
+    // else{
+    //   this.remainderBalance=this.totalBalance-this.updateBalance
+    // }
     })
   }
   reCalculateBalance(){
