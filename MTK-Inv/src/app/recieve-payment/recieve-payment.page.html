@@ -60,7 +60,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of listOfVoucher;let i = index">
-        <td>    <ion-checkbox color="secondary" value="item" (click)="onChange(item)" name="item"></ion-checkbox></td>
+        <td><ion-checkbox color="secondary" value="item" (click)="onChange(item)" name="item"></ion-checkbox></td>
         <td>{{item.vocherId}}</td>
         <td>{{item.date}}</td>
         <td>{{item.grandTotal}}</td>

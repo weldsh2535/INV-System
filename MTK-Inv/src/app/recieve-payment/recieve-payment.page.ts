@@ -50,7 +50,7 @@ export class RecievePaymentPage implements OnInit {
       this.checkedItems = this.checkedItems.filter((value)=>value!=item);
      } else {
       this.checkedItems.push(item)
-      this.balance = item.subTotal;
+      this.payment = item.subTotal;
     }
   }
   getDisplayExpr(item) {
