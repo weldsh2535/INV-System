@@ -31,7 +31,6 @@ export class RecievePaymentPage implements OnInit {
   constructor(private fb: FormBuilder,
               private customerService:CustomerService,
               private alertController:AlertController,
-              private balanceService:BalanceService,
               private voucherService:VocherService) { }
   ngOnInit() {
     this.regform=this.fb.group({
@@ -52,6 +51,9 @@ export class RecievePaymentPage implements OnInit {
       this.checkedItems.push(item)
       this.payment = item.subTotal;
     }
+  }
+  onChangeValue(item){
+  this.payment=item.value;
   }
   getDisplayExpr(item) {
     if (!item) {
