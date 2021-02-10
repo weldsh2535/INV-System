@@ -62,7 +62,7 @@
         <td>{{item.date}}</td>
         <td>{{item.grandTotal}}</td>
         <td>{{item.subTotal}}</td>
-        <td><ion-input type="number" formControlName="payment" [(ngModel)]="payment" ></ion-input></td>  
+        <td (click)="onKey()"><ion-input type="number" formControlName="payment" [(ngModel)]="payment" ></ion-input></td>  
       </tr>
     </tbody>
   </table>
