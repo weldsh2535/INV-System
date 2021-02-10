@@ -44,21 +44,17 @@ export class RecievePaymentPage implements OnInit {
   public fields: Object = { text: "phonenumber", value: "fullname" };
   public watermark2: string = "Select Customer";
   public height: string = "250px";
-  onChange(item, index) {
+  onChange(item) {
     if (this.checkedItems.includes(item)) {
       this.checkedItems = this.checkedItems.filter((value) => value != item);
     }
     else {
       this.checkedItems.push(item)
-      this.checkedItems.forEach(list => {
-        this.payment = this.payment + list.subTotal;
-      })
-      // console.log(this.checkedItems);
-      // this.payment =this.payment+item.subTotal;
     }
+    this.payment=0;
     this.checkedItems.forEach(list => {
-      this.payment = this.payment + list.subTotal;
-    });
+      this.payment = +this.payment + list.subTotal;
+    })
   }
 
   getDisplayExpr(item) {
