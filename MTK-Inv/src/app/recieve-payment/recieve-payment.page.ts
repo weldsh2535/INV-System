@@ -27,7 +27,7 @@ export class RecievePaymentPage implements OnInit {
   customerId: string;
   totalBalance: number;
   balance: number;
-  payment:number;
+  payment:number;checkedItems = []
   constructor(private fb: FormBuilder,
               private customerService:CustomerService,
               private alertController:AlertController,
@@ -45,6 +45,14 @@ export class RecievePaymentPage implements OnInit {
   public fields: Object = { text: "phonenumber", value: "fullname" };
   public watermark2: string = "Select Customer";
   public height: string = "250px";
+  onChange(item){
+    if(this.checkedItems.includes(item)) {
+      this.checkedItems = this.checkedItems.filter((value)=>value!=item);
+     } else {
+      this.checkedItems.push(item)
+      this.balance = item.subTotal;
+    }
+  }
   getDisplayExpr(item) {
     if (!item) {
       return "";
