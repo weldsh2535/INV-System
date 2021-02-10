@@ -44,12 +44,13 @@ export class RecievePaymentPage implements OnInit {
   public fields: Object = { text: "phonenumber", value: "fullname" };
   public watermark2: string = "Select Customer";
   public height: string = "250px";
-  onChange(item){
+  onChange(item , index){
     if(this.checkedItems.includes(item)) {
       this.checkedItems = this.checkedItems.filter((value)=>value!=item);
      } else {
       this.checkedItems.push(item)
       this.payment = item.subTotal;
+      console.log(index);
     }
   }
   onChangeValue(item){
