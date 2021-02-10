@@ -54,8 +54,7 @@ export class RecievePaymentPage implements OnInit {
     this.payment=0;
     this.checkedItems.forEach(list => {
       this.payment = +this.payment + list.subTotal;
-      this.totalBalance = this.totalBalance-this.payment;
-    })
+     })
   }
   getDisplayExpr(item) {
     if (!item) {

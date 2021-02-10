@@ -28,6 +28,7 @@ export class PaySupplierPage implements OnInit {
   payment:number
   Balance: number;
   balance: number;
+  payment: number = 0; checkedItems = [];
   constructor(private fb: FormBuilder,
               private vonderService:VendorsService,
               private alertController:AlertController,private voucherService:VocherService) { }
@@ -58,6 +59,18 @@ export class PaySupplierPage implements OnInit {
       this.listOfVoucher = res;
     } ) 
    })
+  }
+  onChange(item) {
+    if (this.checkedItems.includes(item)) {
+      this.checkedItems = this.checkedItems.filter((value) => value != item);
+    }
+    else {
+      this.checkedItems.push(item)
+    }
+    this.payment=0;
+    this.checkedItems.forEach(list => {
+      this.payment = +this.payment + list.subTotal;
+     })
   }
   onKey(){
     this.Balance= this.updateBalance+this.totalBalance-this.regform.get("payment").value;
