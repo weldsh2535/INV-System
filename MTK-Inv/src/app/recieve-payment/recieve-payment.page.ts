@@ -45,7 +45,6 @@ export class RecievePaymentPage implements OnInit {
   public fields: Object = { text: "phonenumber", value: "fullname" };
   public watermark2: string = "Select Customer";
   public height: string = "250px";
- 
   getDisplayExpr(item) {
     if (!item) {
       return "";

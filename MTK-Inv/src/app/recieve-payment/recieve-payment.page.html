@@ -42,6 +42,7 @@
 <ion-list>
   <table class="table table-hover">
     <colgroup>
+      <col width="10%">
       <col width="25%">
       <col width="25%">
       <col width="15%">
@@ -49,6 +50,7 @@
     </colgroup>
     <thead>
       <tr>
+        <th scope="col">Pay</th>
         <th scope="col">Order Number</th>
         <th scope="col">Date</th>
         <th scope="col">Total</th>
@@ -58,11 +60,12 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of listOfVoucher;let i = index">
+        <td> <ion-checkbox slot="end" ></ion-checkbox></td>
         <td>{{item.vocherId}}</td>
         <td>{{item.date}}</td>
         <td>{{item.grandTotal}}</td>
         <td>{{item.subTotal}}</td>
-        <td (click)="onKey()"><ion-input type="number" formControlName="payment" [(ngModel)]="payment" ></ion-input></td>  
+        <td><ion-input type="number" formControlName="payment" [(ngModel)]="payment" ></ion-input></td>  
       </tr>
     </tbody>
   </table>
