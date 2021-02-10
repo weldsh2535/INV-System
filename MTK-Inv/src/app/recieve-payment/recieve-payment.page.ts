@@ -54,9 +54,9 @@ export class RecievePaymentPage implements OnInit {
     this.payment=0;
     this.checkedItems.forEach(list => {
       this.payment = +this.payment + list.subTotal;
+      this.totalBalance = this.totalBalance-this.payment;
     })
   }
-
   getDisplayExpr(item) {
     if (!item) {
       return "";
@@ -103,6 +103,8 @@ export class RecievePaymentPage implements OnInit {
     this.id = newValue || previousValue;
     this.filterCustomer = this.listOfCustomer.filter(c => c.id == this.id);
     this.selectedCustomerBalance = this.filterCustomer[0].balance;
+    this.payment=0;
+    this.checkedItems.splice(0);
     this.updateBalance = this.selectedCustomerBalance;
     this.customerId = this.filterCustomer[0].id;
     this.getVoucherById(this.customerId);
