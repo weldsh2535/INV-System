@@ -105,7 +105,7 @@ export class Vocher {
     vocherTypeId: string//(lookup)
     vendor: string
     userId: string
-    PaymentStatus:string
+    PaymentStatus: string
 }
 export class balance {
     id: string
@@ -146,11 +146,25 @@ export class SelectedVocher {
     id: string
     name: string
 }
-// export class  Payment{
-//     calcBalance(updateBalance:number):number{
-//         return updateBalance;  
-//     }
-// }
+export class Users {
+    usrId: string
+    empId: string
+    username: string
+    password: String
+}
+export class functionality {
+    funId: string
+    compName: string
+    description: string
+    remark: string
+}
+export class userRole {
+    id: string
+    funId:string
+    userId: string
+    remark: string
+}
+
 
 
     //filter 

@@ -26,10 +26,12 @@
         </div>
         <div class="form-group">
           <label>Vender Name</label>
-          <select name="venderName" #venderName="ngModel" [(ngModel)]="purchaseService.formData.venderName" class="form-control"
+          <select ok-text="Okay" cancel-text="Nah" name="venderName" #venderName="ngModel" [(ngModel)]="purchaseService.formData.venderName" class="form-control"
           [class.is-invalid]="!isValid && purchaseService.formData.VendorId==0">
             <option value="0">-Select-</option>
-            <option *ngFor="let item of vendorList" >{{item.vendorName}}</option>
+            <option *ngFor="let item of vendorList" >
+            <div>{{item.vendorName}}</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <div style="margin-left: 120px;">{{item.phonenumber}}</div> 
+            </option>
           </select>
         </div>
       </div>
