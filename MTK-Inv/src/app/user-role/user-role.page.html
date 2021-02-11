@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="primary" >
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -8,5 +8,24 @@
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="regform">
+    <ion-list>
+      <ion-item>
+        <ion-label>Functionality </ion-label>
+        <ion-input formControlName="funId"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>User Id </ion-label>
+        <ion-input formControlName="userId"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Remark </ion-label>
+        <ion-input formControlName="remark"></ion-input>
+      </ion-item>
 
+      <ion-button class="btn btn-secondary" expand="block" (click)="save()">
+        Save
+      </ion-button>
+    </ion-list>
+  </form>
 </ion-content>

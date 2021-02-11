@@ -147,8 +147,8 @@ export class SelectedVocher {
     name: string
 }
 export class Users {
-    usrId: string
-    empId: string
+    userId: string
+    empId: string 
     username: string
     password: String
 }

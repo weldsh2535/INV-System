@@ -8,5 +8,27 @@
 </ion-header>
 
 <ion-content>
-
+  <form [formGroup]="regform">
+    <ion-list>
+      <ion-item>
+        <ion-label>Employee Id </ion-label>
+        <ion-select  name="parentcategory" interface="popover" formControlName="empId"[(ngModel)]="selectedCustomer" >
+          <ion-select-option *ngFor="let code of listOfCustomer" value="{{code?.id}}">
+               {{code?.fullname}}
+         </ion-select-option>
+      </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>User Name </ion-label>
+        <ion-input formControlName="username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Password </ion-label>
+        <ion-input formControlName="password"></ion-input>
+      </ion-item>
+      <ion-button class="btn btn-secondary" expand="block" (click)="save()">
+        Save
+      </ion-button>
+    </ion-list>
+  </form>
 </ion-content>
