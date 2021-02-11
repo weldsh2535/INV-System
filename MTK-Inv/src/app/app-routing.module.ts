@@ -192,6 +192,14 @@ const routes: Routes = [
     path: 'count-sheet',
     loadChildren: () => import('./report/Audit/count-sheet/count-sheet.module').then( m => m.CountSheetPageModule)
   },
+  {
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then( m => m.UserPageModule)
+  },
+  {
+    path: 'user-role',
+    loadChildren: () => import('./user-role/user-role.module').then( m => m.UserRolePageModule)
+  },
 ];
 
 @NgModule({

@@ -82,7 +82,18 @@ export class AppComponent implements OnInit {
       title: 'Pay Supplier',
       url: '/pay-supplier',
       icon: 'add-circle'
+    },
+    {
+      title: 'user',
+      url: '/user',
+      icon: 'add-circle'
+    },
+    {
+      title: 'user role',
+      url: '/user-role',
+      icon: 'add-circle'
     }
+
     // {
     //   title: 'Filter Example',
     //   url: '/filter',

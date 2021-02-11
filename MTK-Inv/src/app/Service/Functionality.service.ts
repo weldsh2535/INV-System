@@ -13,7 +13,6 @@ export class FunctionalityService {
   //db: any;
   constructor(private db: AngularFirestore) { 
     this.functionalityCollectionList = db.collection<functionality>('functionality');
-  
    }
    
    create(functionality) { 
